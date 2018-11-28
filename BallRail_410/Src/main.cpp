@@ -51,6 +51,13 @@
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
 
+#include "FreeRTOS.h"
+
+#include "taskbase.h"                       // The base class for all tasks
+#include "taskqueue.h"                      // Queues transmit data between tasks
+#include "textqueue.h"                      // Queues that only carry text
+#include "emstream.h"
+
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -153,7 +160,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -356,7 +362,8 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	GPIOC -> ODR ^= GPIO_PIN_9;
+    osDelay(500);
   }
   /* USER CODE END 5 */ 
 }
