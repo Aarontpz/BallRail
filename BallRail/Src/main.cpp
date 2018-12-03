@@ -58,35 +58,10 @@
 #include "textqueue.h"                      // Queues that only carry text
 #include "emstream.h"
 
-class LEDTestTask : public TaskBase {
-public:
-	LEDTestTask(const char* a_name,
-			unsigned portBASE_TYPE a_priority,
-			size_t a_stack_size,
-			emstream* p_ser_dev);
-	void run(void);
+//#include "l6206.h"
 
-};
-
-LEDTestTask::LEDTestTask (const char* a_name,
-			unsigned portBASE_TYPE a_priority,
-			size_t a_stack_size,
-			emstream* p_ser_dev)
-		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
-{
-}
-
-void LEDTestTask::run(void) {
-	/* Task SETUP code here */
-	static TickType_t xLastWakeTime = xTaskGetTickCount ();
-	/*Task LOOP code here */
-	for (;;) {
-		LD2_GPIO_Port -> ODR ^= LD2_Pin;
-		delay_from_for_ms(xLastWakeTime, 250); //delay for 1ms
-//		vTaskDelayUntil(&xLastWakeTime, 1000); //delay for 1000 ticks...idk why it's UNDEFINED
-	}
-}
-
+#include "stdio.h" //currently just for sprintf
+#include <inttypes.h>
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc3;
 
@@ -98,10 +73,25 @@ UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
 
-/* USER CODE BEGIN PV */
-/* Private variables ---------------------------------------------------------*/
+class LEDTestTask : public TaskBase {
+public:
+	LEDTestTask(const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev);
+	void run(void);
 
-/* USER CODE END PV */
+};
+
+class MotorDriveTask : public TaskBase {
+public:
+	MotorDriveTask(const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev);
+	void run(void);
+
+};
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -110,16 +100,6 @@ static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_ADC3_Init(void);
-void StartDefaultTask(void const * argument);
-
-/* USER CODE BEGIN PFP */
-/* Private function prototypes -----------------------------------------------*/
-
-/* USER CODE END PFP */
-
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
@@ -128,63 +108,19 @@ void StartDefaultTask(void const * argument);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
 
-  /* USER CODE END 1 */
-
-  /* MCU Configuration----------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
   SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   MX_SPI2_Init();
   MX_ADC3_Init();
-  /* USER CODE BEGIN 2 */
 
-  /* USER CODE END 2 */
 
-  /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
-  /* USER CODE END RTOS_MUTEX */
-
-  /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
-  /* USER CODE END RTOS_SEMAPHORES */
-
-  /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
-  /* USER CODE END RTOS_TIMERS */
-
-  /* Create the thread(s) */
-  /* definition and creation of defaultTask */
-//  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-//  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-
-  /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
-  /* USER CODE END RTOS_THREADS */
-
-  /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
-  /* USER CODE END RTOS_QUEUES */
- 
-
-  /* Start scheduler */
 //  osKernelStart();
   new LEDTestTask("LEDs", 1, 240, NULL);
   vTaskStartScheduler();
@@ -207,7 +143,7 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_PeriphCLKInitTypeDef PeriphClkInit;
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -224,16 +160,16 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV16;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
@@ -255,24 +191,98 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure the main internal regulator output voltage 
+    /**Configure the main internal regulator output voltage
     */
   if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure the Systick interrupt time 
+    /**Configure the Systick interrupt time
     */
   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
-    /**Configure the Systick 
+    /**Configure the Systick
     */
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
 }
+
+//void SystemClock_Config(void)
+//{
+//
+//  RCC_OscInitTypeDef RCC_OscInitStruct;
+//  RCC_ClkInitTypeDef RCC_ClkInitStruct;
+//  RCC_PeriphCLKInitTypeDef PeriphClkInit;
+//
+//    /**Initializes the CPU, AHB and APB busses clocks
+//    */
+//  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+//  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+//  RCC_OscInitStruct.HSICalibrationValue = 16;
+//  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+//  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+//  RCC_OscInitStruct.PLL.PLLM = 1;
+//  RCC_OscInitStruct.PLL.PLLN = 10;
+//  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+//  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+//  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+//  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+//  {
+//    _Error_Handler(__FILE__, __LINE__);
+//  }
+//
+//    /**Initializes the CPU, AHB and APB busses clocks
+//    */
+//  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+//                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+//  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+//  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV8;
+//  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+//  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+//
+//  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+//  {
+//    _Error_Handler(__FILE__, __LINE__);
+//  }
+//
+//  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2|RCC_PERIPHCLK_I2C1
+//                              |RCC_PERIPHCLK_ADC;
+//  PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
+//  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
+//  PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
+//  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSI;
+//  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+//  PeriphClkInit.PLLSAI1.PLLSAI1N = 8;
+//  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+//  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+//  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+//  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
+//  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+//  {
+//    _Error_Handler(__FILE__, __LINE__);
+//  }
+//
+//    /**Configure the main internal regulator output voltage
+//    */
+//  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+//  {
+//    _Error_Handler(__FILE__, __LINE__);
+//  }
+//
+//    /**Configure the Systick interrupt time
+//    */
+//  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+//
+//    /**Configure the Systick
+//    */
+//  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+//
+//  /* SysTick_IRQn interrupt configuration */
+//  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
+//}
 
 /* ADC3 init function */
 static void MX_ADC3_Init(void)
@@ -286,13 +296,15 @@ static void MX_ADC3_Init(void)
   hadc3.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
   hadc3.Init.Resolution = ADC_RESOLUTION_12B;
   hadc3.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc3.Init.ScanConvMode = ADC_SCAN_DISABLE;
+  hadc3.Init.ScanConvMode = DISABLE;
   hadc3.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  //hadc3.Init.EOCSelection = DISABLE;
+
   hadc3.Init.LowPowerAutoWait = DISABLE;
   hadc3.Init.ContinuousConvMode = DISABLE;
   hadc3.Init.NbrOfConversion = 1;
   hadc3.Init.DiscontinuousConvMode = DISABLE;
-  hadc3.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+  hadc3.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T1_TRGO;
   hadc3.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc3.Init.DMAContinuousRequests = DISABLE;
   hadc3.Init.Overrun = ADC_OVR_DATA_PRESERVED;
@@ -354,22 +366,23 @@ static void MX_I2C1_Init(void)
 /* SPI2 init function */
 static void MX_SPI2_Init(void)
 {
-
   /* SPI2 parameter configuration*/
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
+//  hspi2.Init.Direction = SPI_DIRECTION_2LINES_RXONLY;
+//  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
   hspi2.Init.Direction = SPI_DIRECTION_1LINE;
-  hspi2.Init.DataSize = SPI_DATASIZE_4BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi2.Init.DataSize = SPI_DATASIZE_12BIT;
+  hspi2.Init.CLKPolarity = SPI_POLARITY_HIGH;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi2.Init.CRCPolynomial = 7;
   hspi2.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-  hspi2.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  hspi2.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
   if (HAL_SPI_Init(&hspi2) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -418,6 +431,8 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -432,30 +447,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
-}
-
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
-
-/* USER CODE BEGIN Header_StartDefaultTask */
-/**
-  * @brief  Function implementing the defaultTask thread.
-  * @param  argument: Not used 
-  * @retval None
-  */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void const * argument)
-{
-
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-  for(;;)
-  {
-	LD2_GPIO_Port -> ODR ^= LD2_Pin;
-    osDelay(100);
-  }
-  /* USER CODE END 5 */ 
+  /*Configure GPIO pin : PC5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 }
 
 
@@ -476,22 +473,89 @@ void _Error_Handler(char *file, int line)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
-/**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
-void assert_failed(uint8_t* file, uint32_t line)
-{ 
-  /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
+
+LEDTestTask::LEDTestTask (const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev)
+		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
+{
 }
-#endif /* USE_FULL_ASSERT */
+
+MotorDriveTask::MotorDriveTask (const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev)
+		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
+{
+}
+void LEDTestTask::run(void) {
+	/* Task SETUP code here */
+	static TickType_t xLastWakeTime = xTaskGetTickCount ();
+    char adc_buff[30]; //buffer for printing out adc reading
+    uint8_t spi_buff[3];
+	spi_buff[2] = '\0';
+    uint32_t adc_reading = 0;
+    HAL_StatusTypeDef result;
+	/*Task LOOP code here */
+
+	for (;;) {
+//	    HAL_ADC_Start(&hadc3);
+
+
+//		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
+//		{
+//		  adc_reading = HAL_ADC_GetValue(&hadc3);
+//          sprintf(adc_buff, "**%"PRIu32"\r\n", adc_reading);
+//		}
+//		else //trying to debug this step...
+//		{
+//		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
+//		}
+
+//	    LD2_GPIO_Port -> ODR ^= LD2_Pin;
+//	    delay_from_for_ms(xLastWakeTime, 250); //delay for 1ms
+//	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
+		GPIOC -> ODR &= ~GPIO_PIN_5;
+//	    result = HAL_SPI_TransmitReceive(&hspi2, (uint8_t*)adc_buff,
+//	    		spi_buff, 1, 100000);
+	    result = HAL_SPI_Receive(&hspi2, spi_buff, 1, 100000);
+		if (result != HAL_OK) {
+			sprintf(adc_buff, "POOP IT NOT WORK\r\n");
+		}
+		else {
+			sprintf(adc_buff, "SPI Received %hu%hu\r\n", spi_buff[0], spi_buff[1]);
+		}
+		GPIOC -> ODR |= GPIO_PIN_5;
+//	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
+		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
+
+		HAL_UART_Transmit(&huart2, (uint8_t*)spi_buff, 3, 0xFFFF);
+//		LD2_GPIO_Port -> ODR ^= LD2_Pin;
+//		delay_from_for_ms(xLastWakeTime, 1);
+		//		vTaskDelayUntil(&xLastWakeTime, 1000); //delay for 1000 ticks...idk why it's UNDEFINED
+
+	}
+}
+
+void MotorDriveTask::run(void) {
+	static TickType_t xLastWakeTime = xTaskGetTickCount ();
+
+	for (;;) {
+		LD2_GPIO_Port -> ODR ^= LD2_Pin;
+		if (1) {
+			// DRIVE ENA HIGH
+		}
+		if (1) { //forward
+
+		}
+		else { //backwards
+
+		}
+		delay_from_for_ms(xLastWakeTime, 250); //delay for 1ms
+
+	}
+}
 
 /**
   * @}

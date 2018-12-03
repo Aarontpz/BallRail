@@ -52,7 +52,7 @@
 #define __MAIN_H__
 
 /* Includes ------------------------------------------------------------------*/
-
+#define INCLUDE_vTaskDelayUntil 1
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -79,11 +79,8 @@
   * @brief Uncomment the line below to expanse the "assert_param" macro in the 
   *        HAL drivers code
   */
-/* #define USE_FULL_ASSERT    1U */
 
-/* USER CODE BEGIN Private defines */
 
-/* USER CODE END Private defines */
 
 #ifdef __cplusplus
  extern "C" {
