@@ -73,6 +73,9 @@ UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
 
+//TaskShare*<bool> triggered; // Declare as extern in task .h files
+
+
 class LEDTestTask : public TaskBase {
 public:
 	LEDTestTask(const char* a_name,
@@ -92,6 +95,16 @@ public:
 	void run(void);
 
 };
+
+//class LimitSwitchTask : public TaskBase {
+//public:
+//	LimitSwitchTask(const char* a_name,
+//			unsigned portBASE_TYPE a_priority,
+//			size_t a_stack_size,
+//			emstream* p_ser_dev);
+//	void run(void);
+//
+//};
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -122,7 +135,9 @@ int main(void)
 
 
 //  osKernelStart();
-  new LEDTestTask("LEDs", 1, 240, NULL);
+  new LEDTestTask("LED", 1, 240, NULL);
+  new MotorDriveTask("MOTORa", 1, 240, NULL);
+//  new LimitSwitchTask("LIMIT", 1, 240, NULL);
   vTaskStartScheduler();
 //  while (1)
 //  {
@@ -434,11 +449,31 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET);
 
+  /*Initialize motor-driver pins as ALL LOW*/
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /* Configure PB4 / PB5 Pins (IN1A / IN2A) */
+  GPIO_InitStruct.Pin = GPIO_PIN_5 | GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* Configure PA10 Pins (ENA) */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
 
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
@@ -453,6 +488,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA9 (LIMIT SWITCH INPUT) */
+  GPIO_InitStruct.Pin = GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
 }
 
 
@@ -489,6 +532,13 @@ MotorDriveTask::MotorDriveTask (const char* a_name,
 		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
 {
 }
+//LimitSwitchTask::LimitSwitchTask (const char* a_name,
+//			unsigned portBASE_TYPE a_priority,
+//			size_t a_stack_size,
+//			emstream* p_ser_dev)
+//		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
+//{
+//}
 void LEDTestTask::run(void) {
 	/* Task SETUP code here */
 	static TickType_t xLastWakeTime = xTaskGetTickCount ();
@@ -500,18 +550,19 @@ void LEDTestTask::run(void) {
 	/*Task LOOP code here */
 
 	for (;;) {
-//	    HAL_ADC_Start(&hadc3);
 
+	    HAL_ADC_Start(&hadc3);
 
-//		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
-//		{
-//		  adc_reading = HAL_ADC_GetValue(&hadc3);
-//          sprintf(adc_buff, "**%"PRIu32"\r\n", adc_reading);
-//		}
-//		else //trying to debug this step...
-//		{
-//		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
-//		}
+		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
+		{
+		  adc_reading = HAL_ADC_GetValue(&hadc3);
+          sprintf(adc_buff, "**%"PRIu32"\r\n", adc_reading);
+		}
+		else //trying to debug this step...
+		{
+		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
+		}
+		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
 
 //	    LD2_GPIO_Port -> ODR ^= LD2_Pin;
 //	    delay_from_for_ms(xLastWakeTime, 250); //delay for 1ms
@@ -529,8 +580,7 @@ void LEDTestTask::run(void) {
 		GPIOC -> ODR |= GPIO_PIN_5;
 //	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
 		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
-
-		HAL_UART_Transmit(&huart2, (uint8_t*)spi_buff, 3, 0xFFFF);
+//		HAL_UART_Transmit(&huart2, (uint8_t*)spi_buff, 3, 0xFFFF);
 //		LD2_GPIO_Port -> ODR ^= LD2_Pin;
 //		delay_from_for_ms(xLastWakeTime, 1);
 		//		vTaskDelayUntil(&xLastWakeTime, 1000); //delay for 1000 ticks...idk why it's UNDEFINED
@@ -540,22 +590,40 @@ void LEDTestTask::run(void) {
 
 void MotorDriveTask::run(void) {
 	static TickType_t xLastWakeTime = xTaskGetTickCount ();
+	bool triggered = false;
+	bool safe_state = true;
 
 	for (;;) {
+		GPIOA -> ODR |= GPIO_PIN_10;
+//		triggered = ~(GPIOA -> IDR & GPIO_PIN_9); //active low
+		triggered = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9) == GPIO_PIN_RESET;
+		safe_state = safe_state && !triggered;
 		LD2_GPIO_Port -> ODR ^= LD2_Pin;
-		if (1) {
-			// DRIVE ENA HIGH
+		if (!safe_state) {
+			// DRIVE ENA LOW
+			GPIOA -> ODR &= ~GPIO_PIN_10;
 		}
-		if (1) { //forward
-
+		if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
+			GPIOB -> ODR |= GPIO_PIN_4;
+			GPIOB -> ODR &= ~GPIO_PIN_5;
 		}
 		else { //backwards
-
+			GPIOB -> ODR |= GPIO_PIN_5;
+			GPIOB -> ODR &= ~GPIO_PIN_4;
 		}
-		delay_from_for_ms(xLastWakeTime, 250); //delay for 1ms
+		delay_from_for_ms(xLastWakeTime, 100); //delay for 1ms
 
 	}
 }
+
+//void LimitSwitchTask::run(void) {
+//	static TickType_t xLastWakeTime = xTaskGetTickCount ();
+//
+//	for (;;) {
+//
+//		delay_from_for_ms(xLastWakeTime, 0.01); //delay for 1ms
+//	}
+//}
 
 /**
   * @}
