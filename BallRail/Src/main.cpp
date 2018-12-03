@@ -53,10 +53,16 @@
 
 #include "FreeRTOS.h"
 
+//#TODO #ifndef protections for not repeatedly including these
 #include "taskbase.h"                       // The base class for all tasks
 #include "taskqueue.h"                      // Queues transmit data between tasks
 #include "textqueue.h"                      // Queues that only carry text
+#include "taskshare.h"
 #include "emstream.h"
+
+#include "MotorDriveTask.h"
+#include "LimitSwitchTask.h"
+#include "share.h"
 
 //#include "l6206.h"
 
@@ -71,14 +77,11 @@ SPI_HandleTypeDef hspi2;
 
 UART_HandleTypeDef huart2;
 
-osThreadId defaultTaskHandle;
+TaskShare<bool>* p_safe; // Declare as extern in task .h files
 
-//TaskShare*<bool> triggered; // Declare as extern in task .h files
-
-
-class LEDTestTask : public TaskBase {
+class CommunicationTask : public TaskBase {
 public:
-	LEDTestTask(const char* a_name,
+	CommunicationTask(const char* a_name,
 			unsigned portBASE_TYPE a_priority,
 			size_t a_stack_size,
 			emstream* p_ser_dev);
@@ -86,25 +89,6 @@ public:
 
 };
 
-class MotorDriveTask : public TaskBase {
-public:
-	MotorDriveTask(const char* a_name,
-			unsigned portBASE_TYPE a_priority,
-			size_t a_stack_size,
-			emstream* p_ser_dev);
-	void run(void);
-
-};
-
-//class LimitSwitchTask : public TaskBase {
-//public:
-//	LimitSwitchTask(const char* a_name,
-//			unsigned portBASE_TYPE a_priority,
-//			size_t a_stack_size,
-//			emstream* p_ser_dev);
-//	void run(void);
-//
-//};
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -125,7 +109,8 @@ int main(void)
   HAL_Init();
 
   SystemClock_Config();
-
+  p_safe = new TaskShare<bool> ("IsSafe"); // Declare as extern in task .h files
+  p_safe -> put(true);
 
   MX_GPIO_Init();
   MX_USART2_UART_Init();
@@ -135,15 +120,11 @@ int main(void)
 
 
 //  osKernelStart();
-  new LEDTestTask("LED", 1, 240, NULL);
-  new MotorDriveTask("MOTORa", 1, 240, NULL);
-//  new LimitSwitchTask("LIMIT", 1, 240, NULL);
-  vTaskStartScheduler();
-//  while (1)
-//  {
-//
-//  }
+  new LimitSwitchTask("LIMIT", 1, 240, NULL);
+  new MotorDriveTask("MOTOR", 2, 240, NULL);
+  new CommunicationTask("COM", 3, 240, NULL);
 
+  vTaskStartScheduler();
 
 }
 
@@ -517,7 +498,7 @@ void _Error_Handler(char *file, int line)
 }
 
 
-LEDTestTask::LEDTestTask (const char* a_name,
+CommunicationTask::CommunicationTask (const char* a_name,
 			unsigned portBASE_TYPE a_priority,
 			size_t a_stack_size,
 			emstream* p_ser_dev)
@@ -525,21 +506,7 @@ LEDTestTask::LEDTestTask (const char* a_name,
 {
 }
 
-MotorDriveTask::MotorDriveTask (const char* a_name,
-			unsigned portBASE_TYPE a_priority,
-			size_t a_stack_size,
-			emstream* p_ser_dev)
-		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
-{
-}
-//LimitSwitchTask::LimitSwitchTask (const char* a_name,
-//			unsigned portBASE_TYPE a_priority,
-//			size_t a_stack_size,
-//			emstream* p_ser_dev)
-//		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
-//{
-//}
-void LEDTestTask::run(void) {
+void CommunicationTask::run(void) {
 	/* Task SETUP code here */
 	static TickType_t xLastWakeTime = xTaskGetTickCount ();
     char adc_buff[30]; //buffer for printing out adc reading
@@ -582,48 +549,9 @@ void LEDTestTask::run(void) {
 		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
 //		HAL_UART_Transmit(&huart2, (uint8_t*)spi_buff, 3, 0xFFFF);
 //		LD2_GPIO_Port -> ODR ^= LD2_Pin;
-//		delay_from_for_ms(xLastWakeTime, 1);
-		//		vTaskDelayUntil(&xLastWakeTime, 1000); //delay for 1000 ticks...idk why it's UNDEFINED
-
+		delay_from_for_ms(xLastWakeTime, 10);
 	}
 }
-
-void MotorDriveTask::run(void) {
-	static TickType_t xLastWakeTime = xTaskGetTickCount ();
-	bool triggered = false;
-	bool safe_state = true;
-
-	for (;;) {
-		GPIOA -> ODR |= GPIO_PIN_10;
-//		triggered = ~(GPIOA -> IDR & GPIO_PIN_9); //active low
-		triggered = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9) == GPIO_PIN_RESET;
-		safe_state = safe_state && !triggered;
-		LD2_GPIO_Port -> ODR ^= LD2_Pin;
-		if (!safe_state) {
-			// DRIVE ENA LOW
-			GPIOA -> ODR &= ~GPIO_PIN_10;
-		}
-		if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
-			GPIOB -> ODR |= GPIO_PIN_4;
-			GPIOB -> ODR &= ~GPIO_PIN_5;
-		}
-		else { //backwards
-			GPIOB -> ODR |= GPIO_PIN_5;
-			GPIOB -> ODR &= ~GPIO_PIN_4;
-		}
-		delay_from_for_ms(xLastWakeTime, 100); //delay for 1ms
-
-	}
-}
-
-//void LimitSwitchTask::run(void) {
-//	static TickType_t xLastWakeTime = xTaskGetTickCount ();
-//
-//	for (;;) {
-//
-//		delay_from_for_ms(xLastWakeTime, 0.01); //delay for 1ms
-//	}
-//}
 
 /**
   * @}
