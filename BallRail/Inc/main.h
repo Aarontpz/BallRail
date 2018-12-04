@@ -80,8 +80,6 @@
   *        HAL drivers code
   */
 
-
-
 #ifdef __cplusplus
  extern "C" {
 #endif
