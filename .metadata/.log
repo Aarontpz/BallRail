@@ -1,0 +1,111 @@
+!SESSION 2018-12-02 18:22:18.077 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+
+!ENTRY fr.ac6.mcu.externaltools 4 0 2018-12-02 18:23:16.477
+!MESSAGE Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+!STACK 0
+java.io.IOException: Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:450)
+	at java.lang.Runtime.exec(Runtime.java:347)
+	at fr.ac6.mcu.externaltools.stlinkserver.macos64.MCUMacOSExternalEnvResolver.getPath(MCUMacOSExternalEnvResolver.java:34)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsTool.resolvePath(MCUExternalToolsTool.java:124)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:110)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:105)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getSTLinkServerLocation(MCUExternalToolsRegistry.java:114)
+	at fr.ac6.mcu.externaltools.MCUExternalToolsPlugin.getSTLinkServerLocation(MCUExternalToolsPlugin.java:168)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup.doPrint(MCUExternalToolsStartup.java:93)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup$1.run(MCUExternalToolsStartup.java:146)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:247)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:134)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 12 more
+
+!ENTRY fr.ac6.mcu.ide 1 1 2018-12-02 18:23:31.511
+!MESSAGE Started RMI Server, listening on port 21112
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-12-02 18:26:11.113
+!MESSAGE Indexed 'BallRail' (60 sources, 175 headers) in 11.4 sec: 13,556 declarations; 71,186 references; 0 unresolved inclusions; 64 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-12-02 18:30:25.312
+!MESSAGE Indexed 'BallRail_410' (50 sources, 185 headers) in 3.54 sec: 9,997 declarations; 38,443 references; 0 unresolved inclusions; 59 syntax errors; 106 unresolved names (0.22%)
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-12-02 21:04:14.970
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdater$6
+!SESSION 2018-12-02 21:04:15.496 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+
+!ENTRY fr.ac6.mcu.externaltools 4 0 2018-12-02 21:04:30.076
+!MESSAGE Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+!STACK 0
+java.io.IOException: Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:450)
+	at java.lang.Runtime.exec(Runtime.java:347)
+	at fr.ac6.mcu.externaltools.stlinkserver.macos64.MCUMacOSExternalEnvResolver.getPath(MCUMacOSExternalEnvResolver.java:34)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsTool.resolvePath(MCUExternalToolsTool.java:124)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:110)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:105)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getSTLinkServerLocation(MCUExternalToolsRegistry.java:114)
+	at fr.ac6.mcu.externaltools.MCUExternalToolsPlugin.getSTLinkServerLocation(MCUExternalToolsPlugin.java:168)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup.doPrint(MCUExternalToolsStartup.java:93)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup$1.run(MCUExternalToolsStartup.java:146)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:247)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:134)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 12 more
+
+!ENTRY fr.ac6.mcu.ide 1 1 2018-12-02 21:04:48.115
+!MESSAGE Started RMI Server, listening on port 21113
+!SESSION 2018-12-04 10:20:26.582 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+
+!ENTRY fr.ac6.mcu.externaltools 4 0 2018-12-04 10:20:41.615
+!MESSAGE Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+!STACK 0
+java.io.IOException: Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:450)
+	at java.lang.Runtime.exec(Runtime.java:347)
+	at fr.ac6.mcu.externaltools.stlinkserver.macos64.MCUMacOSExternalEnvResolver.getPath(MCUMacOSExternalEnvResolver.java:34)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsTool.resolvePath(MCUExternalToolsTool.java:124)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:110)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:105)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getSTLinkServerLocation(MCUExternalToolsRegistry.java:114)
+	at fr.ac6.mcu.externaltools.MCUExternalToolsPlugin.getSTLinkServerLocation(MCUExternalToolsPlugin.java:168)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup.doPrint(MCUExternalToolsStartup.java:93)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup$1.run(MCUExternalToolsStartup.java:146)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:247)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:134)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 12 more
+
+!ENTRY fr.ac6.mcu.ide 1 1 2018-12-04 10:21:02.736
+!MESSAGE Started RMI Server, listening on port 21112

@@ -1,0 +1,35 @@
+/*
+ * ControllerTask.cpp
+ *
+ *  Created on: Dec 3, 2018
+ *      Author: aaron
+ */
+
+#include "ControllerTask.h"
+#include "share.h"
+#include <"math.h">
+
+ControllerTask::ControllerTask (const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev)
+		: TaskBase(a_name, a_priority, a_stack_size, p_ser_dev)
+{
+}
+
+void ControllerTask::run(void) {
+	static TickType_t xLastWakeTime = xTaskGetTickCount ();
+	float K1 = 48.1048;
+	float K2 = 27.9486;
+	float K3 = 27.8920;
+	float K4 = -4.3360;
+	float x = 0;
+	float x_dot = 0;
+	float theta = 0;
+	float theta_dot = 0;
+
+	for (;;) {
+		theta = asin(p_beam_angle->get());
+		delay_from_for_ms(xLastWakeTime, 5); //delay for 5ms
+	}
+}

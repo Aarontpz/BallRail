@@ -1,0 +1,95 @@
+18:26:06 **** Clean-only build of configuration Debug for project BallRail ****
+make clean 
+make: *** No rule to make target `clean'.  Stop.
+18:26:10 **** Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+make: *** [startup/startup_stm32l476xx.o] Error 127
+18:29:30 **** Clean-only build of configuration Debug for project BallRail ****
+make clean 
+rm -rf *
+ 
+18:29:36 **** Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+make: *** [startup/startup_stm32l476xx.o] Error 127
+18:30:42 **** Clean-only build of configuration Debug for project BallRail ****
+make clean 
+rm -rf *
+ 
+18:30:42 **** Clean-only build of configuration Debug for project BallRail_410 ****
+make clean 
+make: *** No rule to make target `clean'.  Stop.
+18:30:50 **** Clean-only build of configuration Debug for project BallRail_410 ****
+make clean 
+make: *** No rule to make target `clean'.  Stop.
+18:30:50 **** Build of configuration Debug for project BallRail_410 ****
+make all 
+Building file: ../startup/startup_stm32f410rx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail_410/Debug: No such file or directory
+make: *** [startup/startup_stm32f410rx.o] Error 127
+18:33:24 **** Clean-only build of configuration Debug for project BallRail ****
+make clean 
+make: *** No rule to make target `clean'.  Stop.
+18:33:28 **** Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+make: *** [startup/startup_stm32l476xx.o] Error 127
+11:05:09 **** Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+make: *** [startup/startup_stm32l476xx.o] Error 127
+11:06:17 **** Incremental Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+make: *** [startup/startup_stm32l476xx.o] Error 127
+11:06:58 **** Clean-only build of configuration Debug for project BallRail ****
+make clean 
+rm -rf *
+ 
+11:07:00 **** Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+make: *** [startup/startup_stm32l476xx.o] Error 127
+11:12:28 **** Clean-only build of configuration Debug for project BallRail ****
+make clean 
+rm -rf *
+ 
+11:12:42 **** Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+make: *** [startup/startup_stm32l476xx.o] Error 127
+17:25:06 **** Incremental Build of configuration Debug for project BallRail ****
+make all 
+Building file: ../startup/startup_stm32l476xx.s
+Invoking: MCU GCC Assembler
+/Users/JasonGrillo/Documents/Cal Poly/5th Year/Fall 2018/ME 507/Ball
+/bin/sh: Beam/BallRail/BallRail/Debug: No such file or directory
+make: *** [startup/startup_stm32l476xx.o] Error 127
+17:43:55 **** Clean-only build of configuration Debug for project BallRail ****
+make clean 
+rm -rf *
+ 

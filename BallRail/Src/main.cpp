@@ -60,8 +60,13 @@
 #include "taskshare.h"
 #include "emstream.h"
 
+// The Task includes
 #include "MotorDriveTask.h"
 #include "LimitSwitchTask.h"
+#include "BallPositionTask.h"
+#include "ControllerTask.h"
+#include "EncoderTask.h"
+#include "UserInputTask.h"
 #include "share.h"
 
 //#include "l6206.h"
@@ -77,7 +82,15 @@ SPI_HandleTypeDef hspi2;
 
 UART_HandleTypeDef huart2;
 
+
+// Declare share and queue pointers
 TaskShare<bool>* p_safe; // Declare as extern in task .h files
+TaskShare<float>* p_ball_position;
+TaskShare<float>* p_ball_velocity;
+TaskShare<float>* p_beam_angle;
+TaskShare<float>* p_beam_ang_velocity;
+TaskShare<float>* p_motor_voltage_pwm;
+TaskQueue<float>* p_set_ball_position;
 
 class CommunicationTask : public TaskBase {
 public:
@@ -110,7 +123,20 @@ int main(void)
 
   SystemClock_Config();
   p_safe = new TaskShare<bool> ("IsSafe"); // Declare as extern in task .h files
-  p_safe -> put(true);
+  p_ball_position = new TaskShare<float> ("ball_position");
+  p_ball_velocity = new TaskShare<float> ("ball_velocity");
+  p_beam_angle = new TaskShare<float> ("beam_angle");
+  p_beam_ang_velocity = new TaskShare<float> ("beam_ang_velocity");
+  p_motor_voltage_pwm = new TaskShare<float> ("motor_voltage_pwm");
+  p_set_ball_position = new TaskQueue<float> (20, "set_ball_position"); // define size 20 buffer for ball setpoint
+
+  p_safe -> put(true);	// initialize system variables
+  p_ball_position -> put(0);
+  p_ball_velocity -> put(0);
+  p_beam_angle -> put(0);
+  p_beam_ang_velocity -> put(0);
+  p_motor_voltage_pwm -> put(0);
+  p_set_ball_position -> put(0);
 
   MX_GPIO_Init();
   MX_USART2_UART_Init();
@@ -120,9 +146,13 @@ int main(void)
 
 
 //  osKernelStart();
-  new LimitSwitchTask("LIMIT", 1, 240, NULL);
-  new MotorDriveTask("MOTOR", 2, 240, NULL);
-  new CommunicationTask("COM", 3, 240, NULL);
+  new LimitSwitchTask("LIMIT", 2, 240, NULL);
+  new MotorDriveTask("MOTOR", 4, 240, NULL);	// need to configure pwm
+  new BallPositionTask("BALL",5,240,NULL);
+  new EncoderTask("BEAM",6,240,NULL);
+  new ControllerTask("CONTROLLER",7,240,NULL);
+//  new UserInputTask("USER",3,240,NULL);	// wait until Aaron can setup the other ADC pin..
+  new CommunicationTask("COM", 1, 240, NULL);
 
   vTaskStartScheduler();
 
@@ -509,7 +539,7 @@ CommunicationTask::CommunicationTask (const char* a_name,
 void CommunicationTask::run(void) {
 	/* Task SETUP code here */
 	static TickType_t xLastWakeTime = xTaskGetTickCount ();
-    char adc_buff[30]; //buffer for printing out adc reading
+    char adc_buff[300]; //buffer for printing out adc reading
     uint8_t spi_buff[3];
 	spi_buff[2] = '\0';
     uint32_t adc_reading = 0;
@@ -542,7 +572,7 @@ void CommunicationTask::run(void) {
 			sprintf(adc_buff, "POOP IT NOT WORK\r\n");
 		}
 		else {
-			sprintf(adc_buff, "SPI Received %hu%hu\r\n", spi_buff[0], spi_buff[1]);
+			sprintf(adc_buff, "Safe: %hu Ball_Pos: %hu Ball_Vel: %hu Theta: %hu Omega: %hu PWM: %hu\r\n", p_safe->get(),p_ball_position->get(),p_ball_velocity->get(),p_beam_angle->get(),p_beam_ang_velocity->get(),p_motor_voltage_pwm->get());
 		}
 		GPIOC -> ODR |= GPIO_PIN_5;
 //	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);

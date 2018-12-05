@@ -24,6 +24,6 @@ void LimitSwitchTask::run(void) {
 		triggered = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9) == GPIO_PIN_RESET;
 		current_safe = p_safe->get() && !triggered;
 		p_safe->put(current_safe);
-		delay_from_for_ms(xLastWakeTime, 10); //delay for 1ms
+		delay_from_for_ms(xLastWakeTime, 50); //delay for 50ms
 	}
 }
