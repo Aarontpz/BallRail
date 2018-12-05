@@ -40,11 +40,11 @@ void MotorDriveTask::run(void) {
 //		safe_state = p_safe->get();
 		if (!p_safe->get()) { //if p_safe is FALSE, go into SAFETY MODE
 			// DRIVE ENA LOW
-			GPIOA -> ODR &= ~GPIO_PIN_10;
+//			GPIOA -> ODR &= ~GPIO_PIN_10;
 			LD2_GPIO_Port -> ODR |= LD2_Pin; //set display pin high
 		}
 		else { //DRIVE ENABLE HIGH, NORMAL OPERATION
-			GPIOA -> ODR |= GPIO_PIN_10; //DRIVE ENA HIGH
+//			GPIOA -> ODR |= GPIO_PIN_10; //DRIVE ENA HIGH
 			LD2_GPIO_Port -> ODR ^= LD2_Pin;
 		}
 

@@ -74,6 +74,8 @@
 #include "stdio.h" //currently just for sprintf
 #include <inttypes.h>
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim1;
+
 ADC_HandleTypeDef hadc3;
 
 I2C_HandleTypeDef hi2c1;
@@ -90,7 +92,9 @@ TaskShare<float>* p_ball_velocity;
 TaskShare<float>* p_beam_angle;
 TaskShare<float>* p_beam_ang_velocity;
 TaskShare<float>* p_motor_voltage_pwm;
-TaskQueue<float>* p_set_ball_position;
+TaskShare<float>* p_set_ball_position;
+TaskShare<uint16_t>* p_adc_reading;
+TaskShare<uint16_t>* p_encoder_reading;
 
 class CommunicationTask : public TaskBase {
 public:
@@ -110,6 +114,8 @@ static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_ADC3_Init(void);
+static void MX_TIM1_Init(void);
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /**
   * @brief  The application entry point.
@@ -128,7 +134,9 @@ int main(void)
   p_beam_angle = new TaskShare<float> ("beam_angle");
   p_beam_ang_velocity = new TaskShare<float> ("beam_ang_velocity");
   p_motor_voltage_pwm = new TaskShare<float> ("motor_voltage_pwm");
-  p_set_ball_position = new TaskQueue<float> (20, "set_ball_position"); // define size 20 buffer for ball setpoint
+  p_set_ball_position = new TaskShare<float> ("set_ball_position"); // define size 20 buffer for ball setpoint
+  p_adc_reading = new TaskShare<uint16_t> ("adc_reading");
+  p_encoder_reading = new TaskShare<uint16_t> ("encoder_reading");
 
   p_safe -> put(true);	// initialize system variables
   p_ball_position -> put(0);
@@ -137,19 +145,32 @@ int main(void)
   p_beam_ang_velocity -> put(0);
   p_motor_voltage_pwm -> put(0);
   p_set_ball_position -> put(0);
+  p_adc_reading -> put(0);
 
-  MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   MX_SPI2_Init();
   MX_ADC3_Init();
+  MX_TIM1_Init();
 
+  TIM_OC_InitTypeDef sConfigOC;
+
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+    sConfigOC.Pulse = 0x000F;
+    sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+    sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+    sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+    sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+    sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK){}
+  HAL_TIM_PWM_Start(&htim1, 1);
+  MX_GPIO_Init();
 
 //  osKernelStart();
   new LimitSwitchTask("LIMIT", 2, 240, NULL);
   new MotorDriveTask("MOTOR", 4, 240, NULL);	// need to configure pwm
   new BallPositionTask("BALL",5,240,NULL);
-  new EncoderTask("BEAM",6,240,NULL);
+  new EncoderTask("BEAM",3,240,NULL);
   new ControllerTask("CONTROLLER",7,240,NULL);
 //  new UserInputTask("USER",3,240,NULL);	// wait until Aaron can setup the other ADC pin..
   new CommunicationTask("COM", 1, 240, NULL);
@@ -437,6 +458,61 @@ static void MX_USART2_UART_Init(void)
 
 }
 
+/* TIM1 init function */
+static void MX_TIM1_Init(void)
+{
+
+  TIM_MasterConfigTypeDef sMasterConfig;
+  TIM_OC_InitTypeDef sConfigOC;
+  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig;
+
+  htim1.Instance = TIM3;
+  htim1.Init.Prescaler = 0xF000;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim1.Init.Period = 0x00FF;
+  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim1.Init.RepetitionCounter = 0;
+  if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
+  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+  if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+//  HAL_TIM_MspPostInit(&htim1);
+
+}
+
+
 /** Configure pins as 
         * Analog 
         * Input 
@@ -472,16 +548,22 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
   /* Configure PB4 / PB5 Pins (IN1A / IN2A) */
-  GPIO_InitStruct.Pin = GPIO_PIN_5 | GPIO_PIN_4;
+  GPIO_InitStruct.Pin = GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
   /* Configure PA10 Pins (ENA) */
   GPIO_InitStruct.Pin = GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -539,21 +621,25 @@ CommunicationTask::CommunicationTask (const char* a_name,
 void CommunicationTask::run(void) {
 	/* Task SETUP code here */
 	static TickType_t xLastWakeTime = xTaskGetTickCount ();
-    char adc_buff[300]; //buffer for printing out adc reading
+    char adc_buff[100]; //buffer for printing out adc reading
     uint8_t spi_buff[3];
-	spi_buff[2] = '\0';
+//	spi_buff[2] = '\0';
     uint32_t adc_reading = 0;
+    uint16_t encoder_reading = 0;
+    float beam_angle = 0;
     HAL_StatusTypeDef result;
 	/*Task LOOP code here */
 
 	for (;;) {
+		beam_angle = p_beam_angle -> get();
 
 	    HAL_ADC_Start(&hadc3);
 
 		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
 		{
 		  adc_reading = HAL_ADC_GetValue(&hadc3);
-          sprintf(adc_buff, "**%"PRIu32"\r\n", adc_reading);
+		  p_adc_reading -> put(adc_reading);
+          sprintf(adc_buff, "**%"PRIu32"\r\n", p_adc_reading->get());
 		}
 		else //trying to debug this step...
 		{
@@ -568,18 +654,23 @@ void CommunicationTask::run(void) {
 //	    result = HAL_SPI_TransmitReceive(&hspi2, (uint8_t*)adc_buff,
 //	    		spi_buff, 1, 100000);
 	    result = HAL_SPI_Receive(&hspi2, spi_buff, 1, 100000);
+		GPIOC -> ODR |= GPIO_PIN_5;
+
 		if (result != HAL_OK) {
 			sprintf(adc_buff, "POOP IT NOT WORK\r\n");
 		}
 		else {
-			sprintf(adc_buff, "Safe: %hu Ball_Pos: %hu Ball_Vel: %hu Theta: %hu Omega: %hu PWM: %hu\r\n", p_safe->get(),p_ball_position->get(),p_ball_velocity->get(),p_beam_angle->get(),p_beam_ang_velocity->get(),p_motor_voltage_pwm->get());
+			encoder_reading = (spi_buff[0] << 4) | ((spi_buff[1] & 0xF0) >> 4);
+
+			p_encoder_reading -> put(encoder_reading);
+//			sprintf(adc_buff, "Safe: %hu Theta: %f\r\n", p_safe->get(), beam_angle);
+			sprintf(adc_buff, "Safe: %hu Ball_Pos: %f Ball_Vel: %f Theta: %f Omega: %f PWM: %f\r\n", p_safe->get(),p_ball_position->get(),p_ball_velocity->get(),beam_angle,p_beam_ang_velocity->get(),p_motor_voltage_pwm->get());
 		}
-		GPIOC -> ODR |= GPIO_PIN_5;
 //	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
 		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
 //		HAL_UART_Transmit(&huart2, (uint8_t*)spi_buff, 3, 0xFFFF);
 //		LD2_GPIO_Port -> ODR ^= LD2_Pin;
-		delay_from_for_ms(xLastWakeTime, 10);
+		delay_from_for_ms(xLastWakeTime, 15);
 	}
 }
 

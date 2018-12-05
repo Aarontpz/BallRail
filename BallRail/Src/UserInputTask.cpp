@@ -25,19 +25,19 @@ void UserInputTask::run(void) {
 
 	for (;;) {
 
-	    HAL_ADC_Start(&hadc3);
-
-		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
-		{
-		  adc_reading = HAL_ADC_GetValue(&hadc3);
-		  set_ball_position = adc_reading/5000; // convert from ADC counts to position (m)
-		  p_ball_position -> put(set_ball_position);
-//          sprintf(adc_buff, "**%"PRIu32"\r\n", adc_reading);
-		}
-		else //trying to debug this step...
-		{
-//		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
-		}
+//	    HAL_ADC_Start(&hadc3);
+//
+//		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
+//		{
+//		  adc_reading = HAL_ADC_GetValue(&hadc3);
+//		  set_ball_position = adc_reading/5000; // convert from ADC counts to position (m)
+//		  p_ball_position -> put(set_ball_position);
+////          sprintf(adc_buff, "**%"PRIu32"\r\n", adc_reading);
+//		}
+//		else //trying to debug this step...
+//		{
+////		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
+//		}
 //		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
 		delay_from_for_ms(xLastWakeTime, 1); // delay for 1ms
 	}
