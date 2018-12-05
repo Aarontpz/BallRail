@@ -37,6 +37,6 @@ void ControllerTask::run(void) {
 		x_dot = p_ball_position -> get(); // ball velocity in m/s
 		motor_voltage = Nbar*(p_set_ball_position->get()) - K1*x - K2*x_dot - K3*theta - K4*theta_dot;
 		p_motor_voltage_pwm -> put(motor_voltage);
-		delay_from_for_ms(xLastWakeTime, 5); //delay for 5ms
+		delay_from_for_ms(xLastWakeTime, 10); //delay for 5ms
 	}
 }

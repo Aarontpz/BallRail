@@ -48,15 +48,15 @@ void MotorDriveTask::run(void) {
 			LD2_GPIO_Port -> ODR ^= LD2_Pin;
 		}
 
-//		if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
-//			GPIOB -> ODR |= GPIO_PIN_4;
-//			GPIOB -> ODR &= ~GPIO_PIN_5;
-//		}
-//		else { //backwards
-//			GPIOB -> ODR |= GPIO_PIN_5;
-//			GPIOB -> ODR &= ~GPIO_PIN_4;
-//		}
-		delay_from_for_ms(xLastWakeTime, 20); //delay for 20ms
+		if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
+			GPIOB -> ODR |= GPIO_PIN_4;
+			GPIOB -> ODR &= ~GPIO_PIN_5;
+		}
+		else { //backwards
+			GPIOB -> ODR |= GPIO_PIN_5;
+			GPIOB -> ODR &= ~GPIO_PIN_4;
+		}
+		delay_from_for_ms(xLastWakeTime, 1000); //delay for 20ms
 	}
 }
 
