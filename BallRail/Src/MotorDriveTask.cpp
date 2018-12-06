@@ -41,21 +41,24 @@ void MotorDriveTask::run(void) {
 		if (!p_safe->get()) { //if p_safe is FALSE, go into SAFETY MODE
 			// DRIVE ENA LOW
 //			GPIOA -> ODR &= ~GPIO_PIN_10;
+			GPIOB -> ODR &= ~GPIO_PIN_5;
+			GPIOB -> ODR &= ~GPIO_PIN_4;
 			LD2_GPIO_Port -> ODR |= LD2_Pin; //set display pin high
 		}
 		else { //DRIVE ENABLE HIGH, NORMAL OPERATION
 //			GPIOA -> ODR |= GPIO_PIN_10; //DRIVE ENA HIGH
 			LD2_GPIO_Port -> ODR ^= LD2_Pin;
+			if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
+				GPIOB -> ODR |= GPIO_PIN_4;
+				GPIOB -> ODR &= ~GPIO_PIN_5;
+			}
+			else { //backwards
+				GPIOB -> ODR |= GPIO_PIN_5;
+				GPIOB -> ODR &= ~GPIO_PIN_4;
+			}
 		}
 
-		if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
-			GPIOB -> ODR |= GPIO_PIN_4;
-			GPIOB -> ODR &= ~GPIO_PIN_5;
-		}
-		else { //backwards
-			GPIOB -> ODR |= GPIO_PIN_5;
-			GPIOB -> ODR &= ~GPIO_PIN_4;
-		}
+
 		delay_from_for_ms(xLastWakeTime, 1000); //delay for 20ms
 	}
 }

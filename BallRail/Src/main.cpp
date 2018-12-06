@@ -10,37 +10,37 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * Copyright (c) 2018 STMicroelectronics International N.V. 
+  * Copyright (c) 2018 STMicroelectronics International N.V.
   * All rights reserved.
   *
-  * Redistribution and use in source and binary forms, with or without 
+  * Redistribution and use in source and binary forms, with or without
   * modification, are permitted, provided that the following conditions are met:
   *
-  * 1. Redistribution of source code must retain the above copyright notice, 
+  * 1. Redistribution of source code must retain the above copyright notice,
   *    this list of conditions and the following disclaimer.
   * 2. Redistributions in binary form must reproduce the above copyright notice,
   *    this list of conditions and the following disclaimer in the documentation
   *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other 
-  *    contributors to this software may be used to endorse or promote products 
+  * 3. Neither the name of STMicroelectronics nor the names of other
+  *    contributors to this software may be used to endorse or promote products
   *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this 
+  * 4. This software, including modifications and/or derivative works of this
   *    software, must execute solely and exclusively on microcontroller or
   *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under 
-  *    this license is void and will automatically terminate your rights under 
-  *    this license. 
+  * 5. Redistribution and use of this software other than as permitted under
+  *    this license is void and will automatically terminate your rights under
+  *    this license.
   *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
+  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
@@ -147,16 +147,17 @@ int main(void)
   p_set_ball_position -> put(0);
   p_adc_reading -> put(0);
 
+  MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   MX_SPI2_Init();
   MX_ADC3_Init();
+  __HAL_RCC_TIM1_CLK_ENABLE();
   MX_TIM1_Init();
-  MX_GPIO_Init();
 
   TIM_OC_InitTypeDef sConfigOC;
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0x0075;
+  sConfigOC.Pulse = 0x01FF;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
@@ -174,11 +175,11 @@ int main(void)
   }
 
 //  osKernelStart();
-//  new LimitSwitchTask("LIMIT", 2, 240, NULL);
-//  new MotorDriveTask("MOTOR", 4, 240, NULL);	// need to configure pwm
-//  new BallPositionTask("BALL",5,240,NULL);
-//  new EncoderTask("BEAM",3,240,NULL);
-//  new ControllerTask("CONTROLLER",7,240,NULL);
+  new LimitSwitchTask("LIMIT", 2, 240, NULL);
+  new MotorDriveTask("MOTOR", 4, 240, NULL);	// need to configure pwm
+  new BallPositionTask("BALL",5,240,NULL);
+  new EncoderTask("BEAM",3,240,NULL);
+  new ControllerTask("CONTROLLER",7,240,NULL);
 //  new UserInputTask("USER",3,240,NULL);	// wait until Aaron can setup the other ADC pin..
   new CommunicationTask("COM", 1, 240, NULL);
 
@@ -187,187 +188,36 @@ int main(void)
 
 }
 
-/**
-  * @brief System Clock Configuration
-  * @retval None
-  */
-//void SystemClock_Config(void)
-//{
-//
-//  RCC_OscInitTypeDef RCC_OscInitStruct;
-//  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-//  RCC_PeriphCLKInitTypeDef PeriphClkInit;
-//
-////  RCC_AHB1PeriphClockCmd(RCC_APB1Periph_GPIOA, ENABLE);
-//    /**Initializes the CPU, AHB and APB busses clocks
-//    */
-//  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-//  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-//  RCC_OscInitStruct.HSICalibrationValue = 16;
-//  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-//  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-//  RCC_OscInitStruct.PLL.PLLM = 1;
-//  RCC_OscInitStruct.PLL.PLLN = 10;
-//  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
-//  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
-//  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
-//  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-//  {
-//    _Error_Handler(__FILE__, __LINE__);
-//  }
-//
-//    /**Initializes the CPU, AHB and APB busses clocks
-//    */
-//  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-//                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-//  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-//  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV16;
-//  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-//  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
-//
-//  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-//  {
-//    _Error_Handler(__FILE__, __LINE__);
-//  }
-//
-//  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2|RCC_PERIPHCLK_I2C1
-//                              |RCC_PERIPHCLK_ADC;//|RCC_PERIPHCLK_LPTIM1;
-//  PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
-//  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
-////  PeriphClkInit.Lptim1ClockSelection = RCC_LPTIM1CLKSOURCE_PCLK1;
-//  PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
-//  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSI;
-//  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
-//  PeriphClkInit.PLLSAI1.PLLSAI1N = 8;
-//  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
-//  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
-//  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
-//  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
-//  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-//  {
-//    _Error_Handler(__FILE__, __LINE__);
-//  }
-//
-//    /**Configure the main internal regulator output voltage
-//    */
-//  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
-//  {
-//    _Error_Handler(__FILE__, __LINE__);
-//  }
-//
-//    /**Configure the Systick interrupt time
-//    */
-//  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
-//
-//    /**Configure the Systick
-//    */
-//  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
-//
-//  /* SysTick_IRQn interrupt configuration */
-//  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
-//}
-
-//void SystemClock_Config(void)
-//{
-//
-//  RCC_OscInitTypeDef RCC_OscInitStruct;
-//  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-//
-//    /**Initializes the CPU, AHB and APB busses clocks
-//    */
-//  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
-//  RCC_OscInitStruct.MSIState = RCC_MSI_ON;
-//  RCC_OscInitStruct.MSICalibrationValue = 0;
-//  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_8;
-//  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
-//  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-//  {
-//    _Error_Handler(__FILE__, __LINE__);
-//  }
-//
-//    /**Initializes the CPU, AHB and APB busses clocks
-//    */
-//  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-//                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-//  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
-//  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-//  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-//  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-//
-//  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
-//  {
-//    _Error_Handler(__FILE__, __LINE__);
-//  }
-//
-//    /**Configure the main internal regulator output voltage
-//    */
-//  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
-//  {
-//    _Error_Handler(__FILE__, __LINE__);
-//  }
-//
-//    /**Configure the Systick interrupt time
-//    */
-//  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
-//
-//    /**Configure the Systick
-//    */
-//  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
-//
-//  /* SysTick_IRQn interrupt configuration */
-//  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-//}
 void SystemClock_Config(void)
 {
 
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_PeriphCLKInitTypeDef PeriphClkInit;
 
     /**Initializes the CPU, AHB and APB busses clocks
     */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = 16;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 1;
-  RCC_OscInitStruct.PLL.PLLN = 10;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
-  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
-  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.MSIState = RCC_MSI_ON;
+  RCC_OscInitStruct.MSICalibrationValue = 0;
+  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_8;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
+
+
     /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV16;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2|RCC_PERIPHCLK_I2C1
-                              |RCC_PERIPHCLK_ADC;
-  PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
-  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
-  PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
-  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSI;
-  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
-  PeriphClkInit.PLLSAI1.PLLSAI1N = 8;
-  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
-  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
@@ -388,8 +238,11 @@ void SystemClock_Config(void)
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
   /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 15, 0);
+  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
+
+
+
 
 /* ADC3 init function */
 static void MX_ADC3_Init(void)
@@ -397,7 +250,7 @@ static void MX_ADC3_Init(void)
 
   ADC_ChannelConfTypeDef sConfig;
 
-    /**Common config 
+    /**Common config
     */
   hadc3.Instance = ADC3;
   hadc3.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
@@ -421,7 +274,7 @@ static void MX_ADC3_Init(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure Regular Channel 
+    /**Configure Regular Channel
     */
   sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_REGULAR_RANK_1;
@@ -454,14 +307,14 @@ static void MX_I2C1_Init(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure Analogue filter 
+    /**Configure Analogue filter
     */
   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure Digital filter 
+    /**Configure Digital filter
     */
   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
   {
@@ -529,9 +382,9 @@ static void MX_TIM1_Init(void)
 //  HAL_TIM_Base_Init(&htim1);
 //  HAL_TIM_Base_Start(&htim1);
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 0x000F;
+  htim1.Init.Prescaler = 100;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 0x00FF;
+  htim1.Init.Period = 0x0FFF;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -577,9 +430,9 @@ static void MX_TIM1_Init(void)
 }
 
 
-/** Configure pins as 
-        * Analog 
-        * Input 
+/** Configure pins as
+        * Analog
+        * Input
         * Output
         * EVENT_OUT
         * EXTI
@@ -702,46 +555,43 @@ void CommunicationTask::run(void) {
 
 	for (;;) {
 
-//		beam_angle = p_beam_angle -> get();
-//
-//	    HAL_ADC_Start(&hadc3);
-	    sprintf(adc_buff,"hello world\r\n");
-//
-//		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
-//		{
-//		  adc_reading = HAL_ADC_GetValue(&hadc3);
-//		  p_adc_reading -> put(adc_reading);
-//          sprintf(adc_buff, "**%"PRIu32"\r\n", p_adc_reading->get());
-//		}
-//		else //trying to debug this step...
-//		{
-//		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
-//		}
-//		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
+		beam_angle = p_beam_angle -> get();
+
+	    HAL_ADC_Start(&hadc3);
+
+		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
+		{
+		  adc_reading = HAL_ADC_GetValue(&hadc3);
+		  p_adc_reading -> put(adc_reading);
+          sprintf(adc_buff, "**%"PRIu32"\r\n", p_adc_reading->get());
+		}
+		else //trying to debug this step...
+		{
+		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
+		}
+		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
 //
 ////	    LD2_GPIO_Port -> ODR ^= LD2_Pin;
 ////	    delay_from_for_ms(xLastWakeTime, 250); //delay for 1ms
 ////	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
-//		GPIOC -> ODR &= ~GPIO_PIN_5;
+		GPIOC -> ODR &= ~GPIO_PIN_5;
 ////	    result = HAL_SPI_TransmitReceive(&hspi2, (uint8_t*)adc_buff,
 ////	    		spi_buff, 1, 100000);
-//	    result = HAL_SPI_Receive(&hspi2, spi_buff, 1, 100000);
-//		GPIOC -> ODR |= GPIO_PIN_5;
+	    result = HAL_SPI_Receive(&hspi2, spi_buff, 1, 100000);
+		GPIOC -> ODR |= GPIO_PIN_5;
 //
-//		if (result != HAL_OK) {
-//			sprintf(adc_buff, "POOP IT NOT WORK\r\n");
-//		}
-//		else {
-//			encoder_reading = (spi_buff[0] << 4) | ((spi_buff[1] & 0xF0) >> 4);
-//
-//			p_encoder_reading -> put(encoder_reading);
-////			sprintf(adc_buff, "Safe: %hu Theta: %f\r\n", p_safe->get(), beam_angle);
-//			sprintf(adc_buff, "Safe: %hu Ball_Pos: %f Ball_Vel: %f Theta: %f Omega: %f PWM: %f\r\n", p_safe->get(),p_ball_position->get(),p_ball_velocity->get(),beam_angle,p_beam_ang_velocity->get(),p_motor_voltage_pwm->get());
-//		}
+		if (result != HAL_OK) {
+			sprintf(adc_buff, "POOP IT NOT WORK\r\n");
+		}
+		else {
+			encoder_reading = (spi_buff[0] << 4) | ((spi_buff[1] & 0xF0) >> 4);
+
+			p_encoder_reading -> put(encoder_reading);
+//			sprintf(adc_buff, "Safe: %hu Theta: %f\r\n", p_safe->get(), beam_angle);
+			sprintf(adc_buff, "Safe: %hu Ball_Pos: %f Ball_Vel: %f Theta: %f Omega: %f PWM: %f\r\n", p_safe->get(),p_ball_position->get(),p_ball_velocity->get(),beam_angle,p_beam_ang_velocity->get(),p_motor_voltage_pwm->get());
+		}
 ////	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
 		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
-//		HAL_UART_Transmit(&huart2, (uint8_t*)spi_buff, 3, 0xFFFF);
-//		LD2_GPIO_Port -> ODR ^= LD2_Pin;
 		delay_from_for_ms(xLastWakeTime, 15);
 	}
 }
