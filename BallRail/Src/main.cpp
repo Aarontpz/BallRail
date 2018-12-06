@@ -87,7 +87,7 @@ UART_HandleTypeDef huart2;
 
 const float VS = 24.0;
 const float VMIN = 10.0;
-
+#define SETPOINT 0.2
 
 // Declare share and queue pointers
 TaskShare<bool>* p_safe; // Declare as extern in task .h files
@@ -150,7 +150,7 @@ int main(void)
   p_beam_angle -> put(0);
   p_beam_ang_velocity -> put(0);
   p_motor_voltage_pwm -> put(0);
-  p_set_ball_position -> put(0.2);
+  p_set_ball_position -> put(SETPOINT);
   p_adc_reading -> put(0);
 
   MX_GPIO_Init();
@@ -580,7 +580,7 @@ void CommunicationTask::run(void) {
 		beam_angle = p_beam_angle -> get();
 		TIM_OC_InitTypeDef sConfigOC;
 		sConfigOC.OCMode = TIM_OCMODE_PWM1;
-		sConfigOC.Pulse = COUNTS_PER_PERIOD*fmin((abs(p_motor_voltage_pwm -> get())+0.33), 0.7);
+		sConfigOC.Pulse = COUNTS_PER_PERIOD*fmin((abs(p_motor_voltage_pwm -> get())+0.33), 1);
 		sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
 		sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
 		sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;

@@ -17,10 +17,10 @@
 //#define K4 0.13 // -4.3360
 const float VS = 24.0;
 const float Nbar = 40;	// 57
-const float K1 = 50; // 48.1048  0.3224
+const float K1 = 65; // 48.1048  0.3224
 const float K2 = 1000;// 27.9486
-const float K3 = 32.5; // 27.8920
-const float K4 = 0.13; // -4.3360
+const float K3 = 60; // 27.8920
+const float K4 = 10; // -4.3360
 
 ControllerTask::ControllerTask (const char* a_name,
 			unsigned portBASE_TYPE a_priority,
