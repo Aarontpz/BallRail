@@ -16,10 +16,10 @@
 //#define K3 64.5 // 27.8920
 //#define K4 0.13 // -4.3360
 const float VS = 24.0;
-const float Nbar = 11;	// 57
-const float K1 = 10; // 48.1048  0.3224
-const float K2 = 15.16;// 27.9486
-const float K3 = 64.5; // 27.8920
+const float Nbar = 40;	// 57
+const float K1 = 50; // 48.1048  0.3224
+const float K2 = 1000;// 27.9486
+const float K3 = 32.5; // 27.8920
 const float K4 = 0.13; // -4.3360
 
 ControllerTask::ControllerTask (const char* a_name,
@@ -46,6 +46,7 @@ void ControllerTask::run(void) {
 		x = p_ball_position -> get();
 		x_dot = p_ball_velocity -> get(); // ball velocity in m/s
 		motor_voltage = (Nbar*(p_set_ball_position->get()) - K1*x - K2*x_dot - K3*theta - K4*theta_dot)/VS;
+//		motor_voltage = 2*(p_set_ball_position->get()-x);
 //		motor_voltage = 0x00FF;
 		p_motor_voltage_pwm -> put(motor_voltage);
 		delay_from_for_ms(xLastWakeTime, 10); //delay for 5ms

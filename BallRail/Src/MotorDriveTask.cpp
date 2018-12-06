@@ -35,22 +35,23 @@ void MotorDriveTask::run(void) {
 //			GPIOA -> ODR |= GPIO_PIN_10; //DRIVE ENA HIGH
 
 			LD2_GPIO_Port -> ODR ^= LD2_Pin;
+//			if (pwm_level < 0) { //forward
 			if (pwm_level >= 0) { //forward
 //		    if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
 
-				GPIOB -> ODR |= GPIO_PIN_5;
-				GPIOB -> ODR &= ~GPIO_PIN_4;
-			}
-			else { //backwards
 				GPIOB -> ODR |= GPIO_PIN_4;
 				GPIOB -> ODR &= ~GPIO_PIN_5;
+			}
+			else { //backwards
+				GPIOB -> ODR |= GPIO_PIN_5;
+				GPIOB -> ODR &= ~GPIO_PIN_4;
 			}
 
 
 		}
 
 
-		delay_from_for_ms(xLastWakeTime, 100); //delay for 20ms
+		delay_from_for_ms(xLastWakeTime, 10); //delay for 20ms
 	}
 }
 
