@@ -38,12 +38,12 @@ void MotorDriveTask::run(void) {
 			if (pwm_level >= 0) { //forward
 //		    if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
 
-				GPIOB -> ODR |= GPIO_PIN_4;
-				GPIOB -> ODR &= ~GPIO_PIN_5;
-			}
-			else { //backwards
 				GPIOB -> ODR |= GPIO_PIN_5;
 				GPIOB -> ODR &= ~GPIO_PIN_4;
+			}
+			else { //backwards
+				GPIOB -> ODR |= GPIO_PIN_4;
+				GPIOB -> ODR &= ~GPIO_PIN_5;
 			}
 
 

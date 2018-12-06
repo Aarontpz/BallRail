@@ -85,6 +85,9 @@ SPI_HandleTypeDef hspi2;
 
 UART_HandleTypeDef huart2;
 
+const float VS = 24.0;
+const float VMIN = 6.0;
+
 
 // Declare share and queue pointers
 TaskShare<bool>* p_safe; // Declare as extern in task .h files
@@ -401,7 +404,7 @@ static void MX_TIM1_Init(void)
 //  HAL_TIM_Base_Init(&htim1);
 //  HAL_TIM_Base_Start(&htim1);
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 1;
+  htim1.Init.Prescaler = 50;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim1.Init.Period = COUNTS_PER_PERIOD;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -577,7 +580,7 @@ void CommunicationTask::run(void) {
 		beam_angle = p_beam_angle -> get();
 		TIM_OC_InitTypeDef sConfigOC;
 		sConfigOC.OCMode = TIM_OCMODE_PWM1;
-		sConfigOC.Pulse = abs(p_motor_voltage_pwm -> get());
+		sConfigOC.Pulse = COUNTS_PER_PERIOD*(abs(p_motor_voltage_pwm -> get())+VMIN/VS);
 		sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
 		sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
 		sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
@@ -629,7 +632,7 @@ void CommunicationTask::run(void) {
 		}
 ////	    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
 		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
-		delay_from_for_ms(xLastWakeTime, 15);
+		delay_from_for_ms(xLastWakeTime, 5);
 	}
 }
 

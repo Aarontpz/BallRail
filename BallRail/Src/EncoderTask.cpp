@@ -22,45 +22,41 @@ void EncoderTask::run(void) {
 	uint8_t spi_buff[3];
 	spi_buff[2] = '\0';
 	uint16_t encoder_reading = 0;
+	uint16_t prev_encoder_reading = 1000;
+	int16_t encoder_delta = 0;
+	uint8_t overflow_counter = 1;
 	float beam_angle = 0;
 	float beam_ang_velocity = 0;
-	float prev_beam_angle = 0;
+	float prev_beam_angle = -0.8;
 	HAL_StatusTypeDef result;
 	/*Task LOOP code here */
 
 	for (;;) {
-//		HAL_ADC_Start(&hadc3);
-//
-//		if (HAL_ADC_PollForConversion(&hadc3, 1000000) == HAL_OK)
-//		{
-//		  adc_reading = HAL_ADC_GetValue(&hadc3);
-//          sprintf(adc_buff, "**%"PRIu32"\r\n", adc_reading);
-//		}
-//		else //trying to debug this step...
-//		{
-//		  sprintf(adc_buff, "POOP IT NOT WORK\r\n");
-//		}
-//		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
 
-//		GPIOC -> ODR &= ~GPIO_PIN_5;
-//		result = HAL_SPI_Receive(&hspi2, spi_buff, 1, 100000);
-//		if (result != HAL_OK) {
-////			sprintf(adc_buff, "POOP IT NOT WORK\r\n");
-//		}
-//		else {
-//			encoder_reading = spi_buff[0]<< 4 | (spi_buff[1] & 0xF0) >> 4;	// read the encoder serial line
-			encoder_reading = p_encoder_reading -> get();
-//			beam_angle = encoder_reading;
-			beam_angle = 2*3.14159*(float)encoder_reading/4095; // convert from encoder counts to angle (radians)
-			beam_ang_velocity = beam_angle - prev_beam_angle;
-			p_beam_angle -> put(beam_angle); // update shared variable
-			p_beam_ang_velocity -> put(beam_ang_velocity);
-			prev_beam_angle = beam_angle;
-//			sprintf(adc_buff, "SPI Received %hu%hu\r\n", spi_buff[0], spi_buff[1]);
-//		}
-//		GPIOC -> ODR |= GPIO_PIN_5;
-//		HAL_UART_Transmit(&huart2, (uint8_t*)adc_buff, strlen(adc_buff), 0xFFFF);
+		encoder_delta = p_encoder_reading -> get() - prev_encoder_reading;
+		if (encoder_delta < -1500)
+		{
+			overflow_counter += 1;
+		}
+		if (encoder_delta > 1500)
+		{
+			overflow_counter -= 1;
+		}
+		if (overflow_counter <0)
+		{
+			p_safe -> put(false);
+		}
 
-		delay_from_for_ms(xLastWakeTime, 50); // delay for 1ms
+		encoder_reading = 4096*overflow_counter + p_encoder_reading -> get() - 920;
+
+//		beam_angle = encoder_reading;
+		beam_angle = (float)encoder_reading*(90.76/8224)*3.14159/180 - 0.802834; // convert from encoder counts to angle (radians)
+		beam_ang_velocity = beam_angle - prev_beam_angle;
+		p_beam_angle -> put(beam_angle); // update shared variable
+		p_beam_ang_velocity -> put(beam_ang_velocity);
+		prev_beam_angle = beam_angle;
+		prev_encoder_reading = p_encoder_reading -> get();
+
+		delay_from_for_ms(xLastWakeTime, 5); // delay for 1ms
 	}
 }
