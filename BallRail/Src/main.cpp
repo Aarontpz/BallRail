@@ -73,6 +73,7 @@
 
 #include "stdio.h" //currently just for sprintf
 #include <inttypes.h>
+#include <math.h>
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim1;
 
@@ -95,6 +96,7 @@ TaskShare<float>* p_motor_voltage_pwm;
 TaskShare<float>* p_set_ball_position;
 TaskShare<uint16_t>* p_adc_reading;
 TaskShare<uint16_t>* p_encoder_reading;
+//TaskShare<TIM_HandleTypeDef>* htim;
 
 class CommunicationTask : public TaskBase {
 public:
@@ -137,6 +139,7 @@ int main(void)
   p_set_ball_position = new TaskShare<float> ("set_ball_position"); // define size 20 buffer for ball setpoint
   p_adc_reading = new TaskShare<uint16_t> ("adc_reading");
   p_encoder_reading = new TaskShare<uint16_t> ("encoder_reading");
+//  htim = new TaskShare<TIM_HandleTypeDef> ("timerstruct");
 
   p_safe -> put(true);	// initialize system variables
   p_ball_position -> put(0);
@@ -144,7 +147,7 @@ int main(void)
   p_beam_angle -> put(0);
   p_beam_ang_velocity -> put(0);
   p_motor_voltage_pwm -> put(0);
-  p_set_ball_position -> put(0);
+  p_set_ball_position -> put(0.2);
   p_adc_reading -> put(0);
 
   MX_GPIO_Init();
@@ -155,24 +158,24 @@ int main(void)
   __HAL_RCC_TIM1_CLK_ENABLE();
   MX_TIM1_Init();
 
-  TIM_OC_InitTypeDef sConfigOC;
-  sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0x01FF;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  sConfigOC.OCIdleState = TIM_OCIDLESTATE_SET;
-  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
-  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
-  {
-	_Error_Handler(__FILE__, __LINE__);
-  }
-//  HAL_TIM_Base_Start(&htim1);
-
-  if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
+//  TIM_OC_InitTypeDef sConfigOC;
+//  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+//  sConfigOC.Pulse = 0x0100;
+//  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+//  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+//  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+//  sConfigOC.OCIdleState = TIM_OCIDLESTATE_SET;
+//  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+//  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+//  {
+//	_Error_Handler(__FILE__, __LINE__);
+//  }
+////  HAL_TIM_Base_Start(&htim1);
+//
+//  if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3) != HAL_OK)
+//  {
+//    _Error_Handler(__FILE__, __LINE__);
+//  }
 
 //  osKernelStart();
   new LimitSwitchTask("LIMIT", 2, 240, NULL);
@@ -193,6 +196,7 @@ void SystemClock_Config(void)
 
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  RCC_PeriphCLKInitTypeDef PeriphClkInit;
 
     /**Initializes the CPU, AHB and APB busses clocks
     */
@@ -216,6 +220,21 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
+
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
+  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_MSI;
+  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+  PeriphClkInit.PLLSAI1.PLLSAI1N = 8;
+  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+     _Error_Handler(__FILE__, __LINE__);
+  }
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
@@ -382,9 +401,9 @@ static void MX_TIM1_Init(void)
 //  HAL_TIM_Base_Init(&htim1);
 //  HAL_TIM_Base_Start(&htim1);
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 100;
+  htim1.Init.Prescaler = 1;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 0x0FFF;
+  htim1.Init.Period = COUNTS_PER_PERIOD;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -424,7 +443,7 @@ static void MX_TIM1_Init(void)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
-
+//  htim -> put (htim1);
 //  HAL_TIM_MspPostInit(&htim1);
 
 }
@@ -556,6 +575,24 @@ void CommunicationTask::run(void) {
 	for (;;) {
 
 		beam_angle = p_beam_angle -> get();
+		TIM_OC_InitTypeDef sConfigOC;
+		sConfigOC.OCMode = TIM_OCMODE_PWM1;
+		sConfigOC.Pulse = abs(p_motor_voltage_pwm -> get());
+		sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+		sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+		sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+		sConfigOC.OCIdleState = TIM_OCIDLESTATE_SET;
+		sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+		if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+		{
+		  _Error_Handler(__FILE__, __LINE__);
+		}
+		//  HAL_TIM_Base_Start(&htim1);
+
+		if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3) != HAL_OK)
+		{
+		  _Error_Handler(__FILE__, __LINE__);
+		}
 
 	    HAL_ADC_Start(&hadc3);
 

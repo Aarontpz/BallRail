@@ -50,8 +50,8 @@ void EncoderTask::run(void) {
 //		else {
 //			encoder_reading = spi_buff[0]<< 4 | (spi_buff[1] & 0xF0) >> 4;	// read the encoder serial line
 			encoder_reading = p_encoder_reading -> get();
-			beam_angle = encoder_reading;
-//			beam_angle = 2*3.14159*(float)encoder_reading/4095; // convert from encoder counts to angle (radians)
+//			beam_angle = encoder_reading;
+			beam_angle = 2*3.14159*(float)encoder_reading/4095; // convert from encoder counts to angle (radians)
 			beam_ang_velocity = beam_angle - prev_beam_angle;
 			p_beam_angle -> put(beam_angle); // update shared variable
 			p_beam_ang_velocity -> put(beam_ang_velocity);

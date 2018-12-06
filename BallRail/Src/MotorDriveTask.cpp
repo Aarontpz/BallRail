@@ -24,20 +24,6 @@ void MotorDriveTask::run(void) {
 	for (;;) {
 		pwm_level = p_motor_voltage_pwm -> get();
 
-		if (pwm_level >= 0) {
-			// set Pin 4 PWM = 0
-			// set Pin 5 PWM = pwm_level
-		}
-		else {
-			// set Pin 4 PWM = -pwm_level
-			// set Pin 5 PWM = 0
-		}
-
-//		triggered = !(GPIOA -> IDR & GPIO_PIN_9); //active low
-//		triggered = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9) == GPIO_PIN_RESET;
-//		safe_state = safe_state && !triggered;
-//		p_safe -> put(safe_state);
-//		safe_state = p_safe->get();
 		if (!p_safe->get()) { //if p_safe is FALSE, go into SAFETY MODE
 			// DRIVE ENA LOW
 //			GPIOA -> ODR &= ~GPIO_PIN_10;
@@ -47,8 +33,11 @@ void MotorDriveTask::run(void) {
 		}
 		else { //DRIVE ENABLE HIGH, NORMAL OPERATION
 //			GPIOA -> ODR |= GPIO_PIN_10; //DRIVE ENA HIGH
+
 			LD2_GPIO_Port -> ODR ^= LD2_Pin;
-			if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
+			if (pwm_level >= 0) { //forward
+//		    if (LD2_GPIO_Port -> ODR & LD2_Pin) { //forward
+
 				GPIOB -> ODR |= GPIO_PIN_4;
 				GPIOB -> ODR &= ~GPIO_PIN_5;
 			}
@@ -56,10 +45,12 @@ void MotorDriveTask::run(void) {
 				GPIOB -> ODR |= GPIO_PIN_5;
 				GPIOB -> ODR &= ~GPIO_PIN_4;
 			}
+
+
 		}
 
 
-		delay_from_for_ms(xLastWakeTime, 1000); //delay for 20ms
+		delay_from_for_ms(xLastWakeTime, 100); //delay for 20ms
 	}
 }
 

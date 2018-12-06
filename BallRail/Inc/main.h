@@ -74,6 +74,8 @@
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
 
+#define COUNTS_PER_PERIOD 0x03FF
+
 /* ########################## Assert Selection ############################## */
 /**
   * @brief Uncomment the line below to expanse the "assert_param" macro in the 

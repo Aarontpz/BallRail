@@ -31,11 +31,14 @@ void ControllerTask::run(void) {
 	float motor_voltage = 0;
 
 	for (;;) {
-		theta = asin(p_beam_angle->get()); // beam angle in radians
+//		theta = asin(p_beam_angle->get()); // beam angle in radians
+		theta = p_beam_angle->get();
 		theta_dot = p_beam_ang_velocity->get(); // beam angular velocity in rad/s
-		x = (p_beam_angle -> get())/cos(theta);	// ball position in m
+//		x = (p_beam_angle -> get())/cos(theta);	// ball position in m
+		x = (p_beam_angle -> get());
 		x_dot = p_ball_position -> get(); // ball velocity in m/s
 		motor_voltage = Nbar*(p_set_ball_position->get()) - K1*x - K2*x_dot - K3*theta - K4*theta_dot;
+//		motor_voltage = 0x00FF;
 		p_motor_voltage_pwm -> put(motor_voltage);
 		delay_from_for_ms(xLastWakeTime, 10); //delay for 5ms
 	}
