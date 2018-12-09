@@ -1,0 +1,289 @@
+\hypertarget{structmotor_drv__t}{}\section{motor\+Drv\+\_\+t Struct Reference}
+\label{structmotor_drv__t}\index{motor\+Drv\+\_\+t@{motor\+Drv\+\_\+t}}
+
+
+Motor driver structure definition.  
+
+
+
+
+{\ttfamily \#include $<$motor.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structmotor_drv__t_a86d3d3dbef0e0f1698e1efe954532141}\label{structmotor_drv__t_a86d3d3dbef0e0f1698e1efe954532141}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a86d3d3dbef0e0f1698e1efe954532141}{Init}} )(void $\ast$)
+\begin{DoxyCompactList}\small\item\em Function pointer to Init. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_af319b5a6dc66a750bd942d543586e4dc}\label{structmotor_drv__t_af319b5a6dc66a750bd942d543586e4dc}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_af319b5a6dc66a750bd942d543586e4dc}{Read\+ID}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Read\+ID. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a2b3cb9cf36826feabf6fe3c0b4bbc48b}\label{structmotor_drv__t_a2b3cb9cf36826feabf6fe3c0b4bbc48b}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a2b3cb9cf36826feabf6fe3c0b4bbc48b}{Attach\+Error\+Handler}} )(void($\ast$callback)(uint16\+\_\+t))
+\begin{DoxyCompactList}\small\item\em Function pointer to Attach\+Error\+Handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ae648f05bb2bc6e5f85da182eedaeca82}\label{structmotor_drv__t_ae648f05bb2bc6e5f85da182eedaeca82}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ae648f05bb2bc6e5f85da182eedaeca82}{Attach\+Flag\+Interrupt}} )(void($\ast$callback)(void))
+\begin{DoxyCompactList}\small\item\em Function pointer to Attach\+Flag\+Interrupt. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a093d8ad30fd271e344195dbde36b8a2e}\label{structmotor_drv__t_a093d8ad30fd271e344195dbde36b8a2e}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a093d8ad30fd271e344195dbde36b8a2e}{Attach\+Busy\+Interrupt}} )(void($\ast$callback)(void))
+\begin{DoxyCompactList}\small\item\em Function pointer to Attach\+Busy\+Interrupt. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab2dfca0996212691221964294195a441}\label{structmotor_drv__t_ab2dfca0996212691221964294195a441}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab2dfca0996212691221964294195a441}{Flag\+Interrupt\+Handler}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Flag\+Interrupt\+Handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a371a0207f336ecb38bd0fdb047b8c683}\label{structmotor_drv__t_a371a0207f336ecb38bd0fdb047b8c683}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a371a0207f336ecb38bd0fdb047b8c683}{Get\+Acceleration}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Acceleration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a2c2ce036e0f91aac0658806665c68361}\label{structmotor_drv__t_a2c2ce036e0f91aac0658806665c68361}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a2c2ce036e0f91aac0658806665c68361}{Get\+Current\+Speed}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Current\+Speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a82d706c0ca281f85f83f65e5b3ecb747}\label{structmotor_drv__t_a82d706c0ca281f85f83f65e5b3ecb747}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a82d706c0ca281f85f83f65e5b3ecb747}{Get\+Deceleration}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Deceleration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aa035813a35bb5a589891b6879c88f5cf}\label{structmotor_drv__t_aa035813a35bb5a589891b6879c88f5cf}} 
+\mbox{\hyperlink{group___device___states_ga9ba865be7705688e94f95a410e917a07}{motor\+State\+\_\+t}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_aa035813a35bb5a589891b6879c88f5cf}{Get\+Device\+State}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Device\+State. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aaa6c85b99a40f6ebb4bc22647afd814e}\label{structmotor_drv__t_aaa6c85b99a40f6ebb4bc22647afd814e}} 
+uint32\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_aaa6c85b99a40f6ebb4bc22647afd814e}{Get\+Fw\+Version}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Fw\+Version. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab8d2a9b8286ea9781035e30e887264a6}\label{structmotor_drv__t_ab8d2a9b8286ea9781035e30e887264a6}} 
+int32\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab8d2a9b8286ea9781035e30e887264a6}{Get\+Mark}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Mark. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aa34c04b174fdaf1e53e6796ffb7b9c7b}\label{structmotor_drv__t_aa34c04b174fdaf1e53e6796ffb7b9c7b}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_aa34c04b174fdaf1e53e6796ffb7b9c7b}{Get\+Max\+Speed}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Max\+Speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a93c3923b625321220442f8175daf39aa}\label{structmotor_drv__t_a93c3923b625321220442f8175daf39aa}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a93c3923b625321220442f8175daf39aa}{Get\+Min\+Speed}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Min\+Speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a54c0c8b2813c4e0bca29a988ee909837}\label{structmotor_drv__t_a54c0c8b2813c4e0bca29a988ee909837}} 
+int32\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a54c0c8b2813c4e0bca29a988ee909837}{Get\+Position}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_af5c8f1332b37d2b5280e013b1c5cc8e1}\label{structmotor_drv__t_af5c8f1332b37d2b5280e013b1c5cc8e1}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_af5c8f1332b37d2b5280e013b1c5cc8e1}{Go\+Home}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Go\+Home. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a2e2cf9c800cbda999492268990d8183b}\label{structmotor_drv__t_a2e2cf9c800cbda999492268990d8183b}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a2e2cf9c800cbda999492268990d8183b}{Go\+Mark}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Go\+Mark. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab6cfea0a721c044897747a516f90083c}\label{structmotor_drv__t_ab6cfea0a721c044897747a516f90083c}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab6cfea0a721c044897747a516f90083c}{Go\+To}} )(uint8\+\_\+t, int32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Go\+To. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab4a3ff09a8427ee9b4105b1d15e77dde}\label{structmotor_drv__t_ab4a3ff09a8427ee9b4105b1d15e77dde}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab4a3ff09a8427ee9b4105b1d15e77dde}{Hard\+Stop}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Hard\+Stop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a9b1991e0a87bc5c628cda5a5eee5e061}\label{structmotor_drv__t_a9b1991e0a87bc5c628cda5a5eee5e061}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a9b1991e0a87bc5c628cda5a5eee5e061}{Move}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}}, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Move. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ada59618cf876177c4a9afd5c82dcf52b}\label{structmotor_drv__t_ada59618cf876177c4a9afd5c82dcf52b}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ada59618cf876177c4a9afd5c82dcf52b}{Reset\+All\+Devices}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Reset\+All\+Devices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a5d3aa777ac329db7380bd002897e03fe}\label{structmotor_drv__t_a5d3aa777ac329db7380bd002897e03fe}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a5d3aa777ac329db7380bd002897e03fe}{Run}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Run. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a0c1b8bf57ee1d81256947a527d89dd63}\label{structmotor_drv__t_a0c1b8bf57ee1d81256947a527d89dd63}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a0c1b8bf57ee1d81256947a527d89dd63}{Set\+Acceleration}} )(uint8\+\_\+t, uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Acceleration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a566ac7824184db95a98f7e7616c99510}\label{structmotor_drv__t_a566ac7824184db95a98f7e7616c99510}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a566ac7824184db95a98f7e7616c99510}{Set\+Deceleration}} )(uint8\+\_\+t, uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Deceleration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a7abd7a1f16f8a2d7cf765839117c30ac}\label{structmotor_drv__t_a7abd7a1f16f8a2d7cf765839117c30ac}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a7abd7a1f16f8a2d7cf765839117c30ac}{Set\+Home}} )(uint8\+\_\+t, int32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Home. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a06ca8c0b37f2a095e3aa5d233d5a91ed}\label{structmotor_drv__t_a06ca8c0b37f2a095e3aa5d233d5a91ed}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a06ca8c0b37f2a095e3aa5d233d5a91ed}{Set\+Mark}} )(uint8\+\_\+t, int32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Mark. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a9894eb824a9b74e994a547f15fbb03fa}\label{structmotor_drv__t_a9894eb824a9b74e994a547f15fbb03fa}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a9894eb824a9b74e994a547f15fbb03fa}{Set\+Max\+Speed}} )(uint8\+\_\+t, uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Max\+Speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a925736ee04f781c5692db377a7b61fff}\label{structmotor_drv__t_a925736ee04f781c5692db377a7b61fff}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a925736ee04f781c5692db377a7b61fff}{Set\+Min\+Speed}} )(uint8\+\_\+t, uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Min\+Speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a49de3f6a7489c5df4f8c3c1c11b98bf4}\label{structmotor_drv__t_a49de3f6a7489c5df4f8c3c1c11b98bf4}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a49de3f6a7489c5df4f8c3c1c11b98bf4}{Soft\+Stop}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Soft\+Stop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a9fedff6ee533edfc8a75ca5e4fbe2ea5}\label{structmotor_drv__t_a9fedff6ee533edfc8a75ca5e4fbe2ea5}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a9fedff6ee533edfc8a75ca5e4fbe2ea5}{Step\+Clock\+Handler}} )(uint8\+\_\+t device\+Id)
+\begin{DoxyCompactList}\small\item\em Function pointer to Step\+Clock\+Handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a4648533c2f0a7d304f8aa4fc1810024b}\label{structmotor_drv__t_a4648533c2f0a7d304f8aa4fc1810024b}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a4648533c2f0a7d304f8aa4fc1810024b}{Wait\+While\+Active}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Wait\+While\+Active. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a740c93c53fa9671d2e76c430ccfa5d2f}\label{structmotor_drv__t_a740c93c53fa9671d2e76c430ccfa5d2f}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a740c93c53fa9671d2e76c430ccfa5d2f}{Cmd\+Disable}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Disable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a605ce46f3786e1eea7b173905440832b}\label{structmotor_drv__t_a605ce46f3786e1eea7b173905440832b}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a605ce46f3786e1eea7b173905440832b}{Cmd\+Enable}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Enable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a8d55886dbf2c2c18fdd01f3028a93c07}\label{structmotor_drv__t_a8d55886dbf2c2c18fdd01f3028a93c07}} 
+uint32\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a8d55886dbf2c2c18fdd01f3028a93c07}{Cmd\+Get\+Param}} )(uint8\+\_\+t, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Get\+Param. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a239f7eaa897de7ec050be6cb4a4e57e4}\label{structmotor_drv__t_a239f7eaa897de7ec050be6cb4a4e57e4}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a239f7eaa897de7ec050be6cb4a4e57e4}{Cmd\+Get\+Status}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Get\+Status. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a4e97706460908dfe866adef2d6ee8348}\label{structmotor_drv__t_a4e97706460908dfe866adef2d6ee8348}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a4e97706460908dfe866adef2d6ee8348}{Cmd\+Nop}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Nop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a77fd8c257b41d770b181d12afa3ef24b}\label{structmotor_drv__t_a77fd8c257b41d770b181d12afa3ef24b}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a77fd8c257b41d770b181d12afa3ef24b}{Cmd\+Set\+Param}} )(uint8\+\_\+t, uint32\+\_\+t, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Set\+Param. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a2c590c6ec89b777413cfe66e214cb388}\label{structmotor_drv__t_a2c590c6ec89b777413cfe66e214cb388}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a2c590c6ec89b777413cfe66e214cb388}{Read\+Status\+Register}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Read\+Status\+Register. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ae50b1207bc65c89404e298b77838d5cd}\label{structmotor_drv__t_ae50b1207bc65c89404e298b77838d5cd}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ae50b1207bc65c89404e298b77838d5cd}{Release\+Reset}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Release\+Reset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a4c3fa1c0b2525a2955145b2c44aaf709}\label{structmotor_drv__t_a4c3fa1c0b2525a2955145b2c44aaf709}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a4c3fa1c0b2525a2955145b2c44aaf709}{Reset}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Reset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a7ed3f01e448af663c648f683f6f5bbf5}\label{structmotor_drv__t_a7ed3f01e448af663c648f683f6f5bbf5}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a7ed3f01e448af663c648f683f6f5bbf5}{Select\+Step\+Mode}} )(uint8\+\_\+t device\+Id, \mbox{\hyperlink{group___device___step__mode_gaa8024e6a2453b22a104bd0a8a364dd80}{motor\+Step\+Mode\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Select\+Step\+Mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab395a249ba7262f9393388ef3b963e74}\label{structmotor_drv__t_ab395a249ba7262f9393388ef3b963e74}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab395a249ba7262f9393388ef3b963e74}{Set\+Direction}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Direction. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab0f482884de040dc97d4c348d5ec5308}\label{structmotor_drv__t_ab0f482884de040dc97d4c348d5ec5308}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab0f482884de040dc97d4c348d5ec5308}{Cmd\+Go\+To\+Dir}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}}, int32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Go\+To\+Dir. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a1065e8fcef030783b7c06ddb48936a32}\label{structmotor_drv__t_a1065e8fcef030783b7c06ddb48936a32}} 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a1065e8fcef030783b7c06ddb48936a32}{Check\+Busy\+Hw}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Check\+Busy\+Hw. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a77c472c4ede69df5e4ba48fe34b8d5c5}\label{structmotor_drv__t_a77c472c4ede69df5e4ba48fe34b8d5c5}} 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a77c472c4ede69df5e4ba48fe34b8d5c5}{Check\+Status\+Hw}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Check\+Status\+Hw. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a1c301ddbd943a7bf0e5329d77b859de4}\label{structmotor_drv__t_a1c301ddbd943a7bf0e5329d77b859de4}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a1c301ddbd943a7bf0e5329d77b859de4}{Cmd\+Go\+Until}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___action___options_ga5b2358a9ba8742cb555ddc5b37508500}{motor\+Action\+\_\+t}}, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}}, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Go\+Until. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a38392e414d628046ed909264a1505c90}\label{structmotor_drv__t_a38392e414d628046ed909264a1505c90}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a38392e414d628046ed909264a1505c90}{Cmd\+Hard\+HiZ}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Hard\+HiZ. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ada75b962899a05b4640740bcfe0a2fcf}\label{structmotor_drv__t_ada75b962899a05b4640740bcfe0a2fcf}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ada75b962899a05b4640740bcfe0a2fcf}{Cmd\+Release\+Sw}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___action___options_ga5b2358a9ba8742cb555ddc5b37508500}{motor\+Action\+\_\+t}}, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Release\+Sw. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aec6facd87e38580e0a4fc80fce33e9e1}\label{structmotor_drv__t_aec6facd87e38580e0a4fc80fce33e9e1}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_aec6facd87e38580e0a4fc80fce33e9e1}{Cmd\+Reset\+Device}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Reset\+Device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ad25f4e4ffb3dbb8d9c2732427bcab147}\label{structmotor_drv__t_ad25f4e4ffb3dbb8d9c2732427bcab147}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ad25f4e4ffb3dbb8d9c2732427bcab147}{Cmd\+Reset\+Pos}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Reset\+Pos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a0cfc5dcf03d899294256637f765b11e7}\label{structmotor_drv__t_a0cfc5dcf03d899294256637f765b11e7}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a0cfc5dcf03d899294256637f765b11e7}{Cmd\+Run}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}}, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Run. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_abd2f682491ffda6fc162307bff9e79ae}\label{structmotor_drv__t_abd2f682491ffda6fc162307bff9e79ae}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_abd2f682491ffda6fc162307bff9e79ae}{Cmd\+Soft\+HiZ}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Soft\+HiZ. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_af6cf382357f24a2675a779aaf2e3015d}\label{structmotor_drv__t_af6cf382357f24a2675a779aaf2e3015d}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_af6cf382357f24a2675a779aaf2e3015d}{Cmd\+Step\+Clock}} )(uint8\+\_\+t, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Step\+Clock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a9a47e0ccf16954bf28d4e9829326929a}\label{structmotor_drv__t_a9a47e0ccf16954bf28d4e9829326929a}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a9a47e0ccf16954bf28d4e9829326929a}{Fetch\+And\+Clear\+All\+Status}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Fetch\+And\+Clear\+All\+Status. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a86abc9f7d69a66d234d3f9f748109c3d}\label{structmotor_drv__t_a86abc9f7d69a66d234d3f9f748109c3d}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a86abc9f7d69a66d234d3f9f748109c3d}{Get\+Fetched\+Status}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Fetched\+Status. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a2b2d47e96d62f7efb11fcc32dadce6f4}\label{structmotor_drv__t_a2b2d47e96d62f7efb11fcc32dadce6f4}} 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a2b2d47e96d62f7efb11fcc32dadce6f4}{Get\+Nb\+Devices}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Nb\+Devices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a63d40db18bc1c48c596ac03d7cea0810}\label{structmotor_drv__t_a63d40db18bc1c48c596ac03d7cea0810}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a63d40db18bc1c48c596ac03d7cea0810}{Is\+Device\+Busy}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Is\+Device\+Busy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a21e2ce008a66390b36e862c79245186a}\label{structmotor_drv__t_a21e2ce008a66390b36e862c79245186a}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a21e2ce008a66390b36e862c79245186a}{Send\+Queued\+Commands}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Send\+Queued\+Commands. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aa06be40777c47f07eeb64fbfb73e2e83}\label{structmotor_drv__t_aa06be40777c47f07eeb64fbfb73e2e83}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_aa06be40777c47f07eeb64fbfb73e2e83}{Queue\+Commands}} )(uint8\+\_\+t, uint8\+\_\+t, int32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Queue\+Commands. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a69ebb6a2431f60266e98c61aafb06f42}\label{structmotor_drv__t_a69ebb6a2431f60266e98c61aafb06f42}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a69ebb6a2431f60266e98c61aafb06f42}{Wait\+For\+All\+Devices\+Not\+Busy}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Wait\+For\+All\+Devices\+Not\+Busy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a0a4a3d233d342fe4070479d87212ab42}\label{structmotor_drv__t_a0a4a3d233d342fe4070479d87212ab42}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a0a4a3d233d342fe4070479d87212ab42}{Error\+Handler}} )(uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Error\+Handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a0942081bee6e9c3d7e62e63ac38d9564}\label{structmotor_drv__t_a0942081bee6e9c3d7e62e63ac38d9564}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a0942081bee6e9c3d7e62e63ac38d9564}{Busy\+Interrupt\+Handler}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Busy\+Interrupt\+Handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab5c6e9048c3334dc81cb7c6ac9625547}\label{structmotor_drv__t_ab5c6e9048c3334dc81cb7c6ac9625547}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab5c6e9048c3334dc81cb7c6ac9625547}{Cmd\+Soft\+Stop}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Cmd\+Soft\+Stop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a6ac111117c8e432558c166dcdc876411}\label{structmotor_drv__t_a6ac111117c8e432558c166dcdc876411}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a6ac111117c8e432558c166dcdc876411}{Start\+Step\+Clock}} )(uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Start\+Step\+Clock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a9e75bf31df238beafa7e4f11a36301ab}\label{structmotor_drv__t_a9e75bf31df238beafa7e4f11a36301ab}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a9e75bf31df238beafa7e4f11a36301ab}{Stop\+Step\+Clock}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Stop\+Step\+Clock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a774a6230e5f80b27e642ea024ad33be7}\label{structmotor_drv__t_a774a6230e5f80b27e642ea024ad33be7}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a774a6230e5f80b27e642ea024ad33be7}{Set\+Dual\+Full\+Bridge\+Config}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Dual\+Full\+Bridge\+Config. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a8cec4a8fd6459ee5085fab5f1709e798}\label{structmotor_drv__t_a8cec4a8fd6459ee5085fab5f1709e798}} 
+uint32\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a8cec4a8fd6459ee5085fab5f1709e798}{Get\+Bridge\+Input\+Pwm\+Freq}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Bridge\+Input\+Pwm\+Freq. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_adb59734f8e6cd4398f1642f61f694efe}\label{structmotor_drv__t_adb59734f8e6cd4398f1642f61f694efe}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_adb59734f8e6cd4398f1642f61f694efe}{Set\+Bridge\+Input\+Pwm\+Freq}} )(uint8\+\_\+t, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Bridge\+Input\+Pwm\+Freq. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a9caf85723b22c4f70324374d7583ac55}\label{structmotor_drv__t_a9caf85723b22c4f70324374d7583ac55}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a9caf85723b22c4f70324374d7583ac55}{Set\+Stop\+Mode}} )(uint8\+\_\+t, \mbox{\hyperlink{group___stop__mode_ga48c6e38e969d0dbffe3d66b58df2c7d8}{motor\+Stop\+Mode\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Stop\+Mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a34e9b7daeeda0e11595e221845c77486}\label{structmotor_drv__t_a34e9b7daeeda0e11595e221845c77486}} 
+\mbox{\hyperlink{group___stop__mode_ga48c6e38e969d0dbffe3d66b58df2c7d8}{motor\+Stop\+Mode\+\_\+t}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a34e9b7daeeda0e11595e221845c77486}{Get\+Stop\+Mode}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Stop\+Mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a7377b03dbe90fff1295a3ad887b21e76}\label{structmotor_drv__t_a7377b03dbe90fff1295a3ad887b21e76}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a7377b03dbe90fff1295a3ad887b21e76}{Set\+Decay\+Mode}} )(uint8\+\_\+t, \mbox{\hyperlink{group___decay__mode_ga43befb62c97ff88c1405f468c49f8334}{motor\+Decay\+Mode\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Decay\+Mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a4376c42eb20e05e0c5c1851dd6646210}\label{structmotor_drv__t_a4376c42eb20e05e0c5c1851dd6646210}} 
+\mbox{\hyperlink{group___decay__mode_ga43befb62c97ff88c1405f468c49f8334}{motor\+Decay\+Mode\+\_\+t}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a4376c42eb20e05e0c5c1851dd6646210}{Get\+Decay\+Mode}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Decay\+Mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a9d5fa996525747b3e613d77159967516}\label{structmotor_drv__t_a9d5fa996525747b3e613d77159967516}} 
+\mbox{\hyperlink{group___device___step__mode_gaa8024e6a2453b22a104bd0a8a364dd80}{motor\+Step\+Mode\+\_\+t}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a9d5fa996525747b3e613d77159967516}{Get\+Step\+Mode}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Step\+Mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ac034d04e292b18a6e53d9504cc6cc7c6}\label{structmotor_drv__t_ac034d04e292b18a6e53d9504cc6cc7c6}} 
+\mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_ac034d04e292b18a6e53d9504cc6cc7c6}{Get\+Direction}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Direction. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ab65630e5db5d091f9700d0e2372d391a}\label{structmotor_drv__t_ab65630e5db5d091f9700d0e2372d391a}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_ab65630e5db5d091f9700d0e2372d391a}{Exit\+Device\+From\+Reset}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Exit\+Device\+From\+Reset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a617a4d9bdb7ed8045d0b682ff97fe781}\label{structmotor_drv__t_a617a4d9bdb7ed8045d0b682ff97fe781}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a617a4d9bdb7ed8045d0b682ff97fe781}{Set\+Torque}} )(uint8\+\_\+t, \mbox{\hyperlink{group___torque__mode_ga41f68f90d74c690988fdd6d949c7a75d}{motor\+Torque\+Mode\+\_\+t}}, uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Torque. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aacf39169a8ea00d18b8b5bf28ab4e86c}\label{structmotor_drv__t_aacf39169a8ea00d18b8b5bf28ab4e86c}} 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_aacf39169a8ea00d18b8b5bf28ab4e86c}{Get\+Torque}} )(uint8\+\_\+t, \mbox{\hyperlink{group___torque__mode_ga41f68f90d74c690988fdd6d949c7a75d}{motor\+Torque\+Mode\+\_\+t}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Torque. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a40ec050b3461e854f5f0584a2f3ba945}\label{structmotor_drv__t_a40ec050b3461e854f5f0584a2f3ba945}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a40ec050b3461e854f5f0584a2f3ba945}{Set\+Ref\+Freq}} )(uint8\+\_\+t, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+V\+Ref\+Freq. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a48f04c35a870f3db8be28109eaaf62ca}\label{structmotor_drv__t_a48f04c35a870f3db8be28109eaaf62ca}} 
+uint32\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a48f04c35a870f3db8be28109eaaf62ca}{Get\+Ref\+Freq}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+V\+Ref\+Freq. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a009fab793fb20bea1aba93fb48f94bee}\label{structmotor_drv__t_a009fab793fb20bea1aba93fb48f94bee}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a009fab793fb20bea1aba93fb48f94bee}{Set\+Ref\+Dc}} )(uint8\+\_\+t, uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+V\+Ref\+Dc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a2e861db84d322ee43e70a8716f82f249}\label{structmotor_drv__t_a2e861db84d322ee43e70a8716f82f249}} 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a2e861db84d322ee43e70a8716f82f249}{Get\+Ref\+Dc}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+V\+Ref\+Dc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ae37ee05ff40ea01aed73f20b364237b5}\label{structmotor_drv__t_ae37ee05ff40ea01aed73f20b364237b5}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_ae37ee05ff40ea01aed73f20b364237b5}{Set\+Nb\+Devices}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Nb\+Devices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_ae4a0f2cafcbd0ccbb1a2419ecc43054e}\label{structmotor_drv__t_ae4a0f2cafcbd0ccbb1a2419ecc43054e}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_ae4a0f2cafcbd0ccbb1a2419ecc43054e}{Set\+Analog\+Value}} )(uint8\+\_\+t, uint32\+\_\+t, float)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Analog\+Value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_acc6cdcc2a3005f007327636640557d66}\label{structmotor_drv__t_acc6cdcc2a3005f007327636640557d66}} 
+float($\ast$ \mbox{\hyperlink{structmotor_drv__t_acc6cdcc2a3005f007327636640557d66}{Get\+Analog\+Value}} )(uint8\+\_\+t, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Analog\+Value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a3961e232e0db6ebc399692f976fc8bcf}\label{structmotor_drv__t_a3961e232e0db6ebc399692f976fc8bcf}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_a3961e232e0db6ebc399692f976fc8bcf}{Set\+Torque\+Boost\+Enable}} )(uint8\+\_\+t, \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}})
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Torque\+Boost\+Enable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a2c32f6c83c53a2cd979e323614414f7b}\label{structmotor_drv__t_a2c32f6c83c53a2cd979e323614414f7b}} 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}($\ast$ \mbox{\hyperlink{structmotor_drv__t_a2c32f6c83c53a2cd979e323614414f7b}{Get\+Torque\+Boost\+Enable}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Torque\+Boost\+Enable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aa1e7cb5f273fd9ac2dae24da3c257022}\label{structmotor_drv__t_aa1e7cb5f273fd9ac2dae24da3c257022}} 
+void($\ast$ \mbox{\hyperlink{structmotor_drv__t_aa1e7cb5f273fd9ac2dae24da3c257022}{Set\+Torque\+Boost\+Threshold}} )(uint8\+\_\+t, uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Set\+Torque\+Boost\+Threshold. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_aa0c1dc8598aeca521379a45a0eb94c80}\label{structmotor_drv__t_aa0c1dc8598aeca521379a45a0eb94c80}} 
+uint16\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_aa0c1dc8598aeca521379a45a0eb94c80}{Get\+Torque\+Boost\+Threshold}} )(uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Torque\+Boost\+Threshold. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structmotor_drv__t_a0fa32cea306f5637adeb8fe665a52f1e}\label{structmotor_drv__t_a0fa32cea306f5637adeb8fe665a52f1e}} 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{structmotor_drv__t_a0fa32cea306f5637adeb8fe665a52f1e}{Get\+Dual\+Full\+Bridge\+Config}} )(void)
+\begin{DoxyCompactList}\small\item\em Function pointer to Get\+Dual\+Full\+Bridge\+Config. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Motor driver structure definition. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{motor_8h}{motor.\+h}}\end{DoxyCompactItemize}

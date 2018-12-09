@@ -1,0 +1,229 @@
+\hypertarget{emstream_8h}{}\section{Doxygen\+Files/emstream.h File Reference}
+\label{emstream_8h}\index{Doxygen\+Files/emstream.\+h@{Doxygen\+Files/emstream.\+h}}
+
+
+Headers for a base class that imitates C++ I/O streams on serial devices.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classemstream}{emstream}}
+\begin{DoxyCompactList}\small\item\em Base class for serial devices which print using a {\ttfamily $<$$<$} operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{emstream_8h_ae9ed5f0c8d6cc2b224363baf5157750d}{E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE}}()~putchar (\textquotesingle{}\textbackslash{}r\textquotesingle{}); putchar (\textquotesingle{}\textbackslash{}n\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em This define selects what will be sent when a program sends out \char`\"{}endl\char`\"{}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{emstream_8h_addb19a39c5f07b2af76670f678f70661}{C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE}}~\char`\"{}\textbackslash{}033\mbox{[}2\+J\textbackslash{}033\mbox{[}\+H\char`\"{}
+\begin{DoxyCompactList}\small\item\em This define selects the character which asks a terminal to clear its screen. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{emstream_8h_a076d1892c2e1133e4cc5469015af6423}{P\+MS}}(s)~s
+\begin{DoxyCompactList}\small\item\em This define allows strings to be kept in A\+VR program (flash) memory only. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{emstream_8h_a14df2aae4c89a3755b2ae48e55172e90}{D\+BG}}(ptr,  stuff)
+\begin{DoxyCompactList}\small\item\em This macro simplifies the writing of code to conditionally print debugging output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} \{ \newline
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407ad843ac028b91abce26e3d42b2e27eae0}{bin}}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a8f2c05194d91776b033f24e214c6e9df}{oct}}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a82022a5c9021c54619b7b00d1fede0ad}{dec}}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a6000f7a8e67e4e0beb7b8ebe93452243}{hex}}, 
+\newline
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407aca212f0f54e5a7620d5622be097d7db9}{roman}}, 
+{\bfseries fortran}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a5cbad4ad24fd9b8c066cdad096cd2f18}{endl}}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407ab6ca2a7533366acce99cc85a1da20008}{clrscr}}, 
+\newline
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a90718791e807ebb8af4ebc39df0b98f7}{send\+\_\+now}}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a2b6bb413c07a0678c5603fde1bb7226f}{manip\+\_\+set\+\_\+precision}}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a1d29fa0ebfea9229dbb90393c9f123d4}{manip\+\_\+set\+\_\+base}}, 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407aa6ac72a2e8fdb9465c683bcf0db34c5d}{manip\+\_\+do\+\_\+nothing}}
+ \}
+\begin{DoxyCompactList}\small\item\em Modifiers used to adjust how things are printed with the {\ttfamily $<$$<$} operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} \mbox{\hyperlink{emstream_8h_a190348e5180d4e7481a23ce12b22fcce}{setprecision}} (uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Set the number of digits shown after a decimal point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} \mbox{\hyperlink{emstream_8h_a1289b0bc61ac6556b4a891adbfa68bfe}{setbase}} (uint8\+\_\+t new\+\_\+base)
+\begin{DoxyCompactList}\small\item\em Set the base for subsequent numeric conversions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{emstream_8h_a62500c4d5d1ea781a91d6bd1689987d1}\label{emstream_8h_a62500c4d5d1ea781a91d6bd1689987d1}} 
+void {\bfseries hex\+\_\+dump\+\_\+memory} (uint8\+\_\+t $\ast$, uint8\+\_\+t $\ast$, \mbox{\hyperlink{classemstream}{emstream}} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char \mbox{\hyperlink{emstream_8h_a9fe209e5a772772badf2085562677114}{E\+M\+S\+T\+R\+\_\+\+A\+S\+C\+I\+I\+\_\+\+C\+H\+A\+RS}} \mbox{[}$\,$\mbox{]} = \char`\"{}F\+E\+D\+C\+B\+A9876543210123456789\+A\+B\+C\+D\+EF\char`\"{}
+\begin{DoxyCompactList}\small\item\em String of characters used to convert numbers into printable characters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Headers for a base class that imitates C++ I/O streams on serial devices. 
+
+This file contains a base class for devices which send information in text form over serial devices. Example devices are serial ports (both traditional R\+S-\/232 ports and U\+S\+B-\/serial adapters) and wireless modems.
+
+Revised\+: \begin{DoxyItemize}
+\item 04-\/03-\/2006 J\+RR For updated version of compiler \item 06-\/10-\/2006 J\+RR Ported from C++ to C for use with some C-\/only projects \item 08-\/11-\/2006 J\+RR Some bug fixes \item 03-\/02-\/2007 J\+RR Ported back to C++. I\textquotesingle{}ve had it with the limitations of C. \item 04-\/16-\/2007 JO Added write (unsigned long) \item 07-\/19-\/2007 J\+RR Changed some character return values to bool, added m324p \item 01-\/12-\/2008 J\+RR Added code for the A\+Tmega128 using U\+S\+A\+RT number 1 only \item 02-\/13-\/2008 J\+RR Split into base class and device specific classes; changed from write() to overloaded $<$$<$ operator in the \char`\"{}cout\char`\"{} style \item 05-\/12-\/2008 A\+LS Fixed bug in which signed numbers came out unsigned \item 07-\/05-\/2008 J\+RR Added configuration macro by which to change what \char`\"{}endl\char`\"{} is \item 07-\/05-\/2008 J\+RR Added \textquotesingle{}ascii\textquotesingle{} and \textquotesingle{}numeric\textquotesingle{} format codes \item 11-\/24-\/2009 J\+RR Changed operation of \textquotesingle{}clrscr\textquotesingle{} to a function to work with L\+CD \item 11-\/26-\/2009 J\+RR Integrated floating point support into this file \item 12-\/16-\/2009 J\+RR Improved support for constant strings in program memory \item 10-\/22-\/2012 J\+RR Fixed (OK, hacked around) bug which caused spurious warning for all Program Memory Strings \item 11-\/12-\/2012 J\+RR Made puts() non-\/virtual; made \mbox{\hyperlink{emstream_8h_ae9ed5f0c8d6cc2b224363baf5157750d}{E\+N\+D\+L\+\_\+\+S\+T\+Y\+L\+E()}} a function macro \item 12-\/21-\/2013 J\+RR Ported to Chibi\+OS \item 10-\/17-\/2014 J\+RR Made compatible with Free\+R\+T\+OS for Cal Poly class use\end{DoxyItemize}
+License\+: This file released under the Lesser G\+NU Public License, version 2. This program is intended for educational use only, but it is not limited thereto. This code incorporates elements from Xmelkov\textquotesingle{}s ftoa\+\_\+engine.\+h, part of the avr-\/libc source, and users must accept and comply with the license of ftoa\+\_\+engine.\+h as well. 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{emstream_8h_addb19a39c5f07b2af76670f678f70661}\label{emstream_8h_addb19a39c5f07b2af76670f678f70661}} 
+\index{emstream.\+h@{emstream.\+h}!C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE@{C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE}}
+\index{C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE@{C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE}{CLRSCR\_STYLE}}
+{\footnotesize\ttfamily \#define C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE~\char`\"{}\textbackslash{}033\mbox{[}2\+J\textbackslash{}033\mbox{[}\+H\char`\"{}}
+
+
+
+This define selects the character which asks a terminal to clear its screen. 
+
+The clear-\/screen character for an A\+N\+S\+II standard terminal is a control-\/L, which is A\+S\+C\+II character number 12. \mbox{\Hypertarget{emstream_8h_a14df2aae4c89a3755b2ae48e55172e90}\label{emstream_8h_a14df2aae4c89a3755b2ae48e55172e90}} 
+\index{emstream.\+h@{emstream.\+h}!D\+BG@{D\+BG}}
+\index{D\+BG@{D\+BG}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{D\+BG}{DBG}}
+{\footnotesize\ttfamily \#define D\+BG(\begin{DoxyParamCaption}\item[{}]{ptr,  }\item[{}]{stuff }\end{DoxyParamCaption})}
+
+
+
+This macro simplifies the writing of code to conditionally print debugging output. 
+
+If S\+E\+R\+I\+A\+L\+\_\+\+D\+E\+B\+UG hasn\textquotesingle{}t been defined, it replaces a debugging command with nothing.
+
+If S\+E\+R\+I\+A\+L\+\_\+\+D\+E\+B\+UG has been defined, it drops in a command that checks the given serial device pointer to make sure the device isn\textquotesingle{}t N\+U\+LL, and if the device isn\textquotesingle{}t N\+U\+LL then debugging output is printed. \mbox{\Hypertarget{emstream_8h_ae9ed5f0c8d6cc2b224363baf5157750d}\label{emstream_8h_ae9ed5f0c8d6cc2b224363baf5157750d}} 
+\index{emstream.\+h@{emstream.\+h}!E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE@{E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE}}
+\index{E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE@{E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE}{ENDL\_STYLE}}
+{\footnotesize\ttfamily \#define E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~putchar (\textquotesingle{}\textbackslash{}r\textquotesingle{}); putchar (\textquotesingle{}\textbackslash{}n\textquotesingle{})}
+
+
+
+This define selects what will be sent when a program sends out \char`\"{}endl\char`\"{}. 
+
+Different recieving programs want different end-\/of-\/line markers. Traditionally, U\+N\+IX uses \char`\"{}\textbackslash{}r\char`\"{} while PC\textquotesingle{}s use \char`\"{}\textbackslash{}r\textbackslash{}n\char`\"{} and Macs use \char`\"{}\textbackslash{}n\char`\"{} (I think). \mbox{\Hypertarget{emstream_8h_a076d1892c2e1133e4cc5469015af6423}\label{emstream_8h_a076d1892c2e1133e4cc5469015af6423}} 
+\index{emstream.\+h@{emstream.\+h}!P\+MS@{P\+MS}}
+\index{P\+MS@{P\+MS}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{P\+MS}{PMS}}
+{\footnotesize\ttfamily \#define P\+MS(\begin{DoxyParamCaption}\item[{}]{s }\end{DoxyParamCaption})~s}
+
+
+
+This define allows strings to be kept in A\+VR program (flash) memory only. 
+
+It tells the puts() method to find them in program memory. This saves S\+R\+AM memory compared to copying all the strings to S\+R\+AM, which is the rather wasteful default method used by the compiler. See the following link for more information about strings in program memory\+: \begin{DoxyItemize}
+\item \href{http://www.avrfreaks.net/index.php?name=PNphpBB2&file=viewtopic&t=57011}{\tt http\+://www.\+avrfreaks.\+net/index.\+php?name=\+P\+Nphp\+B\+B2\&file=viewtopic\&t=57011} \end{DoxyItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407}} 
+\index{emstream.\+h@{emstream.\+h}!ser\+\_\+manipulator@{ser\+\_\+manipulator}}
+\index{ser\+\_\+manipulator@{ser\+\_\+manipulator}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{ser\+\_\+manipulator}{ser\_manipulator}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}}}
+
+
+
+Modifiers used to adjust how things are printed with the {\ttfamily $<$$<$} operator. 
+
+This enumeration is used to modify the way in which various things are printed by descendent classes of {\ttfamily emstream} and to insert special characters into what is being printed out. Values can change the display base for the output stream from the default of base 10 (decimal) to and from any base between 2 (binary), and 16 (hexadecimal), inclusive. The precision for printing floating point numbers can be adjusted with {\bfseries \mbox{\hyperlink{emstream_8h_a190348e5180d4e7481a23ce12b22fcce}{setprecision()}}}, which emits the {\ttfamily manip\+\_\+set\+\_\+precision} modifier. Also defined are {\ttfamily endl} to send an end-\/of-\/line character, {\ttfamily clrscr} to send a clear-\/screen character which works with some terminal emulators and not others, and {\ttfamily send\+\_\+now} to tell some devices to transmit data as soon as possible. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{bin@{bin}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!bin@{bin}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407ad843ac028b91abce26e3d42b2e27eae0}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407ad843ac028b91abce26e3d42b2e27eae0}} 
+bin&Print following numbers in base 2 (binary) until another base is specified. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{oct@{oct}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!oct@{oct}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407a8f2c05194d91776b033f24e214c6e9df}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407a8f2c05194d91776b033f24e214c6e9df}} 
+oct&Print following numbers in base 8 (octal) until another base is specified. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{dec@{dec}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!dec@{dec}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407a82022a5c9021c54619b7b00d1fede0ad}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407a82022a5c9021c54619b7b00d1fede0ad}} 
+dec&Print following numbers in base 10 (decimal) until another base is specified. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{hex@{hex}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!hex@{hex}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407a6000f7a8e67e4e0beb7b8ebe93452243}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407a6000f7a8e67e4e0beb7b8ebe93452243}} 
+hex&Print following numbers in base 16 (hexadecimal) until another base is specified. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{roman@{roman}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!roman@{roman}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407aca212f0f54e5a7620d5622be097d7db9}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407aca212f0f54e5a7620d5622be097d7db9}} 
+roman&Print following integers in Roman numerals rather than Arabic. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{endl@{endl}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!endl@{endl}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407a5cbad4ad24fd9b8c066cdad096cd2f18}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407a5cbad4ad24fd9b8c066cdad096cd2f18}} 
+endl&Print a carriage return and/or linefeed as specified in {\ttfamily E\+N\+D\+L\+\_\+\+S\+T\+Y\+LE}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{clrscr@{clrscr}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!clrscr@{clrscr}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407ab6ca2a7533366acce99cc85a1da20008}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407ab6ca2a7533366acce99cc85a1da20008}} 
+clrscr&Send a character specified in {\ttfamily C\+L\+R\+S\+C\+R\+\_\+\+S\+T\+Y\+LE} to clear some terminal screens. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{send\+\_\+now@{send\+\_\+now}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!send\+\_\+now@{send\+\_\+now}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407a90718791e807ebb8af4ebc39df0b98f7}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407a90718791e807ebb8af4ebc39df0b98f7}} 
+send\+\_\+now&If relevant to a device, tell it to send or save data immediately. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{manip\+\_\+set\+\_\+precision@{manip\+\_\+set\+\_\+precision}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!manip\+\_\+set\+\_\+precision@{manip\+\_\+set\+\_\+precision}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407a2b6bb413c07a0678c5603fde1bb7226f}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407a2b6bb413c07a0678c5603fde1bb7226f}} 
+manip\+\_\+set\+\_\+precision&Set the precision (numbers after decimal) for printing floating point numbers. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{manip\+\_\+set\+\_\+base@{manip\+\_\+set\+\_\+base}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!manip\+\_\+set\+\_\+base@{manip\+\_\+set\+\_\+base}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407a1d29fa0ebfea9229dbb90393c9f123d4}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407a1d29fa0ebfea9229dbb90393c9f123d4}} 
+manip\+\_\+set\+\_\+base&Set the numeric base in which to print numbers. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{manip\+\_\+do\+\_\+nothing@{manip\+\_\+do\+\_\+nothing}!emstream.\+h@{emstream.\+h}}\index{emstream.\+h@{emstream.\+h}!manip\+\_\+do\+\_\+nothing@{manip\+\_\+do\+\_\+nothing}}}\mbox{\Hypertarget{emstream_8h_a5582483c459c0f48e51d96478d5b3407aa6ac72a2e8fdb9465c683bcf0db34c5d}\label{emstream_8h_a5582483c459c0f48e51d96478d5b3407aa6ac72a2e8fdb9465c683bcf0db34c5d}} 
+manip\+\_\+do\+\_\+nothing&Placeholder manipulator that causes nothing to happen. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{emstream_8h_a1289b0bc61ac6556b4a891adbfa68bfe}\label{emstream_8h_a1289b0bc61ac6556b4a891adbfa68bfe}} 
+\index{emstream.\+h@{emstream.\+h}!setbase@{setbase}}
+\index{setbase@{setbase}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{setbase()}{setbase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} setbase (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+base }\end{DoxyParamCaption})}
+
+
+
+Set the base for subsequent numeric conversions. 
+
+This function, not a member of class emstream, sets the global numeric base and then returns a manipulator which causes a serial object to change to that base. The new base is \char`\"{}sticky\char`\"{} in that its value persists until this function is called (or the manipulators {\ttfamily bin}, {\ttfamily oct}, {\ttfamily dec} or {\ttfamily hex} are used) to change it again. Setting the base automatically turns off raw binary printing mode. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+base} & A new value for the numeric base, as long as it\textquotesingle{}s from 2 to 16 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The serial manipulator called {\ttfamily manip\+\_\+set\+\_\+base} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{emstream_8h_a190348e5180d4e7481a23ce12b22fcce}\label{emstream_8h_a190348e5180d4e7481a23ce12b22fcce}} 
+\index{emstream.\+h@{emstream.\+h}!setprecision@{setprecision}}
+\index{setprecision@{setprecision}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{setprecision()}{setprecision()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} setprecision (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{digits }\end{DoxyParamCaption})}
+
+
+
+Set the number of digits shown after a decimal point. 
+
+This function sets the global precision value, then returns a manipulator which causes a serial object to change its floating point precision (the number of digits after the decimal point which will be printed). The new precision is \char`\"{}sticky\char`\"{} in that its value persists until this function is called again to change it again. 
+\begin{DoxyParams}{Parameters}
+{\em digits} & A new value for the number of digits after the decimal point; a maximum of 7 digits are allowed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The serial manipulator called \char`\"{}manip\+\_\+set\+\_\+precision\char`\"{} 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{emstream_8h_a9fe209e5a772772badf2085562677114}\label{emstream_8h_a9fe209e5a772772badf2085562677114}} 
+\index{emstream.\+h@{emstream.\+h}!E\+M\+S\+T\+R\+\_\+\+A\+S\+C\+I\+I\+\_\+\+C\+H\+A\+RS@{E\+M\+S\+T\+R\+\_\+\+A\+S\+C\+I\+I\+\_\+\+C\+H\+A\+RS}}
+\index{E\+M\+S\+T\+R\+\_\+\+A\+S\+C\+I\+I\+\_\+\+C\+H\+A\+RS@{E\+M\+S\+T\+R\+\_\+\+A\+S\+C\+I\+I\+\_\+\+C\+H\+A\+RS}!emstream.\+h@{emstream.\+h}}
+\subsubsection{\texorpdfstring{E\+M\+S\+T\+R\+\_\+\+A\+S\+C\+I\+I\+\_\+\+C\+H\+A\+RS}{EMSTR\_ASCII\_CHARS}}
+{\footnotesize\ttfamily const char E\+M\+S\+T\+R\+\_\+\+A\+S\+C\+I\+I\+\_\+\+C\+H\+A\+RS\mbox{[}$\,$\mbox{]} = \char`\"{}F\+E\+D\+C\+B\+A9876543210123456789\+A\+B\+C\+D\+EF\char`\"{}}
+
+
+
+String of characters used to convert numbers into printable characters. 
+
+This definition is used to allow variables of type {\ttfamily size\+\_\+t} to be somewhat conveniently transmitted by descendents of class {\ttfamily emstream}. One needs to put a typecast before each such variable, because the normal automatic type detection doesn\textquotesingle{}t always work for variables of type {\ttfamily size\+\_\+t}. The usage is {\ttfamily a\+\_\+serial\+\_\+device} {\ttfamily $<$$<$} {\ttfamily }(ems\+\_\+size\+\_\+t) {\ttfamily thing};
+
+This string is used by functions in class {\ttfamily emstream} which convert numbers into sets of A\+S\+C\+II characters to be sent to serial devices. It allows the use of fairly efficient versions of {\ttfamily itoa()} and related functions which perform the translation through a simple table lookup. 

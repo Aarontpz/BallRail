@@ -1,0 +1,92 @@
+\hypertarget{class_controller_task}{}\section{Controller\+Task Class Reference}
+\label{class_controller_task}\index{Controller\+Task@{Controller\+Task}}
+
+
+Implements a task to control the system.  
+
+
+
+
+{\ttfamily \#include $<$Controller\+Task.\+h$>$}
+
+Inheritance diagram for Controller\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_controller_task}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_controller_task_a2b2914fa356737e69e9ec1e3ffd3a8e3}{Controller\+Task}} (const char $\ast$a\+\_\+name, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE a\+\_\+priority, size\+\_\+t a\+\_\+stack\+\_\+size, \mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Construct a Ball\+Position task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_task_adb32c437ea51d258b986414ab48c6180}{run}} (void)
+\begin{DoxyCompactList}\small\item\em The run method of the Controller task that is repeatedly called by the R\+T\+OS scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implements a task to control the system. 
+
+This class is an extension of {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. The purpose of the class is to determine the voltage input to the motor in response to state feedback from the ball and beam sensor measurements. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_controller_task_a2b2914fa356737e69e9ec1e3ffd3a8e3}\label{class_controller_task_a2b2914fa356737e69e9ec1e3ffd3a8e3}} 
+\index{Controller\+Task@{Controller\+Task}!Controller\+Task@{Controller\+Task}}
+\index{Controller\+Task@{Controller\+Task}!Controller\+Task@{Controller\+Task}}
+\subsubsection{\texorpdfstring{Controller\+Task()}{ControllerTask()}}
+{\footnotesize\ttfamily Controller\+Task\+::\+Controller\+Task (\begin{DoxyParamCaption}\item[{const char $\ast$}]{a\+\_\+name,  }\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{a\+\_\+priority,  }\item[{size\+\_\+t}]{a\+\_\+stack\+\_\+size,  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})}
+
+
+
+Construct a Ball\+Position task. 
+
+Constructor which creates and initializes a controller task object.
+
+This constructor sets up the task name, priority, stack size, and serial stream. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL)\\
+\hline
+\end{DoxyParams}
+This constructor creates a Free\+R\+T\+OS task with the given task run function, name, priority, and stack size. Its purpose is to implement the state space control algorithm with established gains. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controller_task_adb32c437ea51d258b986414ab48c6180}\label{class_controller_task_adb32c437ea51d258b986414ab48c6180}} 
+\index{Controller\+Task@{Controller\+Task}!run@{run}}
+\index{run@{run}!Controller\+Task@{Controller\+Task}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Controller\+Task\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The run method of the Controller task that is repeatedly called by the R\+T\+OS scheduler. 
+
+The {\ttfamily \mbox{\hyperlink{class_controller_task_adb32c437ea51d258b986414ab48c6180}{run()}}} function for the Controller task.
+
+This method is called by the R\+T\+OS scheduler. The function reads the system system states and establishes the required P\+WM signal to send to the motor. N\+O\+TE\+: The control algorithm is F\+U\+LL S\+T\+A\+TE F\+E\+E\+D\+B\+A\+CK 
+
+Implements \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{Task\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{_controller_task_8h}{Controller\+Task.\+h}}\item 
+Doxygen\+Files/Controller\+Task.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,125 @@
+\hypertarget{l6206_8h}{}\section{Doxygen\+Files/l6206.h File Reference}
+\label{l6206_8h}\index{Doxygen\+Files/l6206.\+h@{Doxygen\+Files/l6206.\+h}}
+
+
+Header for L6206 driver (dual full bridge driver)  
+
+
+{\ttfamily \#include \char`\"{}l6206\+\_\+target\+\_\+config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}motor.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdevice_params__t}{device\+Params\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Device Parameters Structure Type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_l6206___init_type_def}{L6206\+\_\+\+Init\+Type\+Def}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___l6206___exported___constants_ga43407b8737dcb15bd27496e58af171bf}{L6206\+\_\+\+F\+W\+\_\+\+V\+E\+R\+S\+I\+ON}}~(0)
+\begin{DoxyCompactList}\small\item\em Current FW version. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___l6206___exported___constants_ga64b1ce7748d44eb6f6973dfe8c7fd196}{L6206\+\_\+\+N\+B\+\_\+\+M\+A\+X\+\_\+\+M\+O\+T\+O\+RS}}~(4)
+\begin{DoxyCompactList}\small\item\em Max number of Brush DC motors. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___l6206___exported___constants_gae72db6f074defd956d309151334f448d}{L6206\+\_\+\+N\+B\+\_\+\+M\+A\+X\+\_\+\+B\+R\+I\+D\+G\+ES}}~(2)
+\begin{DoxyCompactList}\small\item\em Max number of Bridges. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___l6206___exported___constants_ga672b88d2cc08d7e4216e226f966c862b}{L6206\+\_\+\+N\+B\+\_\+\+M\+A\+X\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+I\+N\+P\+UT}}~(2 $\ast$ \mbox{\hyperlink{group___l6206___exported___constants_gae72db6f074defd956d309151334f448d}{L6206\+\_\+\+N\+B\+\_\+\+M\+A\+X\+\_\+\+B\+R\+I\+D\+G\+ES}})
+\begin{DoxyCompactList}\small\item\em Max number of input of Bridges. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries L6206\+\_\+\+Tick\+Handler} (uint8\+\_\+t device\+Id)
+\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga297db3a8467d60c474207228f8db4239}{L6206\+\_\+\+Attach\+Error\+Handler}} (void($\ast$callback)(uint16\+\_\+t))
+\begin{DoxyCompactList}\small\item\em Attaches a user callback to the error Handler. The call back will be then called each time the library detects an error. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga12328adaf12eddaa6c0a8b8f27960bb2}{L6206\+\_\+\+Attach\+Flag\+Interrupt}} (void($\ast$callback)(void))
+\begin{DoxyCompactList}\small\item\em Attaches a user callback to the flag Interrupt The call back will be then called each time the status flag pin will be pulled down due to the occurrence of a programmed alarms ( O\+CD, thermal alert) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gaa04c656bbd75fae03f79fadad19c1c15}{L6206\+\_\+\+Disable\+Bridge}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Disable the specified bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gab167a69ec9bbfdee8a66dab0104bde03}{L6206\+\_\+\+Enable\+Bridge}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Enable the specified bridge. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gae81e6ca6cb60e241433a05c832cea4c3}{L6206\+\_\+\+Get\+Bridge\+Status}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Get the status of the bridge enabling of the corresponding bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gadc30fab492fa25e27e9d2d98ba2a63a4}{L6206\+\_\+\+Init}} (void $\ast$init)
+\begin{DoxyCompactList}\small\item\em Start the L6206 library. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gabfaed09fe6f8d2c74c0b78d2108fb83a}{L6206\+\_\+\+Get\+Current\+Speed}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the current speed of the specified motor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___device___states_ga9ba865be7705688e94f95a410e917a07}{motor\+State\+\_\+t}} \mbox{\hyperlink{group___l6206___exported___functions_ga133a25387b4a4a63e9c7544c5f3446f2}{L6206\+\_\+\+Get\+Device\+State}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the device state. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gad12aece8f24b63edc2e1fb7dc733a5a6}{L6206\+\_\+\+Get\+Fw\+Version}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the FW version of the library. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gae656e681fb3c93267e8589d97d3cad8f}{L6206\+\_\+\+Get\+Max\+Speed}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the max speed of the specified motor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmotor_drv__t}{motor\+Drv\+\_\+t}} $\ast$ \mbox{\hyperlink{group___l6206___exported___functions_gaa149792f903cf325f24d8d4488d6c1c4}{L6206\+\_\+\+Get\+Motor\+Handle}} (void)
+\begin{DoxyCompactList}\small\item\em Return motor handle (pointer to the L6206 motor driver structure) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gaf6831d9247cb27710fd2e4b782e3e4b7}{L6206\+\_\+\+Hard\+Hiz}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Immediatly stops the motor and disable the power bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga89661968f456ec5778f6290c1a4681f1}{L6206\+\_\+\+Hard\+Stop}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Stops the motor without disabling the bridge. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_ga853fd3a4a008922950a77d5988633549}{L6206\+\_\+\+Read\+Id}} (void)
+\begin{DoxyCompactList}\small\item\em Read id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gafc7601e986586d361a66bc38687fd56c}{L6206\+\_\+\+Run}} (uint8\+\_\+t motor\+Id, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}} direction)
+\begin{DoxyCompactList}\small\item\em Runs the motor. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_ga96e17386e67b53504b3a175c6407552a}{L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Get the P\+WM frequency of the specified bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gac4b755ed3297f186b27030c5108fc0fd}{L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq}} (uint8\+\_\+t bridge\+Id, uint32\+\_\+t new\+Freq)
+\begin{DoxyCompactList}\small\item\em Changes the P\+WM frequency of the bridge input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga5c4892c39f6d5898198d8e3557b14247}{L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config}} (uint8\+\_\+t new\+Config)
+\begin{DoxyCompactList}\small\item\em Set dual full bridge parallelling configuration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{group___l6206___exported___functions_gada5e46e0ed715e962205f1d65aa11370}{L6206\+\_\+\+Set\+Max\+Speed}} (uint8\+\_\+t motor\+Id, uint16\+\_\+t new\+Max\+Speed)
+\begin{DoxyCompactList}\small\item\em Changes the max speed of the specified device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{group___l6206___exported___functions_gaa25442be9b6a3d12b3c3b28568350528}{L6206\+\_\+\+Set\+Nb\+Devices}} (uint8\+\_\+t nb\+Devices)
+\begin{DoxyCompactList}\small\item\em Sets the number of devices to be used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_ga0f818ed1083c923e2700e6db31c033f7}{L6206\+\_\+\+Board\+\_\+\+Delay}} (uint32\+\_\+t delay)
+\begin{DoxyCompactList}\small\item\em Delay of the requested number of milliseconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_ga7ba535a402c6d40c9922f1c2609e6b7d}{L6206\+\_\+\+Board\+\_\+\+Disable\+Bridge}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Disable the specified bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_ga6e7dd07e15445c787bcd960c32b9e700}{L6206\+\_\+\+Board\+\_\+\+Enable\+Bridge}} (uint8\+\_\+t bridge\+Id, uint8\+\_\+t add\+Delay)
+\begin{DoxyCompactList}\small\item\em Enable the specified bridge. \end{DoxyCompactList}\item 
+uint32\+\_\+t {\bfseries L6206\+\_\+\+Board\+\_\+\+Get\+Flag\+Pin\+State} (uint8\+\_\+t bridge\+Id)
+\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_gad1afef15b5cfa989ae0cedf94144dcbe}{L6206\+\_\+\+Board\+\_\+\+Gpio\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise G\+P\+I\+Os used for L6206s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_gafb87c92bb4518cbee4e12cb0c0b2742c}{L6206\+\_\+\+Board\+\_\+\+Pwm\+Set\+Freq}} (uint8\+\_\+t bridge\+Input, uint32\+\_\+t new\+Freq, uint8\+\_\+t duty)
+\begin{DoxyCompactList}\small\item\em Set Briges Inputs P\+WM frequency and start it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_gabe3a85fe41e2cabbae154e19506c7c39}{L6206\+\_\+\+Board\+\_\+\+Pwm\+De\+Init}} (uint8\+\_\+t bridge\+Input)
+\begin{DoxyCompactList}\small\item\em Deinitialise the P\+WM of the specified bridge input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_ga7a605957121921bc09640449cb941048}{L6206\+\_\+\+Board\+\_\+\+Pwm\+Init}} (uint8\+\_\+t bridge\+Input)
+\begin{DoxyCompactList}\small\item\em Init the P\+WM of the specified bridge input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___motor_control___board___linked___functions_ga72581c091a2ff2d49caf2a3268a429fe}{L6206\+\_\+\+Board\+\_\+\+Pwm\+Stop}} (uint8\+\_\+t bridge\+Input)
+\begin{DoxyCompactList}\small\item\em Stop the P\+WM of the specified bridge input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmotor_drv__t}{motor\+Drv\+\_\+t}} \mbox{\hyperlink{group___l6206___exported___variables_ga07450cad53f968fe361b2de16d54f53c}{l6206\+Drv}}
+\begin{DoxyCompactList}\small\item\em L6206 motor driver functions pointer structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header for L6206 driver (dual full bridge driver) 
+
+\begin{DoxyAuthor}{Author}
+I\+PC Rennes 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+V1.\+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+September 29th, 2016 
+\end{DoxyDate}
+\begin{DoxyNote}{Note}
+(C) C\+O\+P\+Y\+R\+I\+G\+HT 2016 S\+T\+Microelectronics
+\end{DoxyNote}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\subsubsection*{\begin{center}\copyright{} C\+O\+P\+Y\+R\+I\+G\+H\+T(c) 2015 S\+T\+Microelectronics\end{center} }
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item Neither the name of S\+T\+Microelectronics nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY T\+HE C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+E\+RS A\+ND C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS \char`\"{}\+A\+S I\+S\char`\"{} A\+ND A\+NY E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY A\+ND F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+ER OR C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE. 

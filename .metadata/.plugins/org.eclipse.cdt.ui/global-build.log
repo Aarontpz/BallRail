@@ -93,3 +93,6 @@ make: *** [startup/startup_stm32l476xx.o] Error 127
 make clean 
 rm -rf *
  
+20:43:42 **** Build of configuration Debug for project BallRail ****
+make all 
+Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.d:1: *** multiple target patterns.  Stop.

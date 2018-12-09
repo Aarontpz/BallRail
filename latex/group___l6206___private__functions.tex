@@ -1,0 +1,199 @@
+\hypertarget{group___l6206___private__functions}{}\section{L6206 Private functions}
+\label{group___l6206___private__functions}\index{L6206 Private functions@{L6206 Private functions}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___l6206___private__functions_ga0e92a09f08eaaf3145c79ecf069dce03}{L6206\+\_\+\+Error\+Handler}} (uint16\+\_\+t error)
+\begin{DoxyCompactList}\small\item\em Error handler which calls the user callback (if defined) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___private__functions_gabbcf9b4b7f5b609bab60c5fe3906c4b5}{L6206\+\_\+\+Flag\+Interrupt\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em Handlers of the flag interrupt which calls the user callback (if defined) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___l6206___private__functions_gae2996e5793bc86d91bd050faf43da273}{L6206\+\_\+\+Get\+Bridge\+Id\+Used\+By\+Motor\+Id}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Get the bridges Id used by a given motor. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___l6206___private__functions_gad764d0c14a17388f39b97fe91175ed7b}{L6206\+\_\+\+Get\+Bridge\+Input\+Used\+By\+Motor\+Id}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Get the P\+WM input used by a given motor. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___l6206___private__functions_ga8e21b9719302c02b7044178cd4d93d97}{L6206\+\_\+\+Get\+Motor\+Id\+Usingbridge\+Input}} (uint8\+\_\+t bridge\+Input)
+\begin{DoxyCompactList}\small\item\em Get the motor Id which is using the specified bridge input. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___l6206___private__functions_gab3eaf311ee61a8f3ab177db80f5d7698}{L6206\+\_\+\+Get\+Second\+Bridge\+Input\+Used\+By\+Motor\+Id}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Get the second P\+WM input used by a given bidirectionnal motor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{group___l6206___private__functions_ga3f9ca538e4da03d6cb2f502d4a1b759c}{L6206\+\_\+\+Is\+Bidirectionnal\+Motor}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Test if motor is bidirectionnal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___private__functions_ga1e49f28c219e930c3eacdadee0079bfa}{L6206\+\_\+\+Set\+Device\+Params\+To\+Predefined\+Values}} (void)
+\begin{DoxyCompactList}\small\item\em Sets the parameters of the device to predefined values from \mbox{\hyperlink{l6206__target__config_8h}{l6206\+\_\+target\+\_\+config.\+h}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___private__functions_ga3379bc215227e0a4081b7a42f3c5532a}{L6206\+\_\+\+Set\+Device\+Params\+To\+Given\+Values}} (\mbox{\hyperlink{struct_l6206___init_type_def}{L6206\+\_\+\+Init\+Type\+Def}} $\ast$init\+Device\+Prm)
+\begin{DoxyCompactList}\small\item\em Set the parameters of the device to values of init\+Device\+Prm structure Set G\+P\+IO according to these values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___l6206___private__functions_ga0e92a09f08eaaf3145c79ecf069dce03}\label{group___l6206___private__functions_ga0e92a09f08eaaf3145c79ecf069dce03}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Error\+Handler@{L6206\+\_\+\+Error\+Handler}}
+\index{L6206\+\_\+\+Error\+Handler@{L6206\+\_\+\+Error\+Handler}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Error\+Handler()}{L6206\_ErrorHandler()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Error\+Handler (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{error }\end{DoxyParamCaption})}
+
+
+
+Error handler which calls the user callback (if defined) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em error} & Number of the error \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_gabbcf9b4b7f5b609bab60c5fe3906c4b5}\label{group___l6206___private__functions_gabbcf9b4b7f5b609bab60c5fe3906c4b5}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Flag\+Interrupt\+Handler@{L6206\+\_\+\+Flag\+Interrupt\+Handler}}
+\index{L6206\+\_\+\+Flag\+Interrupt\+Handler@{L6206\+\_\+\+Flag\+Interrupt\+Handler}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Flag\+Interrupt\+Handler()}{L6206\_FlagInterruptHandler()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Flag\+Interrupt\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Handlers of the flag interrupt which calls the user callback (if defined) 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_gae2996e5793bc86d91bd050faf43da273}\label{group___l6206___private__functions_gae2996e5793bc86d91bd050faf43da273}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Get\+Bridge\+Id\+Used\+By\+Motor\+Id@{L6206\+\_\+\+Get\+Bridge\+Id\+Used\+By\+Motor\+Id}}
+\index{L6206\+\_\+\+Get\+Bridge\+Id\+Used\+By\+Motor\+Id@{L6206\+\_\+\+Get\+Bridge\+Id\+Used\+By\+Motor\+Id}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Bridge\+Id\+Used\+By\+Motor\+Id()}{L6206\_GetBridgeIdUsedByMotorId()}}
+{\footnotesize\ttfamily uint8\+\_\+t L6206\+\_\+\+Get\+Bridge\+Id\+Used\+By\+Motor\+Id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Get the bridges Id used by a given motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em bridge\+Id} & 0 for bridge A , 1 for bridge B \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_gad764d0c14a17388f39b97fe91175ed7b}\label{group___l6206___private__functions_gad764d0c14a17388f39b97fe91175ed7b}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Get\+Bridge\+Input\+Used\+By\+Motor\+Id@{L6206\+\_\+\+Get\+Bridge\+Input\+Used\+By\+Motor\+Id}}
+\index{L6206\+\_\+\+Get\+Bridge\+Input\+Used\+By\+Motor\+Id@{L6206\+\_\+\+Get\+Bridge\+Input\+Used\+By\+Motor\+Id}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Bridge\+Input\+Used\+By\+Motor\+Id()}{L6206\_GetBridgeInputUsedByMotorId()}}
+{\footnotesize\ttfamily uint8\+\_\+t L6206\+\_\+\+Get\+Bridge\+Input\+Used\+By\+Motor\+Id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Get the P\+WM input used by a given motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em P\+WM} & input 0 for 1A, 1 for 2A, 2 for 1B, 3 for 3B \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_ga8e21b9719302c02b7044178cd4d93d97}\label{group___l6206___private__functions_ga8e21b9719302c02b7044178cd4d93d97}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Get\+Motor\+Id\+Usingbridge\+Input@{L6206\+\_\+\+Get\+Motor\+Id\+Usingbridge\+Input}}
+\index{L6206\+\_\+\+Get\+Motor\+Id\+Usingbridge\+Input@{L6206\+\_\+\+Get\+Motor\+Id\+Usingbridge\+Input}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Motor\+Id\+Usingbridge\+Input()}{L6206\_GetMotorIdUsingbridgeInput()}}
+{\footnotesize\ttfamily uint8\+\_\+t L6206\+\_\+\+Get\+Motor\+Id\+Usingbridge\+Input (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bridge\+Input }\end{DoxyParamCaption})}
+
+
+
+Get the motor Id which is using the specified bridge input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bridge\+Input} & 0 for bridge\+Input 1A, 1 for 2A, 2 for 1B, 3 for 3B \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em bridge\+Id} & 0 for bridge A , 1 for bridge B \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_gab3eaf311ee61a8f3ab177db80f5d7698}\label{group___l6206___private__functions_gab3eaf311ee61a8f3ab177db80f5d7698}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Get\+Second\+Bridge\+Input\+Used\+By\+Motor\+Id@{L6206\+\_\+\+Get\+Second\+Bridge\+Input\+Used\+By\+Motor\+Id}}
+\index{L6206\+\_\+\+Get\+Second\+Bridge\+Input\+Used\+By\+Motor\+Id@{L6206\+\_\+\+Get\+Second\+Bridge\+Input\+Used\+By\+Motor\+Id}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Second\+Bridge\+Input\+Used\+By\+Motor\+Id()}{L6206\_GetSecondBridgeInputUsedByMotorId()}}
+{\footnotesize\ttfamily uint8\+\_\+t L6206\+\_\+\+Get\+Second\+Bridge\+Input\+Used\+By\+Motor\+Id (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Get the second P\+WM input used by a given bidirectionnal motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em P\+WM} & input 0 for 1A, 1 for 2A, 2 for 1B, 3 for 3B \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_ga3f9ca538e4da03d6cb2f502d4a1b759c}\label{group___l6206___private__functions_ga3f9ca538e4da03d6cb2f502d4a1b759c}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Is\+Bidirectionnal\+Motor@{L6206\+\_\+\+Is\+Bidirectionnal\+Motor}}
+\index{L6206\+\_\+\+Is\+Bidirectionnal\+Motor@{L6206\+\_\+\+Is\+Bidirectionnal\+Motor}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Is\+Bidirectionnal\+Motor()}{L6206\_IsBidirectionnalMotor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} L6206\+\_\+\+Is\+Bidirectionnal\+Motor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Test if motor is bidirectionnal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em True} & if motor is bidirectionnal, else false \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_ga3379bc215227e0a4081b7a42f3c5532a}\label{group___l6206___private__functions_ga3379bc215227e0a4081b7a42f3c5532a}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Set\+Device\+Params\+To\+Given\+Values@{L6206\+\_\+\+Set\+Device\+Params\+To\+Given\+Values}}
+\index{L6206\+\_\+\+Set\+Device\+Params\+To\+Given\+Values@{L6206\+\_\+\+Set\+Device\+Params\+To\+Given\+Values}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Set\+Device\+Params\+To\+Given\+Values()}{L6206\_SetDeviceParamsToGivenValues()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Set\+Device\+Params\+To\+Given\+Values (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_l6206___init_type_def}{L6206\+\_\+\+Init\+Type\+Def}} $\ast$}]{init\+Device\+Prm }\end{DoxyParamCaption})}
+
+
+
+Set the parameters of the device to values of init\+Device\+Prm structure Set G\+P\+IO according to these values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\+Device\+Prm} & structure containing values to initialize the device parameters \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___private__functions_ga1e49f28c219e930c3eacdadee0079bfa}\label{group___l6206___private__functions_ga1e49f28c219e930c3eacdadee0079bfa}} 
+\index{L6206 Private functions@{L6206 Private functions}!L6206\+\_\+\+Set\+Device\+Params\+To\+Predefined\+Values@{L6206\+\_\+\+Set\+Device\+Params\+To\+Predefined\+Values}}
+\index{L6206\+\_\+\+Set\+Device\+Params\+To\+Predefined\+Values@{L6206\+\_\+\+Set\+Device\+Params\+To\+Predefined\+Values}!L6206 Private functions@{L6206 Private functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Set\+Device\+Params\+To\+Predefined\+Values()}{L6206\_SetDeviceParamsToPredefinedValues()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Set\+Device\+Params\+To\+Predefined\+Values (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sets the parameters of the device to predefined values from \mbox{\hyperlink{l6206__target__config_8h}{l6206\+\_\+target\+\_\+config.\+h}}. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}

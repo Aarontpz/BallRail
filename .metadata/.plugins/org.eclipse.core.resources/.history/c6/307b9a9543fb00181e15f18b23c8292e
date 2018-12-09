@@ -1,0 +1,29 @@
+/*
+ * share.h
+ *
+ *  Created on: Dec 3, 2018
+ *      Author: aaron
+ */
+
+//-------------------------------------------------------------------------------------
+/** @brief   Shared variable declarations
+ *  @details This constructor creates a FreeRTOS task with the given task run function,
+ *           name, priority, and stack size. Its purpose is to determine the ball position
+ *           setpoint based on the UserInput sensor measurement.
+ *  @param   a_name A character string which will be the name of this task
+ *  @param   a_priority The priority at which this task will initially run (default: 0)
+ *  @param   a_stack_size The size of this task's stack in bytes
+ *                        (default: @c configMINIMAL_STACK_SIZE)
+ *  @param   p_ser_dev Pointer to a serial device (port, radio, SD card, etc.) which
+ *                     can be used by this task to communicate (default: NULL)
+ */
+extern TaskShare<bool>* p_safe;
+extern TaskShare<float>* p_ball_position;
+extern TaskShare<float>* p_ball_velocity;
+extern TaskShare<float>* p_beam_angle;
+extern TaskShare<float>* p_beam_ang_velocity;
+extern TaskShare<float>* p_motor_voltage_pwm;
+extern TaskShare<float>* p_set_ball_position;
+extern TaskShare<uint16_t>* p_adc_reading;
+extern TaskShare<uint16_t>* p_encoder_reading;
+extern TaskShare<uint16_t>* p_user_adc_reading;

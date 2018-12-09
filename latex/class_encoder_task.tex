@@ -1,0 +1,92 @@
+\hypertarget{class_encoder_task}{}\section{Encoder\+Task Class Reference}
+\label{class_encoder_task}\index{Encoder\+Task@{Encoder\+Task}}
+
+
+Implements a task to determine the beam angle.  
+
+
+
+
+{\ttfamily \#include $<$Encoder\+Task.\+h$>$}
+
+Inheritance diagram for Encoder\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_encoder_task}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_encoder_task_af40f2d1f64b159deed631cf6fd7ad26f}{Encoder\+Task}} (const char $\ast$a\+\_\+name, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE a\+\_\+priority, size\+\_\+t a\+\_\+stack\+\_\+size, \mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Construct an Encoder task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_encoder_task_a4dfd013fe548038f941ab130adeb90fd}{run}} (void)
+\begin{DoxyCompactList}\small\item\em The run method of the Encoder task that is repeatedly called by the R\+T\+OS scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implements a task to determine the beam angle. 
+
+This class is an extension of {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. The purpose of the class is to determine the beam angular position and velocity. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_encoder_task_af40f2d1f64b159deed631cf6fd7ad26f}\label{class_encoder_task_af40f2d1f64b159deed631cf6fd7ad26f}} 
+\index{Encoder\+Task@{Encoder\+Task}!Encoder\+Task@{Encoder\+Task}}
+\index{Encoder\+Task@{Encoder\+Task}!Encoder\+Task@{Encoder\+Task}}
+\subsubsection{\texorpdfstring{Encoder\+Task()}{EncoderTask()}}
+{\footnotesize\ttfamily Encoder\+Task\+::\+Encoder\+Task (\begin{DoxyParamCaption}\item[{const char $\ast$}]{a\+\_\+name,  }\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{a\+\_\+priority,  }\item[{size\+\_\+t}]{a\+\_\+stack\+\_\+size,  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})}
+
+
+
+Construct an Encoder task. 
+
+Constructor which creates and initializes an Encoder task object.
+
+This constructor sets up the task name, priority, stack size, and serial stream. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL)\\
+\hline
+\end{DoxyParams}
+This constructor creates a Free\+R\+T\+OS task with the given task run function, name, priority, and stack size. Its purpose is to determine the angle of the beam based on the encoder sensor measurements. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_encoder_task_a4dfd013fe548038f941ab130adeb90fd}\label{class_encoder_task_a4dfd013fe548038f941ab130adeb90fd}} 
+\index{Encoder\+Task@{Encoder\+Task}!run@{run}}
+\index{run@{run}!Encoder\+Task@{Encoder\+Task}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Encoder\+Task\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The run method of the Encoder task that is repeatedly called by the R\+T\+OS scheduler. 
+
+The {\ttfamily \mbox{\hyperlink{class_encoder_task_a4dfd013fe548038f941ab130adeb90fd}{run()}}} function for the Encoder task.
+
+This method is called by the R\+T\+OS scheduler. The function implements a modulo positioning algorithm to account for discontinuity in the absolute position output from the encoder sensor. The encoder counts are converted to angle measurements in radians and angular velocity in rad/s. Shared variables are updated after the calculations are performed. 
+
+Implements \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{Task\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{_encoder_task_8h}{Encoder\+Task.\+h}}\item 
+Doxygen\+Files/Encoder\+Task.\+cpp\end{DoxyCompactItemize}

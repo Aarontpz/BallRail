@@ -1,0 +1,64 @@
+//*************************************************************************************
+/** @file    taskshare.h
+ *  @brief   Type-safe data which can be shared between tasks in a thread-safe manner.
+ *  @details This file contains a template class for data which is to be shared between
+ *           classes. The data must be protected against damage due to context
+ *           switches, so it is protected by a mutex or by causing transfers to take
+ *           place inside critical sections which are protected from being interrupted.
+ *
+ *  Revised:
+ *    \li 10-29-2012 JRR Original file
+ *    \li 08-26-2014 JRR Changed file names, class name to @c TaskShare, removed unused
+ *                       version that uses semaphores, renamed @c put() and @c get()
+ *    \li 10-18-2014 JRR Added linked list of all shares for tracking and debugging
+ *
+ *  License:
+ *		This file is copyright 2014 by JR Ridgely and released under the Lesser GNU
+ *		Public License, version 2. It intended for educational use only, but its use
+ *		is not limited thereto. */
+/*		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *		AND	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ *		IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ *		ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ *		LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUEN-
+ *		TIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ *		OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ *		CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ *		OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ *		OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
+//*************************************************************************************
+
+#include "main.h"
+#include "stm32l4xx_hal.h"
+#include "taskbase.h"                       // The base class for all tasks
+#include "taskqueue.h"                      // Queues transmit data between tasks
+#include "taskshare.h"                      // Queues that only carry text
+#include "emstream.h"
+
+/** @brief   Implements a task to control the system.
+ *  @details This class is an extension of @c TaskBase. The purpose of the class
+ *  		 is to determine the voltage input to the motor in response to state
+ *  		 feedback from the ball and beam sensor measurements.
+ */
+class ControllerTask : public TaskBase {
+public:
+	/** @brief   Construct a BallPosition task.
+	 *  @details This constructor sets up the task name, priority, stack size,
+	 *  		 and serial stream.
+	 *  @param   a_name A character string which will be the name of this task
+	 *  @param   a_priority The priority at which this task will initially run (default: 0)
+	 *  @param   a_stack_size The size of this task's stack in bytes
+	 *                        (default: @c configMINIMAL_STACK_SIZE)
+	 *  @param   p_ser_dev Pointer to a serial device (port, radio, SD card, etc.) which
+	 *                     can be used by this task to communicate (default: NULL)
+	 */
+	ControllerTask(const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev);
+
+	/** @brief   The run method of the Controller task that is repeatedly called by the RTOS scheduler.
+	 */
+	void run(void);
+
+};

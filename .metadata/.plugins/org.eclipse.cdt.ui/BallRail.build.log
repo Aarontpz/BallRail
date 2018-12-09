@@ -1,7 +1,6 @@
-17:43:55 **** Clean-only build of configuration Debug for project BallRail ****
-make clean 
-rm -rf *
- 
+20:43:42 **** Build of configuration Debug for project BallRail ****
+make all 
+Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.d:1: *** multiple target patterns.  Stop.
 
-17:43:55 Build Finished (took 77ms)
+20:43:43 Build Finished (took 146ms)
 

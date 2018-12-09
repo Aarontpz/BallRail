@@ -1,0 +1,26 @@
+\hypertarget{baseshare_8h}{}\section{Doxygen\+Files/baseshare.h File Reference}
+\label{baseshare_8h}\index{Doxygen\+Files/baseshare.\+h@{Doxygen\+Files/baseshare.\+h}}
+
+
+Source code of a base class for type-\/safe, thread-\/safe task data exchange classes.  
+
+
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}emstream.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_base_share}{Base\+Share}}
+\begin{DoxyCompactList}\small\item\em Base class for classes that share data in a thread-\/safe manner between tasks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Source code of a base class for type-\/safe, thread-\/safe task data exchange classes. 
+
+Headers for a base class for type-\/safe, thread-\/safe task data exchange classes.
+
+This file contains a base class for classes which exchange data between tasks. Inter-\/task data must be exchanged in a thread-\/safe manner, so the classes which share the data use mutexes or mutual exclusion mechanisms to prevent corruption of data. A linked list of all inter-\/task data items is kept by the M\+E405 system, and this base class contains members that handle that linked list.
+
+Revised\+: \begin{DoxyItemize}
+\item 10-\/18-\/2014 J\+RR Created file\end{DoxyItemize}
+License\+: This file is copyright 2014 by JR Ridgely and released under the Lesser G\+NU Public License, version 2. It intended for educational use only, but its use is not limited thereto. 

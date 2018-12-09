@@ -1,0 +1,647 @@
+\hypertarget{class_task_base}{}\section{Task\+Base Class Reference}
+\label{class_task_base}\index{Task\+Base@{Task\+Base}}
+
+
+Base class for implementations of tasks in task/state based programs.  
+
+
+
+
+{\ttfamily \#include $<$taskbase.\+h$>$}
+
+Inheritance diagram for Task\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.221374cm]{class_task_base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_base_ae8e359a838bed17302e4f21146dba612}{Task\+Base}} (const char $\ast$a\+\_\+name, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE a\+\_\+priority=0, size\+\_\+t a\+\_\+stack\+\_\+size=config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE, \mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev=N\+U\+LL)
+\begin{DoxyCompactList}\small\item\em Constructor which creates and initializes a task object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run}} (void)=0
+\begin{DoxyCompactList}\small\item\em Run method which holds the user\textquotesingle{}s task code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_af70bf7c9cb6dfccdb1dbf41b7c6d2ecf}{transition\+\_\+to}} (uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Cause this task to transition to another state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_ad088ca82db29301b019b1efde85156be}{set\+\_\+serial\+\_\+device}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+new\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Set the task\textquotesingle{}s serial device pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a0e1cc480afef3708598b6b217b281a7b}{unset\+\_\+serial\+\_\+device}} (void)
+\begin{DoxyCompactList}\small\item\em Turn off serial logging by un-\/setting the task\textquotesingle{}s serial pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_task_base_a0dbf9678429543f33c9c8f82511a3887}{operator bool}} () const
+\begin{DoxyCompactList}\small\item\em Check if a task is ready to run. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a06d9c962cc578a84a69ca637f6d5adef}{delay}} (Tick\+Type\+\_\+t duration)
+\begin{DoxyCompactList}\small\item\em Stop running the task for the given number of R\+T\+OS ticks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a6a7e9bc3d85a0e71462002b85402d995}{delay\+\_\+ms}} (Tick\+Type\+\_\+t duration\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Stop the task for approximately the given number of milliseconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_adc48db72592a8b34ca1235e1d18604cc}{delay\+\_\+from\+\_\+for}} (Tick\+Type\+\_\+t \&from\+\_\+ticks, Tick\+Type\+\_\+t for\+\_\+how\+\_\+long)
+\begin{DoxyCompactList}\small\item\em Stop the task from running for a precise time interval. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a31b1c01059c7ec4bfe60fc8332759551}{delay\+\_\+from\+\_\+for\+\_\+ms}} (Tick\+Type\+\_\+t \&from\+\_\+ticks, Tick\+Type\+\_\+t millisec)
+\begin{DoxyCompactList}\small\item\em Stop the task from running for a precise number of milliseconds. \end{DoxyCompactList}\item 
+Tick\+Type\+\_\+t \mbox{\hyperlink{class_task_base_aea05d3d35f6cbda823ed4812b0951944}{get\+\_\+tick\+\_\+count}} (void)
+\begin{DoxyCompactList}\small\item\em Find out how many R\+T\+OS ticks since the scheduler was started. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a4e9fe49dbbf245e182abf6d17c9bd3df}{yield}} (void)
+\begin{DoxyCompactList}\small\item\em The task gives control to the R\+T\+OS immediately. \end{DoxyCompactList}\item 
+port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE \mbox{\hyperlink{class_task_base_a1f26fc9564898da36d2355095c204340}{get\+\_\+priority}} (void)
+\begin{DoxyCompactList}\small\item\em Return the task\textquotesingle{}s current priority. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a1a6f54b0b07cf27d5764c4dca5ec5fcf}{set\+\_\+priority}} (port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE new\+\_\+priority)
+\begin{DoxyCompactList}\small\item\em Set this task\textquotesingle{}s priority to a new value. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_task_base_a822796dba0ef4d457608363507d65f5a}{heap\+\_\+left}} (void)
+\begin{DoxyCompactList}\small\item\em Return the number of unused bytes in the heap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a9e228e424048594a935cd31ae9e0eeb3}{dump\+\_\+stack}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Print a display of this task\textquotesingle{}s stack space. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a441138caa57e35f58f31dc4d960580d9}{print\+\_\+stack\+\_\+in\+\_\+list}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Print a stack dump within a dump of all tasks\textquotesingle{} stacks. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_task_base_aa3979e41ecb8f646f12d4283d87f93df}{get\+\_\+total\+\_\+stack}} (void)
+\begin{DoxyCompactList}\small\item\em Return the total stack size for this task. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_task_base_ae4f412b0911d4cf84dad9169a10c46e0}{get\+\_\+state}} (void)
+\begin{DoxyCompactList}\small\item\em Return the current state in which this task\textquotesingle{}s state machine is. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_task_base_a4d0769068c3095d76752e0a00963d8b8}{get\+\_\+tick\+\_\+time}} (void)
+\begin{DoxyCompactList}\small\item\em Return an approximate measurement of time from the tick count. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{class_task_base_a69b0a4031cf715d9d3a6ecd3b29f5cbe}{get\+\_\+name}} (void)
+\begin{DoxyCompactList}\small\item\em Return a pointer to this task\textquotesingle{}s name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_base_a58bd479a964b4c98da9f8f1a6b08efd7}{print\+\_\+status\+\_\+in\+\_\+list}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$)
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{class_task_base_a2113de68c720fcf8b643b11a43b84ab7}{get\+\_\+handle}} (void)
+\begin{DoxyCompactList}\small\item\em Return a handle to the Free\+R\+T\+OS task wrapped by this task object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_task_base_aea504e1e3d38a7e8e8c65c4284d4a560}{print\+\_\+status}} (\mbox{\hyperlink{classemstream}{emstream}} \&)
+\item 
+void \mbox{\hyperlink{class_task_base_a5842a497b5a274e6a40fae18bff03a9f}{emergency\+\_\+reset}} (const char $\ast$message)
+\begin{DoxyCompactList}\small\item\em Print an error message if possible and reset the processor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_task_base_a9884c542600faa2f90da35c832fea87a}{\+\_\+call\+\_\+users\+\_\+run\+\_\+method}} (\mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Internal use only function which calls the {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method. \end{DoxyCompactList}\item 
+static const \mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$ \mbox{\hyperlink{class_task_base_a6d6efe1287e0d4b73064af05626e48d2}{get\+\_\+last\+\_\+created\+\_\+task\+\_\+pointer}} (void)
+\begin{DoxyCompactList}\small\item\em Return a pointer to the most recently created task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_task_base_adbc9cc6b14c5396c38457edc9c9bc215}{get\+\_\+loop\+\_\+runs}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_task_base_abd349e5f74bd10d1288459b66858ea26}\label{class_task_base_abd349e5f74bd10d1288459b66858ea26}} 
+Task\+Handle\+\_\+t \mbox{\hyperlink{class_task_base_abd349e5f74bd10d1288459b66858ea26}{handle}}
+\begin{DoxyCompactList}\small\item\em This is the handle of this R\+T\+OS task. It\textquotesingle{}s typedef\textquotesingle{}d as a pointer type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$ \mbox{\hyperlink{class_task_base_a4f8adbe534975ada5ffb46fa403ef07f}{prev\+\_\+task\+\_\+pointer}}
+\item 
+\mbox{\hyperlink{classemstream}{emstream}} $\ast$ \mbox{\hyperlink{class_task_base_a5299f7fa222eb0ddac3b77e667170fd7}{p\+\_\+serial}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_task_base_aab6866bbd5d036810829ccc7cd3ab0e8}{state}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_task_base_a9736ccdb46487c91c49bdbf2c24b52d3}{previous\+\_\+state}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_task_base_ab5503939e17359f0f3f9249f622df389}{runs}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for implementations of tasks in task/state based programs. 
+
+This class is a C++ wrapper for the Free\+R\+T\+OS task functions with some extra functionality for keeping track of state transitions and for printing diagnostic information about how tasks are configured and how they are running.\hypertarget{index_Usage}{}\subsection{Usage}\label{index_Usage}
+In order to use a task, one must first create a child class of class {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. The child class must at least have a constructor and a run method\+: 
+\begin{DoxyCode}
+\textcolor{keyword}{class }TaskExample : \textcolor{keyword}{public} \mbox{\hyperlink{class_task_base}{TaskBase}}
+\{
+\textcolor{keyword}{protected}:
+    \textcolor{comment}{// Task specific data goes here}
+
+\textcolor{keyword}{public}:
+    \textcolor{comment}{// This constructor creates an example task object}
+       TaskExample (\textcolor{keyword}{const} \textcolor{keywordtype}{char}*, \textcolor{keywordtype}{unsigned} portBASE\_TYPE, \textcolor{keywordtype}{size\_t}, \mbox{\hyperlink{classemstream}{emstream}}*);
+
+    \textcolor{comment}{// This run method is called by the RTOS and contains a loop }
+    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run}} (\textcolor{keywordtype}{void});
+\};
+\end{DoxyCode}
+
+
+The task class\textquotesingle{}s constructor can sometimes be quite simple, only calling the parent constructor as shown in the example below\+: 
+\begin{DoxyCode}
+TaskExample::TaskExample (\textcolor{keyword}{const} \textcolor{keywordtype}{char}* a\_name,
+                          \textcolor{keywordtype}{unsigned} portBASE\_TYPE a\_priority,
+                          \textcolor{keywordtype}{size\_t} a\_stack\_size,
+                          \mbox{\hyperlink{classemstream}{emstream}}* p\_serial\_dev
+                         )
+    : \mbox{\hyperlink{class_task_base}{TaskBase}} (a\_name, a\_priority, a\_stack\_size, p\_serial\_dev)
+\{
+\}
+\end{DoxyCode}
+ If the task needs to initialize device drivers or other things it owns, that can be done in the constructor.
+
+Every task must have a user-\/written run method named {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}}. The run method is where most of the functionality of the task is implemented. The run method must contain an endless loop in which the task\textquotesingle{}s state machine is implemented. A variable called {\ttfamily state} is kept by the parent class {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}} and used to monitor the state in which the user\textquotesingle{}s code is running, so one should {\bfseries not} declare another variable called {\ttfamily state} inside the run method\+: 
+\begin{DoxyCode}
+\textcolor{keywordtype}{void} TaskExample::run (\textcolor{keywordtype}{void})
+\{
+    TickType\_t LastWakeTime;                   \textcolor{comment}{// For scheduling how often task runs}
+
+    \textcolor{comment}{// Initialise the LastWakeTime variable with the current time. This happens just}
+    \textcolor{comment}{// once, before the infinite loop is entered}
+       LastWakeTime = \mbox{\hyperlink{class_task_base_aea05d3d35f6cbda823ed4812b0951944}{get\_tick\_count}} ();
+
+    \textcolor{comment}{// This is the task loop. Once the task has been initialized in the code just}
+    \textcolor{comment}{// above, the task loop runs, and it keeps running until the power is shut off}
+    \textcolor{keywordflow}{for} (;;)
+    \{
+        \textcolor{comment}{// Run the task's state machine here}
+        \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_task_base_aab6866bbd5d036810829ccc7cd3ab0e8}{state}})
+        \{
+            \textcolor{keywordflow}{case} 0:
+                \textcolor{comment}{// Do one thing in State 0}
+                ...
+                \textcolor{comment}{// Check for a transition to another state}
+                \textcolor{keywordflow}{if} (something)
+                \{
+                    \mbox{\hyperlink{class_task_base_af70bf7c9cb6dfccdb1dbf41b7c6d2ecf}{transition\_to}} (1);
+                \}
+                \textcolor{keywordflow}{break};
+
+            \textcolor{keywordflow}{case} 1:
+                \textcolor{comment}{// Do another thing in State 1}
+                ...
+                \textcolor{keywordflow}{break};
+
+            \textcolor{keywordflow}{case} 2:
+                \textcolor{comment}{// Do something completely different in State 2}
+                ...
+                \textcolor{keywordflow}{break};
+        \};
+
+        \textcolor{comment}{// Tell the RTOS to delay until the given number of RTOS timer ticks have}
+        \textcolor{comment}{// elapsed. This means the code after this line runs every ticks\_per\_run}
+        \textcolor{comment}{// milliseconds if the RTOS interrupt is set to go off every 1 millisecond}
+        \mbox{\hyperlink{class_task_base_adc48db72592a8b34ca1235e1d18604cc}{delay\_from\_for}} (LastWakeTime, ticks\_per\_run);
+    \}
+\}
+\end{DoxyCode}
+
+
+Tasks are traditionally instantiated within {\ttfamily \mbox{\hyperlink{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main()}}}. The most important and tricky part about creating a task is getting its {\bfseries stack} size right. If a task\textquotesingle{}s stack is too large, it will waste R\+AM, and small microcontrollers don\textquotesingle{}t have much R\+AM to waste. If the task\textquotesingle{}s stack is too small, it will cause disaster, usually in the form of the processor either hanging or rebooting as the stack pointer for the task goes outside the allocated range and overwrites the stack for another task. For Free\+R\+T\+OS tasks on an 8-\/bit A\+VR microcontroller, the smallest stack size that is likely to ever work is about 100 bytes. As soon as data is created within the run method, queues are used, and other memory is used, the necessary stack size goes up; it is common to need 300 -- 500 bytes of stack space for a task that does a lot of work. Because it\textquotesingle{}s very difficult to calculate the stack space needed for a task, the easiest way to set the stack size is usually to make it large enough that the program runs reliably, then decrease it by about 20 bytes at a time, recompile and test the program, again and again until something fails. Then make the stack size a couple dozen bytes larger than the smallest size that reliably worked during testing...just in case.
+
+The code used to create a task object looks like the following\+: 
+\begin{DoxyCode}
+\textcolor{comment}{// Create an example task. It runs at priority 2 and has a 200 byte stack}
+TaskExample* my\_example\_task 
+    = \textcolor{keyword}{new} TaskExample (\textcolor{stringliteral}{"Example"}, tskIDLE\_PRIORITY + 2, 200, &ser\_port);
+...
+\textcolor{comment}{// Start up the scheduler, causing all tasks to be run}
+vTaskStartScheduler ();
+\end{DoxyCode}
+ In this example code, someone must have created the serial port object named {\ttfamily ser\+\_\+port} previously; the serial port will be used by the task to print out diagnostic information. If no diagnostic information needs to be printed, the serial port may be left out of the task constructor call or set to {\ttfamily N\+U\+LL}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_task_base_ae8e359a838bed17302e4f21146dba612}\label{class_task_base_ae8e359a838bed17302e4f21146dba612}} 
+\index{Task\+Base@{Task\+Base}!Task\+Base@{Task\+Base}}
+\index{Task\+Base@{Task\+Base}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{Task\+Base()}{TaskBase()}}
+{\footnotesize\ttfamily Task\+Base\+::\+Task\+Base (\begin{DoxyParamCaption}\item[{const char $\ast$}]{a\+\_\+name,  }\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{a\+\_\+priority = {\ttfamily 0},  }\item[{size\+\_\+t}]{a\+\_\+stack\+\_\+size = {\ttfamily configMINIMAL\+\_\+STACK\+\_\+SIZE},  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev = {\ttfamily NULL} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor which creates and initializes a task object. 
+
+This constructor creates a Free\+R\+T\+OS task with the given task run function, name, priority, and stack size. It saves a pointers to a serial device to be used for debugging; it also saves a pointer to the previously created task (if any) so that tasks can form a linked list. Any function, such as diagnostic printouts, that is to be performed by all tasks can be done by telling the most recently created task to do it, then have that most recently created task tell the previously created task to do it, and so on.
+
+The odd parameter with the {\ttfamily reinterpret\+\_\+cast} directive is a pointer to the Free\+R\+T\+OS task run function. This pointer, which is supplied to Free\+R\+T\+OS as a pointer to a function that takes one void pointer parameter and returns nothing, contains a reference to a method belonging to this class called {\bfseries \mbox{\hyperlink{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}{\+\_\+call\+\_\+static\+\_\+run\+\_\+method()}}}. Free\+R\+T\+OS will then call {\bfseries \mbox{\hyperlink{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}{\+\_\+call\+\_\+static\+\_\+run\+\_\+method()}}} which is a regular C (not C++) function that is given a pointer to the task object which the user has created. {\bfseries \mbox{\hyperlink{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}{\+\_\+call\+\_\+static\+\_\+run\+\_\+method()}}}, being a member of this class, then calls the user\textquotesingle{}s {\bfseries \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method using the fancy virtual method function finding tricks that it can use because it is a C++ method rather than a plain old C function. All this C++ and virtual method fanciness only has to take place once as the scheduler is starting up, so it doesn\textquotesingle{}t slow real-\/time operation down. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_task_base_a9884c542600faa2f90da35c832fea87a}\label{class_task_base_a9884c542600faa2f90da35c832fea87a}} 
+\index{Task\+Base@{Task\+Base}!\+\_\+call\+\_\+users\+\_\+run\+\_\+method@{\+\_\+call\+\_\+users\+\_\+run\+\_\+method}}
+\index{\+\_\+call\+\_\+users\+\_\+run\+\_\+method@{\+\_\+call\+\_\+users\+\_\+run\+\_\+method}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{\+\_\+call\+\_\+users\+\_\+run\+\_\+method()}{\_call\_users\_run\_method()}}
+{\footnotesize\ttfamily void Task\+Base\+::\+\_\+call\+\_\+users\+\_\+run\+\_\+method (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$}]{p\+\_\+task }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Internal use only function which calls the {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method. 
+
+{\bfseries This method never needs to be called by user-\/written code.} This {\ttfamily static} method calls the user-\/written {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method when it has been called by {\ttfamily \mbox{\hyperlink{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}{\+\_\+call\+\_\+static\+\_\+run\+\_\+method()}}}. The function {\ttfamily \mbox{\hyperlink{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}{\+\_\+call\+\_\+static\+\_\+run\+\_\+method()}}} function was, in turn, called by Free\+R\+T\+OS; it is the C (not C++) function which was registered with the scheduler. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+task} & A pointer to the task (this task) whose run method is to be called \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a06d9c962cc578a84a69ca637f6d5adef}\label{class_task_base_a06d9c962cc578a84a69ca637f6d5adef}} 
+\index{Task\+Base@{Task\+Base}!delay@{delay}}
+\index{delay@{delay}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{delay()}{delay()}}
+{\footnotesize\ttfamily void Task\+Base\+::delay (\begin{DoxyParamCaption}\item[{Tick\+Type\+\_\+t}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stop running the task for the given number of R\+T\+OS ticks. 
+
+This method causes the task to stop running for the given number of R\+T\+OS ticks from the time it is called. This method should {\bfseries not} be used to make a task run at regular intervals, because the time between when the previous delay ended and and when {\ttfamily \mbox{\hyperlink{class_task_base_a06d9c962cc578a84a69ca637f6d5adef}{delay()}}} is called subsequently can vary, leading to the accumulation of errors in timing. For periodic runs of code in a task, see {\ttfamily \mbox{\hyperlink{class_task_base_adc48db72592a8b34ca1235e1d18604cc}{delay\+\_\+from\+\_\+for()}}}. 
+\begin{DoxyParams}{Parameters}
+{\em duration} & The amount of time, as a number of timer ticks, this task should wait until next running \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_adc48db72592a8b34ca1235e1d18604cc}\label{class_task_base_adc48db72592a8b34ca1235e1d18604cc}} 
+\index{Task\+Base@{Task\+Base}!delay\+\_\+from\+\_\+for@{delay\+\_\+from\+\_\+for}}
+\index{delay\+\_\+from\+\_\+for@{delay\+\_\+from\+\_\+for}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{delay\+\_\+from\+\_\+for()}{delay\_from\_for()}}
+{\footnotesize\ttfamily void Task\+Base\+::delay\+\_\+from\+\_\+for (\begin{DoxyParamCaption}\item[{Tick\+Type\+\_\+t \&}]{from\+\_\+ticks,  }\item[{Tick\+Type\+\_\+t}]{for\+\_\+how\+\_\+long }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stop the task from running for a precise time interval. 
+
+This method causes the task to stop running from a given time for a specified duration. The start time and duration are given in units of R\+T\+OS timer ticks. This method can be used to implement a task that regularly wakes up and performs some action, like a clown waking up to terrify children. Because the time at which each awakening takes place is recorded, this method won\textquotesingle{}t accumulate errors as it is repeatedly invoked. 
+\begin{DoxyParams}{Parameters}
+{\em from\+\_\+ticks} & The beginning time of the duration to delay. It is usually set equal to the time at which the previous delay began so as to get precise, regular timing \\
+\hline
+{\em for\+\_\+how\+\_\+long} & The duration of the delay interval in R\+T\+OS ticks \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a31b1c01059c7ec4bfe60fc8332759551}\label{class_task_base_a31b1c01059c7ec4bfe60fc8332759551}} 
+\index{Task\+Base@{Task\+Base}!delay\+\_\+from\+\_\+for\+\_\+ms@{delay\+\_\+from\+\_\+for\+\_\+ms}}
+\index{delay\+\_\+from\+\_\+for\+\_\+ms@{delay\+\_\+from\+\_\+for\+\_\+ms}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{delay\+\_\+from\+\_\+for\+\_\+ms()}{delay\_from\_for\_ms()}}
+{\footnotesize\ttfamily void Task\+Base\+::delay\+\_\+from\+\_\+for\+\_\+ms (\begin{DoxyParamCaption}\item[{Tick\+Type\+\_\+t \&}]{from\+\_\+ticks,  }\item[{Tick\+Type\+\_\+t}]{millisec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stop the task from running for a precise number of milliseconds. 
+
+This method causes the task to delay from a given time for a specified duration in milliseconds. This is usually done to make a task that runs code at a fairly precise and regular interval. The start time is given in units of R\+T\+OS timer ticks; although ticks might not equal milliseconds, the user need not care, just store the value in a variable of type {\ttfamily Tick\+Type\+\_\+t}. The delay duration is given in milliseconds. An example of how this method is used follows\+: 
+\begin{DoxyCode}
+\textcolor{comment}{// Make a variable which will hold tick counts and initialize it}
+TickType\_t previousTicks = xTaskGetTickCount ();
+...
+for (;;)                   \textcolor{comment}{// The task loop}
+\{
+    ...                    \textcolor{comment}{// User code to run every 10 ms}
+    ...
+    \mbox{\hyperlink{class_task_base_a31b1c01059c7ec4bfe60fc8332759551}{delay\_from\_for\_ms}} (previousTicks, 10);
+\}
+\end{DoxyCode}
+ {\bfseries Warning\+:} In order for this function to provide accurate timing, the R\+T\+OS tick rate (set in {\ttfamily \mbox{\hyperlink{_free_r_t_o_s_config_8h_source}{Free\+R\+T\+O\+S\+Config.\+h}}} ) must be set to a rate such that R\+T\+OS ticks occur at the desired time interval. For example, if a task must awaken once per millisecond, ticks at 1 ms or 0.\+5 ms are OK, but ticks every 2 ms or 0.\+7 ms will not allow pricise timing. 
+\begin{DoxyParams}{Parameters}
+{\em from\+\_\+ticks} & The beginning time of the duration to delay. It is usually set equal to the end time of the previous delay so as to get precise, regular timing \\
+\hline
+{\em millisec} & The duration of the delay interval in milliseconds \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a6a7e9bc3d85a0e71462002b85402d995}\label{class_task_base_a6a7e9bc3d85a0e71462002b85402d995}} 
+\index{Task\+Base@{Task\+Base}!delay\+\_\+ms@{delay\+\_\+ms}}
+\index{delay\+\_\+ms@{delay\+\_\+ms}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{delay\+\_\+ms()}{delay\_ms()}}
+{\footnotesize\ttfamily void Task\+Base\+::delay\+\_\+ms (\begin{DoxyParamCaption}\item[{Tick\+Type\+\_\+t}]{duration\+\_\+ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stop the task for approximately the given number of milliseconds. 
+
+This method causes the task to stop running for approximately the given number of milliseconds. This method should {\bfseries not} be used to make a task run at regular intervals, because the time between when the previous delay ended and and when {\ttfamily \mbox{\hyperlink{class_task_base_a6a7e9bc3d85a0e71462002b85402d995}{delay\+\_\+ms()}}} is called subsequently can vary, leading to the accumulation of errors in timing. For periodic runs of code in a task, see {\ttfamily \mbox{\hyperlink{class_task_base_a31b1c01059c7ec4bfe60fc8332759551}{delay\+\_\+from\+\_\+for\+\_\+ms()}}}. 
+\begin{DoxyParams}{Parameters}
+{\em duration\+\_\+ms} & The duration for the task to stop in milliseconds \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a9e228e424048594a935cd31ae9e0eeb3}\label{class_task_base_a9e228e424048594a935cd31ae9e0eeb3}} 
+\index{Task\+Base@{Task\+Base}!dump\+\_\+stack@{dump\+\_\+stack}}
+\index{dump\+\_\+stack@{dump\+\_\+stack}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{dump\+\_\+stack()}{dump\_stack()}}
+{\footnotesize\ttfamily void Task\+Base\+::dump\+\_\+stack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Print a display of this task\textquotesingle{}s stack space. 
+
+This method prints a hexadecimal and text format dump of the stack\textquotesingle{}s contents for debugging and instructional purposes. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+ser\+\_\+dev} & The serial device to which the stack will be printed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a5842a497b5a274e6a40fae18bff03a9f}\label{class_task_base_a5842a497b5a274e6a40fae18bff03a9f}} 
+\index{Task\+Base@{Task\+Base}!emergency\+\_\+reset@{emergency\+\_\+reset}}
+\index{emergency\+\_\+reset@{emergency\+\_\+reset}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{emergency\+\_\+reset()}{emergency\_reset()}}
+{\footnotesize\ttfamily void Task\+Base\+::emergency\+\_\+reset (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Print an error message if possible and reset the processor. 
+
+This method prints an error message (if there is a valid serial device pointer available) and resets the processor. It should only be used in cases of things going seriously to heck. 
+\begin{DoxyParams}{Parameters}
+{\em message} & A message to print before restarting; {\ttfamily endl} is appended to it \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a2113de68c720fcf8b643b11a43b84ab7}\label{class_task_base_a2113de68c720fcf8b643b11a43b84ab7}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+handle@{get\+\_\+handle}}
+\index{get\+\_\+handle@{get\+\_\+handle}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+handle()}{get\_handle()}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t Task\+Base\+::get\+\_\+handle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a handle to the Free\+R\+T\+OS task wrapped by this task object. 
+
+This method returns the handle of the Free\+R\+T\+OS task which is inside this object. Advanced users might want to use it to access task manipulation functions that aren\textquotesingle{}t in this wrapper class or for other creative hacking. \begin{DoxyReturn}{Returns}
+The handle of the Free\+R\+T\+OS task which is wrapped in this handy C++ class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_a6d6efe1287e0d4b73064af05626e48d2}\label{class_task_base_a6d6efe1287e0d4b73064af05626e48d2}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+last\+\_\+created\+\_\+task\+\_\+pointer@{get\+\_\+last\+\_\+created\+\_\+task\+\_\+pointer}}
+\index{get\+\_\+last\+\_\+created\+\_\+task\+\_\+pointer@{get\+\_\+last\+\_\+created\+\_\+task\+\_\+pointer}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+last\+\_\+created\+\_\+task\+\_\+pointer()}{get\_last\_created\_task\_pointer()}}
+{\footnotesize\ttfamily static const \mbox{\hyperlink{class_task_base}{Task\+Base}}$\ast$ Task\+Base\+::get\+\_\+last\+\_\+created\+\_\+task\+\_\+pointer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Return a pointer to the most recently created task. 
+
+This method returns a pointer to the most recently created task. This pointer is the head of a linked list of tasks; the list is maintained by the task objects themselves. This pointer to the most recently created task is used to begin traversing the list of all tasks when some action needs to be taken by all the tasks. \begin{DoxyReturn}{Returns}
+A pointer to the most recently created task 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_adbc9cc6b14c5396c38457edc9c9bc215}\label{class_task_base_adbc9cc6b14c5396c38457edc9c9bc215}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+loop\+\_\+runs@{get\+\_\+loop\+\_\+runs}}
+\index{get\+\_\+loop\+\_\+runs@{get\+\_\+loop\+\_\+runs}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+loop\+\_\+runs()}{get\_loop\_runs()}}
+{\footnotesize\ttfamily uint32\+\_\+t Task\+Base\+::get\+\_\+loop\+\_\+runs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+This method allows descendent classes to find out how many times the {\ttfamily loop()} method has run. \begin{DoxyReturn}{Returns}
+The number of times the loop has been run 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_a69b0a4031cf715d9d3a6ecd3b29f5cbe}\label{class_task_base_a69b0a4031cf715d9d3a6ecd3b29f5cbe}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+name()}{get\_name()}}
+{\footnotesize\ttfamily const char$\ast$ Task\+Base\+::get\+\_\+name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a pointer to this task\textquotesingle{}s name. 
+
+This method returns a pointer to the task\textquotesingle{}s name, which resides in a null terminated character array belonging to the task. Because the pointer is of type {\ttfamily const} {\ttfamily char}, that pointer cannot be used to change the task\textquotesingle{}s name (unless typecasting tricks are used in a way that is poor programming practice). \begin{DoxyReturn}{Returns}
+A pointer to the task\textquotesingle{}s name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_a1f26fc9564898da36d2355095c204340}\label{class_task_base_a1f26fc9564898da36d2355095c204340}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+priority@{get\+\_\+priority}}
+\index{get\+\_\+priority@{get\+\_\+priority}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+priority()}{get\_priority()}}
+{\footnotesize\ttfamily port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE Task\+Base\+::get\+\_\+priority (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the task\textquotesingle{}s current priority. 
+
+\begin{DoxyReturn}{Returns}
+The priority at which the task is currently running 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_ae4f412b0911d4cf84dad9169a10c46e0}\label{class_task_base_ae4f412b0911d4cf84dad9169a10c46e0}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+state@{get\+\_\+state}}
+\index{get\+\_\+state@{get\+\_\+state}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+state()}{get\_state()}}
+{\footnotesize\ttfamily uint8\+\_\+t Task\+Base\+::get\+\_\+state (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the current state in which this task\textquotesingle{}s state machine is. 
+
+This method returns the transition logic state in which the task is at the current time. This is the value of the variable {\ttfamily state} which is manipulated by the user within the {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method to cause state transitions. \begin{DoxyReturn}{Returns}
+The current state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_aea05d3d35f6cbda823ed4812b0951944}\label{class_task_base_aea05d3d35f6cbda823ed4812b0951944}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+tick\+\_\+count@{get\+\_\+tick\+\_\+count}}
+\index{get\+\_\+tick\+\_\+count@{get\+\_\+tick\+\_\+count}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+tick\+\_\+count()}{get\_tick\_count()}}
+{\footnotesize\ttfamily Tick\+Type\+\_\+t Task\+Base\+::get\+\_\+tick\+\_\+count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find out how many R\+T\+OS ticks since the scheduler was started. 
+
+This method returns the number of R\+T\+OS ticks from the time the scheduler was started up until the time the method is called. By using the number of R\+T\+OS ticks per second, one can determine real time approximately. The precision of this method of timekeeping isn\textquotesingle{}t really good because R\+T\+OS ticks typically only occur every millisecond or so; for high precision timing one needs to use a timer/counter running much faster than that. \begin{DoxyReturn}{Returns}
+The number of R\+T\+OS ticks which have happened since R\+T\+OS startup 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_a4d0769068c3095d76752e0a00963d8b8}\label{class_task_base_a4d0769068c3095d76752e0a00963d8b8}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+tick\+\_\+time@{get\+\_\+tick\+\_\+time}}
+\index{get\+\_\+tick\+\_\+time@{get\+\_\+tick\+\_\+time}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+tick\+\_\+time()}{get\_tick\_time()}}
+{\footnotesize\ttfamily float Task\+Base\+::get\+\_\+tick\+\_\+time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return an approximate measurement of time from the tick count. 
+
+This method gets the tick count, which is the number of R\+T\+OS ticks which have occurred since the R\+T\+OS was started up, and converts the value from ticks into seconds. The resolution of this time measurement is only as good as the resolution of the R\+T\+OS tick rate, typically around a millisecond or so. \begin{DoxyReturn}{Returns}
+The approximate real time 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_aa3979e41ecb8f646f12d4283d87f93df}\label{class_task_base_aa3979e41ecb8f646f12d4283d87f93df}} 
+\index{Task\+Base@{Task\+Base}!get\+\_\+total\+\_\+stack@{get\+\_\+total\+\_\+stack}}
+\index{get\+\_\+total\+\_\+stack@{get\+\_\+total\+\_\+stack}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+total\+\_\+stack()}{get\_total\_stack()}}
+{\footnotesize\ttfamily size\+\_\+t Task\+Base\+::get\+\_\+total\+\_\+stack (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the total stack size for this task. 
+
+This method returns the task\textquotesingle{}s total stack size, which was set in the constructor call. \begin{DoxyReturn}{Returns}
+The task\textquotesingle{}s total stack size in bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_a822796dba0ef4d457608363507d65f5a}\label{class_task_base_a822796dba0ef4d457608363507d65f5a}} 
+\index{Task\+Base@{Task\+Base}!heap\+\_\+left@{heap\+\_\+left}}
+\index{heap\+\_\+left@{heap\+\_\+left}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{heap\+\_\+left()}{heap\_left()}}
+{\footnotesize\ttfamily size\+\_\+t Task\+Base\+::heap\+\_\+left (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of unused bytes in the heap. 
+
+This method returns the number of bytes left to be used in the heap. This means that the number returned is how many bytes available for allocation. \begin{DoxyReturn}{Returns}
+The approximate number of bytes left for use in the heap 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_a0dbf9678429543f33c9c8f82511a3887}\label{class_task_base_a0dbf9678429543f33c9c8f82511a3887}} 
+\index{Task\+Base@{Task\+Base}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily Task\+Base\+::operator \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if a task is ready to run. 
+
+This overloaded operator allows one to check if the task is valid and ready to run. It looks at the task\textquotesingle{}s handle, which is nonzero if the task has been successfully created and hasn\textquotesingle{}t been stopped. \begin{DoxyReturn}{Returns}
+True if the task has a valid R\+T\+OS task handle and false if not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_task_base_a441138caa57e35f58f31dc4d960580d9}\label{class_task_base_a441138caa57e35f58f31dc4d960580d9}} 
+\index{Task\+Base@{Task\+Base}!print\+\_\+stack\+\_\+in\+\_\+list@{print\+\_\+stack\+\_\+in\+\_\+list}}
+\index{print\+\_\+stack\+\_\+in\+\_\+list@{print\+\_\+stack\+\_\+in\+\_\+list}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{print\+\_\+stack\+\_\+in\+\_\+list()}{print\_stack\_in\_list()}}
+{\footnotesize\ttfamily void Task\+Base\+::print\+\_\+stack\+\_\+in\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})}
+
+
+
+Print a stack dump within a dump of all tasks\textquotesingle{} stacks. 
+
+Show one task\textquotesingle{}s stack as a hex dump.
+
+This method prints a stack dump, then asks the next task in the linked list of tasks to do the same, and so on and so on, so all the tasks have shown their stack space. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+ser\+\_\+dev} & A pointer to a serial device on which the stack is shown\\
+\hline
+\end{DoxyParams}
+This method displays the task\textquotesingle{}s stack in the format of a hex dump, with the data in the stack shown as a bunch of hexadecimal numbers as well as text. Then it finds the previously created task and asks that task to print its stack as well; when the process is done all tasks (except the idle task) will have printed their stacks. The idle task\textquotesingle{}s stack is printed separately afterwards. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+ser\+\_\+dev} & The serial device to which each task prints its stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_aea504e1e3d38a7e8e8c65c4284d4a560}\label{class_task_base_aea504e1e3d38a7e8e8c65c4284d4a560}} 
+\index{Task\+Base@{Task\+Base}!print\+\_\+status@{print\+\_\+status}}
+\index{print\+\_\+status@{print\+\_\+status}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{print\+\_\+status()}{print\_status()}}
+{\footnotesize\ttfamily void Task\+Base\+::print\+\_\+status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} \&}]{ser\+\_\+dev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+This method prints information about the task. It is called by the overloaded \char`\"{}$<$$<$\char`\"{} operator which is used by the task to print itself when asked to. This function is declared virtual so that descendents can override it to print additional information. 
+\begin{DoxyParams}{Parameters}
+{\em ser\+\_\+dev} & A reference to the serial device to which to print the task status \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a58bd479a964b4c98da9f8f1a6b08efd7}\label{class_task_base_a58bd479a964b4c98da9f8f1a6b08efd7}} 
+\index{Task\+Base@{Task\+Base}!print\+\_\+status\+\_\+in\+\_\+list@{print\+\_\+status\+\_\+in\+\_\+list}}
+\index{print\+\_\+status\+\_\+in\+\_\+list@{print\+\_\+status\+\_\+in\+\_\+list}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{print\+\_\+status\+\_\+in\+\_\+list()}{print\_status\_in\_list()}}
+{\footnotesize\ttfamily void Task\+Base\+::print\+\_\+status\+\_\+in\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{ser\+\_\+device }\end{DoxyParamCaption})}
+
+This method prints task status information, then asks the next task in the list of tasks to do so. The list is kept by the tasks, each having a pointer to another. 
+\begin{DoxyParams}{Parameters}
+{\em ser\+\_\+device} & The serial device to which each task prints its status \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}\label{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}} 
+\index{Task\+Base@{Task\+Base}!run@{run}}
+\index{run@{run}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily virtual void Task\+Base\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Run method which holds the user\textquotesingle{}s task code. 
+
+This is the method in which the task runs the user\textquotesingle{}s task code. The base class\textquotesingle{}s {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method contains no code, and an object of class {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}} cannot be instantiated. The user\textquotesingle{}s code for each task goes in the {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method for each of the user\textquotesingle{}s task classes, each task class being descended from {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. Often the user\textquotesingle{}s {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} method contains a finite state machine; the variable {\ttfamily state} is provided so that the state machine\textquotesingle{}s operation can be monitored by the parent class to help with debugging.
+
+Because this code is expected to run in a preemptive multitasking environment, the run method should usually contain an infinite loop. An exception is when tasks are being dynamically created and deleted; in this case, one can program a run method which exits, and after exiting a task will be deleted. If tasks are not being deleted, exiting a run method just causes the task to hang in an indefinite loop of repeated delays. Note that a finite state machine pretty much replaces the functionality of tasks which are dynamically created and deleted, except that memory is not recovered when the state machine transitions from one state to another. 
+
+Implemented in \mbox{\hyperlink{class_communication_task_a33c23712d6b6952d3e7fb180bab34a83}{Communication\+Task}}, \mbox{\hyperlink{class_controller_task_adb32c437ea51d258b986414ab48c6180}{Controller\+Task}}, \mbox{\hyperlink{class_limit_switch_task_abf943a0f6ab5ab5fa9588f9cdbc6bc82}{Limit\+Switch\+Task}}, \mbox{\hyperlink{class_motor_drive_task_abc617fef420f9dc8cdd6144d8d7adea8}{Motor\+Drive\+Task}}, \mbox{\hyperlink{class_user_input_task_a03666bddf33829bd1eb0dfcfd7f7075b}{User\+Input\+Task}}, \mbox{\hyperlink{class_ball_position_task_aa48c00fc26b05fe4f3c0cc8eed70fce4}{Ball\+Position\+Task}}, and \mbox{\hyperlink{class_encoder_task_a4dfd013fe548038f941ab130adeb90fd}{Encoder\+Task}}.
+
+\mbox{\Hypertarget{class_task_base_a1a6f54b0b07cf27d5764c4dca5ec5fcf}\label{class_task_base_a1a6f54b0b07cf27d5764c4dca5ec5fcf}} 
+\index{Task\+Base@{Task\+Base}!set\+\_\+priority@{set\+\_\+priority}}
+\index{set\+\_\+priority@{set\+\_\+priority}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{set\+\_\+priority()}{set\_priority()}}
+{\footnotesize\ttfamily void Task\+Base\+::set\+\_\+priority (\begin{DoxyParamCaption}\item[{port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{new\+\_\+priority }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set this task\textquotesingle{}s priority to a new value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+priority} & The new priority to set for this task \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_ad088ca82db29301b019b1efde85156be}\label{class_task_base_ad088ca82db29301b019b1efde85156be}} 
+\index{Task\+Base@{Task\+Base}!set\+\_\+serial\+\_\+device@{set\+\_\+serial\+\_\+device}}
+\index{set\+\_\+serial\+\_\+device@{set\+\_\+serial\+\_\+device}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{set\+\_\+serial\+\_\+device()}{set\_serial\_device()}}
+{\footnotesize\ttfamily void Task\+Base\+::set\+\_\+serial\+\_\+device (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+new\+\_\+dev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the task\textquotesingle{}s serial device pointer. 
+
+This method sets the task\textquotesingle{}s serial device pointer to the given address. Changing this serial device pointer means that debugging output will be directed to the given device. This can be helpful if task transitions or other debugging information should be shown on a serial console as the task is being created but logged somewhere else when the task is running. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+new\+\_\+dev} & A pointer to the serial device on which debugging information will be printed in the near future \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_af70bf7c9cb6dfccdb1dbf41b7c6d2ecf}\label{class_task_base_af70bf7c9cb6dfccdb1dbf41b7c6d2ecf}} 
+\index{Task\+Base@{Task\+Base}!transition\+\_\+to@{transition\+\_\+to}}
+\index{transition\+\_\+to@{transition\+\_\+to}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{transition\+\_\+to()}{transition\_to()}}
+{\footnotesize\ttfamily void Task\+Base\+::transition\+\_\+to (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Cause this task to transition to another state. 
+
+This method is called within {\ttfamily \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}}} to cause a state transition. It changes the variable {\ttfamily state}, and if transition logging is enabled, it logs the transition to help with debugging. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+state} & The state to which this task will transition \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_task_base_a0e1cc480afef3708598b6b217b281a7b}\label{class_task_base_a0e1cc480afef3708598b6b217b281a7b}} 
+\index{Task\+Base@{Task\+Base}!unset\+\_\+serial\+\_\+device@{unset\+\_\+serial\+\_\+device}}
+\index{unset\+\_\+serial\+\_\+device@{unset\+\_\+serial\+\_\+device}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{unset\+\_\+serial\+\_\+device()}{unset\_serial\_device()}}
+{\footnotesize\ttfamily void Task\+Base\+::unset\+\_\+serial\+\_\+device (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Turn off serial logging by un-\/setting the task\textquotesingle{}s serial pointer. 
+
+This method un-\/sets the task\textquotesingle{}s serial device pointer. Doing so prevents serial debugging output from being sent or logged in the future unless {\ttfamily \mbox{\hyperlink{class_task_base_ad088ca82db29301b019b1efde85156be}{set\+\_\+serial\+\_\+device()}}} is called to set the serial device pointer to a serial device. \mbox{\Hypertarget{class_task_base_a4e9fe49dbbf245e182abf6d17c9bd3df}\label{class_task_base_a4e9fe49dbbf245e182abf6d17c9bd3df}} 
+\index{Task\+Base@{Task\+Base}!yield@{yield}}
+\index{yield@{yield}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{yield()}{yield()}}
+{\footnotesize\ttfamily void Task\+Base\+::yield (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The task gives control to the R\+T\+OS immediately. 
+
+This method causes the task in which it\textquotesingle{}s called to yield, giving control of the C\+PU back to the R\+T\+OS, immediately. The R\+T\+OS will then decide which task should run; if another task of higher priority wants to run, that task will take over. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_task_base_a5299f7fa222eb0ddac3b77e667170fd7}\label{class_task_base_a5299f7fa222eb0ddac3b77e667170fd7}} 
+\index{Task\+Base@{Task\+Base}!p\+\_\+serial@{p\+\_\+serial}}
+\index{p\+\_\+serial@{p\+\_\+serial}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{p\+\_\+serial}{p\_serial}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}}$\ast$ Task\+Base\+::p\+\_\+serial\hspace{0.3cm}{\ttfamily [protected]}}
+
+This pointer can point to a serial output device or port which will be used for various diagnostic printouts or logging. \mbox{\Hypertarget{class_task_base_a4f8adbe534975ada5ffb46fa403ef07f}\label{class_task_base_a4f8adbe534975ada5ffb46fa403ef07f}} 
+\index{Task\+Base@{Task\+Base}!prev\+\_\+task\+\_\+pointer@{prev\+\_\+task\+\_\+pointer}}
+\index{prev\+\_\+task\+\_\+pointer@{prev\+\_\+task\+\_\+pointer}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{prev\+\_\+task\+\_\+pointer}{prev\_task\_pointer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}$\ast$ Task\+Base\+::prev\+\_\+task\+\_\+pointer\hspace{0.3cm}{\ttfamily [protected]}}
+
+This is a pointer to the previously created task. The pointer will be used to implement a linked list of tasks through which one can traverse. \mbox{\Hypertarget{class_task_base_a9736ccdb46487c91c49bdbf2c24b52d3}\label{class_task_base_a9736ccdb46487c91c49bdbf2c24b52d3}} 
+\index{Task\+Base@{Task\+Base}!previous\+\_\+state@{previous\+\_\+state}}
+\index{previous\+\_\+state@{previous\+\_\+state}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{previous\+\_\+state}{previous\_state}}
+{\footnotesize\ttfamily uint8\+\_\+t Task\+Base\+::previous\+\_\+state\hspace{0.3cm}{\ttfamily [protected]}}
+
+This variable keeps track of the previous (before \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}} runs) value of the state so that transitions can be conveniently detected. \mbox{\Hypertarget{class_task_base_ab5503939e17359f0f3f9249f622df389}\label{class_task_base_ab5503939e17359f0f3f9249f622df389}} 
+\index{Task\+Base@{Task\+Base}!runs@{runs}}
+\index{runs@{runs}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{runs}{runs}}
+{\footnotesize\ttfamily uint32\+\_\+t Task\+Base\+::runs\hspace{0.3cm}{\ttfamily [protected]}}
+
+This variable keeps track of how many times the task has run through its loop. In order for it to work, the user must put a line of code that increments this variable, as in {\ttfamily runs++}; somewhere in the task loop. \mbox{\Hypertarget{class_task_base_aab6866bbd5d036810829ccc7cd3ab0e8}\label{class_task_base_aab6866bbd5d036810829ccc7cd3ab0e8}} 
+\index{Task\+Base@{Task\+Base}!state@{state}}
+\index{state@{state}!Task\+Base@{Task\+Base}}
+\subsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily uint8\+\_\+t Task\+Base\+::state\hspace{0.3cm}{\ttfamily [protected]}}
+
+This is the state in which the finite state machine of the task is. This variable should be used inside \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{run()}} to implement the state machine so that state transitions can be tracked, if needed, by this parent class. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{taskbase_8h}{taskbase.\+h}}\item 
+Doxygen\+Files/\mbox{\hyperlink{taskbase_8cpp}{taskbase.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{taskbase__stackprt_8cpp}{taskbase\+\_\+stackprt.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{taskbase__status_8cpp}{taskbase\+\_\+status.\+cpp}}\end{DoxyCompactItemize}

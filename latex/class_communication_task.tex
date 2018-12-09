@@ -1,0 +1,87 @@
+\hypertarget{class_communication_task}{}\section{Communication\+Task Class Reference}
+\label{class_communication_task}\index{Communication\+Task@{Communication\+Task}}
+
+
+Implements a task to communicate with serial devices.  
+
+
+Inheritance diagram for Communication\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_communication_task}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_communication_task_ac76f495e2350156d1faaa1a3198fe80f}{Communication\+Task}} (const char $\ast$a\+\_\+name, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE a\+\_\+priority, size\+\_\+t a\+\_\+stack\+\_\+size, \mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Construct a Communication task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_communication_task_a33c23712d6b6952d3e7fb180bab34a83}{run}} (void)
+\begin{DoxyCompactList}\small\item\em The run method of the Communication task that is repeatedly called by the R\+T\+OS scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implements a task to communicate with serial devices. 
+
+This class is an extension of {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. The purpose of the class is to handle S\+T\+M32 hardware and communicate with external serial devices. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_communication_task_ac76f495e2350156d1faaa1a3198fe80f}\label{class_communication_task_ac76f495e2350156d1faaa1a3198fe80f}} 
+\index{Communication\+Task@{Communication\+Task}!Communication\+Task@{Communication\+Task}}
+\index{Communication\+Task@{Communication\+Task}!Communication\+Task@{Communication\+Task}}
+\subsubsection{\texorpdfstring{Communication\+Task()}{CommunicationTask()}}
+{\footnotesize\ttfamily Communication\+Task\+::\+Communication\+Task (\begin{DoxyParamCaption}\item[{const char $\ast$}]{a\+\_\+name,  }\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{a\+\_\+priority,  }\item[{size\+\_\+t}]{a\+\_\+stack\+\_\+size,  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})}
+
+
+
+Construct a Communication task. 
+
+Constructor which creates and initializes a Communication task object.
+
+This constructor sets up the task name, priority, stack size, and serial stream. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL)\\
+\hline
+\end{DoxyParams}
+This constructor creates a Free\+R\+T\+OS task with the given task run function, name, priority, and stack size. Its purpose is to talk to external serial devices and interface with the S\+T\+M32 hardware. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_communication_task_a33c23712d6b6952d3e7fb180bab34a83}\label{class_communication_task_a33c23712d6b6952d3e7fb180bab34a83}} 
+\index{Communication\+Task@{Communication\+Task}!run@{run}}
+\index{run@{run}!Communication\+Task@{Communication\+Task}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Communication\+Task\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The run method of the Communication task that is repeatedly called by the R\+T\+OS scheduler. 
+
+The {\ttfamily \mbox{\hyperlink{class_communication_task_a33c23712d6b6952d3e7fb180bab34a83}{run()}}} function for the Communication task.
+
+This method is called by the R\+T\+OS scheduler. The function sets the P\+WM duty cycle to the correct hardware pin, reads the A\+DC, reads the S\+PI serial bus (encoder) and prints the state variables to the external serial device over U\+S\+A\+RT. 
+
+Implements \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{Task\+Base}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{main_8cpp}{main.\+cpp}}\end{DoxyCompactItemize}

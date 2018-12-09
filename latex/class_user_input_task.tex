@@ -1,0 +1,92 @@
+\hypertarget{class_user_input_task}{}\section{User\+Input\+Task Class Reference}
+\label{class_user_input_task}\index{User\+Input\+Task@{User\+Input\+Task}}
+
+
+Implements a task to determine the set-\/point of the ball on the beam.  
+
+
+
+
+{\ttfamily \#include $<$User\+Input\+Task.\+h$>$}
+
+Inheritance diagram for User\+Input\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user_input_task}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_input_task_a46e07c6b7e8d143761f8a747c80a73f3}{User\+Input\+Task}} (const char $\ast$a\+\_\+name, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE a\+\_\+priority, size\+\_\+t a\+\_\+stack\+\_\+size, \mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Construct a User\+Input task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_input_task_a03666bddf33829bd1eb0dfcfd7f7075b}{run}} (void)
+\begin{DoxyCompactList}\small\item\em The run method of the User\+Input task that is repeatedly called by the R\+T\+OS scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implements a task to determine the set-\/point of the ball on the beam. 
+
+This class is an extension of {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. The purpose of the class is to allow the user to interactively define the set-\/point of the ball by touching a linear resistive strip. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_user_input_task_a46e07c6b7e8d143761f8a747c80a73f3}\label{class_user_input_task_a46e07c6b7e8d143761f8a747c80a73f3}} 
+\index{User\+Input\+Task@{User\+Input\+Task}!User\+Input\+Task@{User\+Input\+Task}}
+\index{User\+Input\+Task@{User\+Input\+Task}!User\+Input\+Task@{User\+Input\+Task}}
+\subsubsection{\texorpdfstring{User\+Input\+Task()}{UserInputTask()}}
+{\footnotesize\ttfamily User\+Input\+Task\+::\+User\+Input\+Task (\begin{DoxyParamCaption}\item[{const char $\ast$}]{a\+\_\+name,  }\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{a\+\_\+priority,  }\item[{size\+\_\+t}]{a\+\_\+stack\+\_\+size,  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})}
+
+
+
+Construct a User\+Input task. 
+
+Constructor which creates and initializes a User\+Interface task object.
+
+This constructor sets up the task name, priority, stack size, and serial stream. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL)\\
+\hline
+\end{DoxyParams}
+This constructor creates a Free\+R\+T\+OS task with the given task run function, name, priority, and stack size. Its purpose is to determine the ball position setpoint based on the User\+Input sensor measurement. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_user_input_task_a03666bddf33829bd1eb0dfcfd7f7075b}\label{class_user_input_task_a03666bddf33829bd1eb0dfcfd7f7075b}} 
+\index{User\+Input\+Task@{User\+Input\+Task}!run@{run}}
+\index{run@{run}!User\+Input\+Task@{User\+Input\+Task}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void User\+Input\+Task\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The run method of the User\+Input task that is repeatedly called by the R\+T\+OS scheduler. 
+
+The {\ttfamily \mbox{\hyperlink{class_user_input_task_a03666bddf33829bd1eb0dfcfd7f7075b}{run()}}} function for the User\+Interface task.
+
+This method is called by the R\+T\+OS scheduler. The function converts the linear potentiometer measurements to user position in m and user velocity in m/s. Shared variables are updated after the calculations are performed. 
+
+Implements \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{Task\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{_user_input_task_8h}{User\+Input\+Task.\+h}}\item 
+Doxygen\+Files/User\+Input\+Task.\+cpp\end{DoxyCompactItemize}

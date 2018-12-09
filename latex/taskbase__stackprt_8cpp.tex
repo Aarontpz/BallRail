@@ -1,0 +1,30 @@
+\hypertarget{taskbase__stackprt_8cpp}{}\section{Doxygen\+Files/taskbase\+\_\+stackprt.cpp File Reference}
+\label{taskbase__stackprt_8cpp}\index{Doxygen\+Files/taskbase\+\_\+stackprt.\+cpp@{Doxygen\+Files/taskbase\+\_\+stackprt.\+cpp}}
+{\ttfamily \#include \char`\"{}taskbase.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}emstream.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{taskbase__stackprt_8cpp_aa651c517ed031b06776e0312ac4556e1}{print\+\_\+task\+\_\+stacks}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$ser\+\_\+dev)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains functions to print the stacks of all the tasks for debugging and educational purposes.
+
+Revisions\+: \begin{DoxyItemize}
+\item 12-\/02-\/2012 J\+RR Split off from time\+\_\+stamp.\+cpp to save memory in machine file \item 08-\/26-\/2014 J\+RR Changed file names and base task class name to \mbox{\hyperlink{class_task_base}{Task\+Base}}\end{DoxyItemize}
+License\+: This file is copyright 2012 by JR Ridgely and released under the Lesser G\+NU Public License, version 2. It intended for educational use only, but its use is not limited thereto. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{taskbase__stackprt_8cpp_aa651c517ed031b06776e0312ac4556e1}\label{taskbase__stackprt_8cpp_aa651c517ed031b06776e0312ac4556e1}} 
+\index{taskbase\+\_\+stackprt.\+cpp@{taskbase\+\_\+stackprt.\+cpp}!print\+\_\+task\+\_\+stacks@{print\+\_\+task\+\_\+stacks}}
+\index{print\+\_\+task\+\_\+stacks@{print\+\_\+task\+\_\+stacks}!taskbase\+\_\+stackprt.\+cpp@{taskbase\+\_\+stackprt.\+cpp}}
+\subsubsection{\texorpdfstring{print\+\_\+task\+\_\+stacks()}{print\_task\_stacks()}}
+{\footnotesize\ttfamily void print\+\_\+task\+\_\+stacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{ser\+\_\+dev }\end{DoxyParamCaption})}
+
+This function has all the tasks in the task list do a \char`\"{}stack dump\char`\"{}, printing their stacks in hex dump format. The idle task\textquotesingle{}s stack is printed afterwards. 
+\begin{DoxyParams}{Parameters}
+{\em ser\+\_\+dev} & Pointer to a serial device on which the information will be printed \\
+\hline
+\end{DoxyParams}

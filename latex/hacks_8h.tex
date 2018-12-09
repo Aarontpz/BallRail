@@ -1,0 +1,198 @@
+\hypertarget{hacks_8h}{}\section{Doxygen\+Files/hacks.h File Reference}
+\label{hacks_8h}\index{Doxygen\+Files/hacks.\+h@{Doxygen\+Files/hacks.\+h}}
+
+
+Header for extras to make the G\+CC compiler work on our microcontrollers.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{hacks_8h_a205ed048fdf5259c2e8e0cb60ee8f719}{operator new}} (size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Free\+R\+T\+OS version of the C++ memory allocation operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hacks_8h_a3d97a7e2a0208075b4b37328c96ed390}{operator delete}} (void $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em Free\+R\+T\+OS version of the C++ memory deallocation operator. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{hacks_8h_a63ce4f64887b9307317aee5baae6b18f}{operator new\mbox{[}$\,$\mbox{]}}} (size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Free\+R\+T\+OS version of the C++ array memory allocation operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hacks_8h_a1d8b2d6f17242ae0d182b0f7a98ba54f}{operator delete\mbox{[}$\,$\mbox{]}}} (void $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em Free\+R\+T\+OS version of the C++ array memory deallocation operator. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+extension\+\_\+\+\_\+ typedef int \+\_\+\+\_\+guard \mbox{\hyperlink{hacks_8h_aa5aa60072f4063655d5283b6d7b7ab44}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((mode(\+\_\+\+\_\+\+D\+I\+\_\+\+\_\+)))
+\item 
+int \mbox{\hyperlink{hacks_8h_a239ddd7f6e7ee1b05b59b2e56d8afb40}{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+acquire}} (\+\_\+\+\_\+guard $\ast$)
+\begin{DoxyCompactList}\small\item\em Utility function for virtual methods. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hacks_8h_aab72c37f0b3e6fc38d293bd4f8dd61ed}{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+release}} (\+\_\+\+\_\+guard $\ast$)
+\begin{DoxyCompactList}\small\item\em Utility function for virtual methods. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hacks_8h_a357afb2dc20a652447f3a529dbda60e4}{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+abort}} (\+\_\+\+\_\+guard $\ast$)
+\begin{DoxyCompactList}\small\item\em Utility function for virtual methods. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hacks_8h_a4464d4205cf92370b8d5077d93bc48a6}{\+\_\+\+\_\+cxa\+\_\+pure\+\_\+virtual}} (void)
+\begin{DoxyCompactList}\small\item\em Stub function for virtual methods, maybe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header for extras to make the G\+CC compiler work on our microcontrollers. 
+
+This file contains a set of enhancements to the G\+CC system for our embedded processors which support some of the more helpful C++ features that aren\textquotesingle{}t present or working well in the normal G\+CC distribution (though I have no idea why). Some information used here came from an A\+V\+R-\/\+Freaks posting at\+: \begin{DoxyItemize}
+\item \href{http://www.avrfreaks.net/index.php?name=PNphpBB2&file=viewtopic&p=410870}{\tt http\+://www.\+avrfreaks.\+net/index.\+php?name=\+P\+Nphp\+B\+B2\&file=viewtopic\&p=410870} \begin{DoxyVerb}Other stuff is added to streamline the connection between the ME405 
+library and FreeRTOS. Of particular importance are FreeRTOS versions of 
+@c new and @c delete.
+\end{DoxyVerb}
+\end{DoxyItemize}
+Revisions \begin{DoxyItemize}
+\item 04-\/12-\/2008 J\+RR Original file, material from source above \item 09-\/30-\/2012 J\+RR Added code to make memory allocation work with Free\+R\+T\+OS \item 08-\/05-\/2014 J\+RR Ported to allow use with G\+CC for S\+T\+M32 as well as A\+VR\end{DoxyItemize}
+License\+: This file is copyright 2012 by JR Ridgely and released under the Lesser G\+NU Public License, version 2. It intended for educational use only, but its use is not limited thereto. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{hacks_8h_aa5aa60072f4063655d5283b6d7b7ab44}\label{hacks_8h_aa5aa60072f4063655d5283b6d7b7ab44}} 
+\index{hacks.\+h@{hacks.\+h}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+extension\+\_\+\+\_\+ typedef int \+\_\+\+\_\+guard \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(mode(\+\_\+\+\_\+\+D\+I\+\_\+\+\_\+))}]{ }\end{DoxyParamCaption})}
+
+This function like thing is used to help make templates and virtual methods work. How it does this is entirely unknown to the author, but the Internet said to put this here, and who would question the wisdom of the Web? Also, it works. \begin{DoxyReturn}{Returns}
+Something appears to be returned by this strange function-\/like thing, but it\textquotesingle{}s hard to figure out what it is 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hacks_8h_a357afb2dc20a652447f3a529dbda60e4}\label{hacks_8h_a357afb2dc20a652447f3a529dbda60e4}} 
+\index{hacks.\+h@{hacks.\+h}!\+\_\+\+\_\+cxa\+\_\+guard\+\_\+abort@{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+abort}}
+\index{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+abort@{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+abort}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+abort()}{\_\_cxa\_guard\_abort()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+cxa\+\_\+guard\+\_\+abort (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+guard $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Utility function for virtual methods. 
+
+This function is used to help make templates and virtual methods work. The author isn\textquotesingle{}t sure exactly how it works, but the Interwebs seem to have half a clue. Information about this and related functions can be found at \href{http://www.avrfreaks.net/index.php?name=PNphpBB2&file=printview&t=57466&start=0}{\tt http\+://www.\+avrfreaks.\+net/index.\+php?name=\+P\+Nphp\+B\+B2\&file=printview\&t=57466\&start=0} 
+\begin{DoxyParams}{Parameters}
+{\em g} & A pointer to some random thing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hacks_8h_a239ddd7f6e7ee1b05b59b2e56d8afb40}\label{hacks_8h_a239ddd7f6e7ee1b05b59b2e56d8afb40}} 
+\index{hacks.\+h@{hacks.\+h}!\+\_\+\+\_\+cxa\+\_\+guard\+\_\+acquire@{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+acquire}}
+\index{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+acquire@{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+acquire}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+acquire()}{\_\_cxa\_guard\_acquire()}}
+{\footnotesize\ttfamily int \+\_\+\+\_\+cxa\+\_\+guard\+\_\+acquire (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+guard $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Utility function for virtual methods. 
+
+This function is used to help make templates and virtual methods work. The author isn\textquotesingle{}t sure exactly how it works, but the Interwebs seem to have half a clue. Information about this and related functions can be found at \href{http://www.avrfreaks.net/index.php?name=PNphpBB2&file=printview&t=57466&start=0}{\tt http\+://www.\+avrfreaks.\+net/index.\+php?name=\+P\+Nphp\+B\+B2\&file=printview\&t=57466\&start=0} 
+\begin{DoxyParams}{Parameters}
+{\em g} & A pointer to some random thing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Something that\textquotesingle{}s pointed to by g 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hacks_8h_aab72c37f0b3e6fc38d293bd4f8dd61ed}\label{hacks_8h_aab72c37f0b3e6fc38d293bd4f8dd61ed}} 
+\index{hacks.\+h@{hacks.\+h}!\+\_\+\+\_\+cxa\+\_\+guard\+\_\+release@{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+release}}
+\index{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+release@{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+release}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+cxa\+\_\+guard\+\_\+release()}{\_\_cxa\_guard\_release()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+cxa\+\_\+guard\+\_\+release (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+guard $\ast$}]{g }\end{DoxyParamCaption})}
+
+
+
+Utility function for virtual methods. 
+
+This function is used to help make templates and virtual methods work. The author isn\textquotesingle{}t sure exactly how it works, but the Interwebs seem to have half a clue. Information about this and related functions can be found at \href{http://www.avrfreaks.net/index.php?name=PNphpBB2&file=printview&t=57466&start=0}{\tt http\+://www.\+avrfreaks.\+net/index.\+php?name=\+P\+Nphp\+B\+B2\&file=printview\&t=57466\&start=0} 
+\begin{DoxyParams}{Parameters}
+{\em g} & A pointer to some random thing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hacks_8h_a4464d4205cf92370b8d5077d93bc48a6}\label{hacks_8h_a4464d4205cf92370b8d5077d93bc48a6}} 
+\index{hacks.\+h@{hacks.\+h}!\+\_\+\+\_\+cxa\+\_\+pure\+\_\+virtual@{\+\_\+\+\_\+cxa\+\_\+pure\+\_\+virtual}}
+\index{\+\_\+\+\_\+cxa\+\_\+pure\+\_\+virtual@{\+\_\+\+\_\+cxa\+\_\+pure\+\_\+virtual}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+cxa\+\_\+pure\+\_\+virtual()}{\_\_cxa\_pure\_virtual()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+cxa\+\_\+pure\+\_\+virtual (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stub function for virtual methods, maybe. 
+
+This function seems to be used to help make pure virtual methods work. The author isn\textquotesingle{}t sure exactly how it works (OK, clueless), but it might be a function that fills in for the body of a pure virtual method, {\itshape i.\+e}. a method which doesn\textquotesingle{}t have any body in the regular source files. Or maybe it\textquotesingle{}s a secret note from space aliens, who knows. Information about this and related functions can be found at \href{http://www.avrfreaks.net/index.php?name=PNphpBB2&file=printview&t=57466&start=0}{\tt http\+://www.\+avrfreaks.\+net/index.\+php?name=\+P\+Nphp\+B\+B2\&file=printview\&t=57466\&start=0} \mbox{\Hypertarget{hacks_8h_a3d97a7e2a0208075b4b37328c96ed390}\label{hacks_8h_a3d97a7e2a0208075b4b37328c96ed390}} 
+\index{hacks.\+h@{hacks.\+h}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{operator delete()}{operator delete()}}
+{\footnotesize\ttfamily void operator delete (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Free\+R\+T\+OS version of the C++ memory deallocation operator. 
+
+This is the standard \char`\"{}delete\char`\"{} operator, defined as a replacement for the one which has been left out of the avr-\/libc library. 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & A pointer to the object which is to be deleted from memory\\
+\hline
+\end{DoxyParams}
+This operator maps {\ttfamily delete} to the Free\+R\+T\+OS memory deallocation function, which is configurable and thread safe. Note that memory deallocation is only possible when using some (not all) versions of the memory allocator in Free\+R\+T\+OS; for example, {\ttfamily heap\+\_\+1.\+c} doesn\textquotesingle{}t implement deallocation at all. 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & A pointer to the object whose contents are to be deleted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hacks_8h_a1d8b2d6f17242ae0d182b0f7a98ba54f}\label{hacks_8h_a1d8b2d6f17242ae0d182b0f7a98ba54f}} 
+\index{hacks.\+h@{hacks.\+h}!operator delete\mbox{[}\mbox{]}@{operator delete[]}}
+\index{operator delete\mbox{[}\mbox{]}@{operator delete[]}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{operator delete[]()}{operator delete[]()}}
+{\footnotesize\ttfamily void operator delete\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Free\+R\+T\+OS version of the C++ array memory deallocation operator. 
+
+This is the array form of the standard \char`\"{}delete\char`\"{} operator. 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & A pointer to the object which is to be deleted from memory\\
+\hline
+\end{DoxyParams}
+This operator maps the array version of {\ttfamily delete} to the Free\+R\+T\+OS memory deallocation function, which is configurable and thread safe. Note that memory deallocation is only possible when using some (not all) versions of the memory allocator in Free\+R\+T\+OS; for example, {\ttfamily heap\+\_\+1.\+c} doesn\textquotesingle{}t allow deallocation at all. 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & A pointer to the memory area whose contents are to be deleted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{hacks_8h_a205ed048fdf5259c2e8e0cb60ee8f719}\label{hacks_8h_a205ed048fdf5259c2e8e0cb60ee8f719}} 
+\index{hacks.\+h@{hacks.\+h}!operator new@{operator new}}
+\index{operator new@{operator new}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{operator new()}{operator new()}}
+{\footnotesize\ttfamily void$\ast$ operator new (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Free\+R\+T\+OS version of the C++ memory allocation operator. 
+
+This is the standard \char`\"{}new\char`\"{} operator, defined here because it\textquotesingle{}s not available in the standard avr-\/libc library. 
+\begin{DoxyParams}{Parameters}
+{\em size} & The number of bytes of memory which need to be allocated\\
+\hline
+\end{DoxyParams}
+This operator maps {\ttfamily new} to the Free\+R\+T\+OS memory allocation function, which is configurable and thread safe, because the regular {\ttfamily malloc()} shouldn\textquotesingle{}t be used in a Free\+R\+T\+OS program. 
+\begin{DoxyParams}{Parameters}
+{\em size} & The number of bytes which are to be allocated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the memory area which has just been allocated 
+\end{DoxyReturn}
+\mbox{\Hypertarget{hacks_8h_a63ce4f64887b9307317aee5baae6b18f}\label{hacks_8h_a63ce4f64887b9307317aee5baae6b18f}} 
+\index{hacks.\+h@{hacks.\+h}!operator new\mbox{[}\mbox{]}@{operator new[]}}
+\index{operator new\mbox{[}\mbox{]}@{operator new[]}!hacks.\+h@{hacks.\+h}}
+\subsubsection{\texorpdfstring{operator new[]()}{operator new[]()}}
+{\footnotesize\ttfamily void$\ast$ operator new\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Free\+R\+T\+OS version of the C++ array memory allocation operator. 
+
+This is the array form of the standard \char`\"{}new\char`\"{} operator. 
+\begin{DoxyParams}{Parameters}
+{\em size} & The total number of bytes of memory which need to be allocated\\
+\hline
+\end{DoxyParams}
+This operator maps the array version of {\ttfamily new} to the Free\+R\+T\+OS memory allocation function, which is configurable and thread safe, because the regular {\ttfamily malloc()} shouldn\textquotesingle{}t be used in a Free\+R\+T\+OS program. 
+\begin{DoxyParams}{Parameters}
+{\em size} & The number of bytes which are to be allocated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the memory area which has just been allocated 
+\end{DoxyReturn}

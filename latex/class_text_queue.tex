@@ -1,0 +1,226 @@
+\hypertarget{class_text_queue}{}\section{Text\+Queue Class Reference}
+\label{class_text_queue}\index{Text\+Queue@{Text\+Queue}}
+
+
+Converts data to characters with {\ttfamily $<$$<$} and puts them into a Free\+R\+T\+OS queue.  
+
+
+
+
+{\ttfamily \#include $<$textqueue.\+h$>$}
+
+Inheritance diagram for Text\+Queue\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_text_queue}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_text_queue_a2823917efdf4439cc4f70456b8ddf4bd}{Text\+Queue}} (uint16\+\_\+t size, const char $\ast$p\+\_\+name, \mbox{\hyperlink{classemstream}{emstream}} $\ast$=N\+U\+LL, Tick\+Type\+\_\+t=port\+M\+A\+X\+\_\+\+D\+E\+L\+AY)
+\begin{DoxyCompactList}\small\item\em Constructor for a queue which transfers text characters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_queue_a917e1c134d4ef6591f832e2706a67cac}{putchar}} (char)
+\begin{DoxyCompactList}\small\item\em Write one character to the text queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{class_text_queue_a4b520515f1110e8d592a3b5a5abc615b}{check\+\_\+for\+\_\+char}} (void)
+\begin{DoxyCompactList}\small\item\em Check if a character is ready to be read from the queue. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_text_queue_ab682ee4d2cbad87e9496ca424fa03b0a}{getchar}} (void)
+\begin{DoxyCompactList}\small\item\em Read one character from the queue. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_text_queue_a92ed0a74b86ce1ea2dd426c92f3230c6}{peek}} (void)
+\begin{DoxyCompactList}\small\item\em Copy one character from the queue but leave the original there. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_text_queue_a0fd3c395a00b5da3bb866137466d878a}{operator bool}} () const
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{class_text_queue_a0f83656a176a1a4d71ef825b8a423ab7}{get\+\_\+handle}} (void)
+\item 
+void \mbox{\hyperlink{class_text_queue_aeef41a1bc3486d98fb31cba9ce539d0d}{print\+\_\+in\+\_\+list}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Print the status of the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_text_queue_a7697f86be6c148f866c97f9ab09fec6f}\label{class_text_queue_a7697f86be6c148f866c97f9ab09fec6f}} 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{class_text_queue_a7697f86be6c148f866c97f9ab09fec6f}{the\+\_\+queue}}
+\begin{DoxyCompactList}\small\item\em The handle for the queue we use. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_text_queue_a9649f4aa53b284bacd1a9a965b4b4253}\label{class_text_queue_a9649f4aa53b284bacd1a9a965b4b4253}} 
+Tick\+Type\+\_\+t \mbox{\hyperlink{class_text_queue_a9649f4aa53b284bacd1a9a965b4b4253}{ticks\+\_\+to\+\_\+wait}}
+\begin{DoxyCompactList}\small\item\em R\+T\+OS ticks to wait for empty queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_text_queue_a0d411a9febed573dbb696fd839800e6e}\label{class_text_queue_a0d411a9febed573dbb696fd839800e6e}} 
+\mbox{\hyperlink{classemstream}{emstream}} $\ast$ \mbox{\hyperlink{class_text_queue_a0d411a9febed573dbb696fd839800e6e}{p\+\_\+serial}}
+\begin{DoxyCompactList}\small\item\em Serial device used for debugging. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_text_queue_a008676818bd8590067bbee01ab15aa8d}\label{class_text_queue_a008676818bd8590067bbee01ab15aa8d}} 
+uint16\+\_\+t \mbox{\hyperlink{class_text_queue_a008676818bd8590067bbee01ab15aa8d}{buf\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em Size of queue buffer in bytes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_text_queue_aca22e9161be54b4f2232d0c8884c4001}\label{class_text_queue_aca22e9161be54b4f2232d0c8884c4001}} 
+uint16\+\_\+t \mbox{\hyperlink{class_text_queue_aca22e9161be54b4f2232d0c8884c4001}{max\+\_\+full}}
+\begin{DoxyCompactList}\small\item\em Maximum number of characters in queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Converts data to characters with {\ttfamily $<$$<$} and puts them into a Free\+R\+T\+OS queue. 
+
+This class uses the {\ttfamily emstream} operator {\ttfamily $<$$<$} to print variables as text strings, then puts the text into a queue. The queue conveys the characters to another task which does something useful with those characters, for example writing them to a serial port or saving them to an SD card in a text file. The syntax used for writing information to this queue uses the overloaded shift operator {\ttfamily $<$$<$} in the same style as the C++ standard library\textquotesingle{}s {\ttfamily iostream} objects such as {\ttfamily cout}.\hypertarget{index_Usage}{}\subsection{Usage}\label{index_Usage}
+In the file which contains {\ttfamily \mbox{\hyperlink{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main()}}} we create a pointer to a {\ttfamily \mbox{\hyperlink{class_text_queue}{Text\+Queue}}} object and use the {\ttfamily new} operator to create the queue itself. (This can be done in another source file, but putting the code in the main file is usually most convenient.) In this example, a serial port object named {\ttfamily ser\+\_\+port} has previously been created\+: 
+\begin{DoxyCode}
+\mbox{\hyperlink{class_text_queue}{TextQueue}}* p\_text\_queue;
+...
+main ()
+\{
+    ...
+    p\_text\_queue = \textcolor{keyword}{new} \mbox{\hyperlink{class_text_queue_a2823917efdf4439cc4f70456b8ddf4bd}{TextQueue}} (50, &ser\_port);
+    ...
+\}
+\end{DoxyCode}
+ In a header file which is read by all the source files in the project we re-\/declare the queue pointer with the keyword {\ttfamily extern} to make it globally accessible in all files that {\ttfamily \#include} this header file\+: 
+\begin{DoxyCode}
+\textcolor{keyword}{extern} \mbox{\hyperlink{class_text_queue}{TextQueue}}* p\_text\_queue;
+\end{DoxyCode}
+ In the sending task, data is put into the queue. Here, we use the Program Memory String macro {\ttfamily \mbox{\hyperlink{emstream_8h_a076d1892c2e1133e4cc5469015af6423}{P\+M\+S()}}} to tell the compiler to read a string constant directly from program memory in order to save R\+AM; for information about {\ttfamily \mbox{\hyperlink{emstream_8h_a076d1892c2e1133e4cc5469015af6423}{P\+M\+S()}}} see documentation for {\ttfamily \mbox{\hyperlink{emstream_8h}{emstream.\+h}}\+:} 
+\begin{DoxyCode}
+uint16\_t a\_data\_item;
+...
+*p\_my\_queue << \mbox{\hyperlink{emstream_8h_a076d1892c2e1133e4cc5469015af6423}{PMS}} (\textcolor{stringliteral}{"The data is: "}) << a\_data\_item << \mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407a5cbad4ad24fd9b8c066cdad096cd2f18}{endl}};
+\end{DoxyCode}
+ In the receiving task, data is read from the queue and then written to some serial device. In this case, the data will be written to an SD card, assuming that an object called {\ttfamily my\+\_\+card} of class {\ttfamily sd\+\_\+card} has previously been created\+: 
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (p\_text\_queue->\mbox{\hyperlink{class_text_queue_a4b520515f1110e8d592a3b5a5abc615b}{check\_for\_char}} ())
+\{
+    my\_card->putchar (p\_text\_queue->\mbox{\hyperlink{class_text_queue_ab682ee4d2cbad87e9496ca424fa03b0a}{getchar}} ());
+\}
+\end{DoxyCode}
+ The reason that the data was not directly written to the SD card in the sending task is timing\+: in this example, we assume that the sending task takes data at regular intervals. Writing data to an SD card, however, takes varying amounts of time, and a long SD card write could block the taking of data for several milliseconds (very bad!) if the data were not being taken in another task and buffered in a queue. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_text_queue_a2823917efdf4439cc4f70456b8ddf4bd}\label{class_text_queue_a2823917efdf4439cc4f70456b8ddf4bd}} 
+\index{Text\+Queue@{Text\+Queue}!Text\+Queue@{Text\+Queue}}
+\index{Text\+Queue@{Text\+Queue}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{Text\+Queue()}{TextQueue()}}
+{\footnotesize\ttfamily Text\+Queue\+::\+Text\+Queue (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{queue\+\_\+size,  }\item[{const char $\ast$}]{p\+\_\+name,  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev = {\ttfamily NULL},  }\item[{Tick\+Type\+\_\+t}]{a\+\_\+wait\+\_\+time = {\ttfamily portMAX\+\_\+DELAY} }\end{DoxyParamCaption})}
+
+
+
+Constructor for a queue which transfers text characters. 
+
+This constructor creates a {\ttfamily \mbox{\hyperlink{class_text_queue}{Text\+Queue}}} object. The queue should be large enough so that if the writing task gets ahead of the reading task for a little while, there\textquotesingle{}s room in the queue to hold the extra characters; if not, writing to the queue will block until the reading task has read characters from the queue and done something with them. 
+\begin{DoxyParams}{Parameters}
+{\em queue\+\_\+size} & The number of characters which can be stored in the queue \\
+\hline
+{\em p\+\_\+name} & A name to be shown in the list of task shares (default {\ttfamily N\+U\+LL}) \\
+\hline
+{\em a\+\_\+wait\+\_\+time} & How long, in R\+T\+OS ticks, to wait for a full queue to become empty before a character can be sent. The default value of port\+M\+A\+X\+\_\+\+D\+E\+L\+AY causes a send to block indefinitely \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & A pointer which points to a serial device which can be used for diagnostic logging or printing \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_text_queue_a4b520515f1110e8d592a3b5a5abc615b}\label{class_text_queue_a4b520515f1110e8d592a3b5a5abc615b}} 
+\index{Text\+Queue@{Text\+Queue}!check\+\_\+for\+\_\+char@{check\+\_\+for\+\_\+char}}
+\index{check\+\_\+for\+\_\+char@{check\+\_\+for\+\_\+char}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{check\+\_\+for\+\_\+char()}{check\_for\_char()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} Text\+Queue\+::check\+\_\+for\+\_\+char (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Check if a character is ready to be read from the queue. 
+
+This method checks if there is a character in the queue. It just calls the Free\+R\+T\+OS function {\ttfamily ux\+Queue\+Messages\+Waiting()}; if there\textquotesingle{}s anything in the queue, the return value from that function will be greater than zero. \begin{DoxyReturn}{Returns}
+True for character available, false for no character available 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classemstream_a64494c4283e4750d29d93df245045d56}{emstream}}.
+
+\mbox{\Hypertarget{class_text_queue_a0f83656a176a1a4d71ef825b8a423ab7}\label{class_text_queue_a0f83656a176a1a4d71ef825b8a423ab7}} 
+\index{Text\+Queue@{Text\+Queue}!get\+\_\+handle@{get\+\_\+handle}}
+\index{get\+\_\+handle@{get\+\_\+handle}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{get\+\_\+handle()}{get\_handle()}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t Text\+Queue\+::get\+\_\+handle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+If somebody wants to do something which Free\+R\+T\+OS queues can do but this class doesn\textquotesingle{}t support, a handle for the queue inside this class can be used to access the queue directly. This isn\textquotesingle{}t normally done. \begin{DoxyReturn}{Returns}
+A handle to the Free\+R\+T\+OS queue structure which is wrapped up by this handy C++ class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_text_queue_ab682ee4d2cbad87e9496ca424fa03b0a}\label{class_text_queue_ab682ee4d2cbad87e9496ca424fa03b0a}} 
+\index{Text\+Queue@{Text\+Queue}!getchar@{getchar}}
+\index{getchar@{getchar}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{getchar()}{getchar()}}
+{\footnotesize\ttfamily char Text\+Queue\+::getchar (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Read one character from the queue. 
+
+This method reads a character from the queue and returns it. If there isn\textquotesingle{}t one conveniently in the queue, it blocks until a character is received. This blocking can be helpful in task synchronization; the receiving task will not waste processor time until a character shows up. \begin{DoxyReturn}{Returns}
+The character which was received from the queue 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classemstream_a41f0814540d5baa7312310c59077a248}{emstream}}.
+
+\mbox{\Hypertarget{class_text_queue_a0fd3c395a00b5da3bb866137466d878a}\label{class_text_queue_a0fd3c395a00b5da3bb866137466d878a}} 
+\index{Text\+Queue@{Text\+Queue}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily Text\+Queue\+::operator \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+This overloaded boolean operator allows one to check if the queue has any contents which can be read by just checking if the queue is true. It might not be the most intuitive method to use, but it sure is convenient. \mbox{\Hypertarget{class_text_queue_a92ed0a74b86ce1ea2dd426c92f3230c6}\label{class_text_queue_a92ed0a74b86ce1ea2dd426c92f3230c6}} 
+\index{Text\+Queue@{Text\+Queue}!peek@{peek}}
+\index{peek@{peek}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{peek()}{peek()}}
+{\footnotesize\ttfamily char Text\+Queue\+::peek (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Copy one character from the queue but leave the original there. 
+
+This method reads a character from the queue and returns it, but unlike {\ttfamily \mbox{\hyperlink{class_text_queue_ab682ee4d2cbad87e9496ca424fa03b0a}{getchar()}}}, it does not remove the character from the queue. If there isn\textquotesingle{}t a character in the queue, it blocks until a character is received. This blocking can be helpful in task synchronization; the receiving task will not waste processor time until a character shows up. \begin{DoxyReturn}{Returns}
+The character which was received from the queue 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classemstream}{emstream}}.
+
+\mbox{\Hypertarget{class_text_queue_aeef41a1bc3486d98fb31cba9ce539d0d}\label{class_text_queue_aeef41a1bc3486d98fb31cba9ce539d0d}} 
+\index{Text\+Queue@{Text\+Queue}!print\+\_\+in\+\_\+list@{print\+\_\+in\+\_\+list}}
+\index{print\+\_\+in\+\_\+list@{print\+\_\+in\+\_\+list}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{print\+\_\+in\+\_\+list()}{print\_in\_list()}}
+{\footnotesize\ttfamily void Text\+Queue\+::print\+\_\+in\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the status of the queue. 
+
+This method writes the status of the text queue to the given serial device. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device on which to print the status \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_base_share_a81ef685c8c1897ee316e853103e9941a}{Base\+Share}}.
+
+\mbox{\Hypertarget{class_text_queue_a917e1c134d4ef6591f832e2706a67cac}\label{class_text_queue_a917e1c134d4ef6591f832e2706a67cac}} 
+\index{Text\+Queue@{Text\+Queue}!putchar@{putchar}}
+\index{putchar@{putchar}!Text\+Queue@{Text\+Queue}}
+\subsubsection{\texorpdfstring{putchar()}{putchar()}}
+{\footnotesize\ttfamily void Text\+Queue\+::putchar (\begin{DoxyParamCaption}\item[{char}]{a\+\_\+char }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Write one character to the text queue. 
+
+This method writes one character to the queue. If the second constructor parameter isn\textquotesingle{}t given, the write operation will block until there is room in the queue for the character being written. Otherwise, the write will block for the given number of R\+T\+OS ticks waiting for an empty space in the queue, then if the queue has not become empty, give up in frustration and return. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+char} & The character to be sent to the queue \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{emstream}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{textqueue_8h}{textqueue.\+h}}\item 
+Doxygen\+Files/\mbox{\hyperlink{textqueue_8cpp}{textqueue.\+cpp}}\end{DoxyCompactItemize}

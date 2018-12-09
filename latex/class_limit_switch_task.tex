@@ -1,0 +1,92 @@
+\hypertarget{class_limit_switch_task}{}\section{Limit\+Switch\+Task Class Reference}
+\label{class_limit_switch_task}\index{Limit\+Switch\+Task@{Limit\+Switch\+Task}}
+
+
+Implements a task to determine whether or not the system is safe.  
+
+
+
+
+{\ttfamily \#include $<$Limit\+Switch\+Task.\+h$>$}
+
+Inheritance diagram for Limit\+Switch\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_limit_switch_task}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_limit_switch_task_a77a868a88b718c91292284e569f24b59}{Limit\+Switch\+Task}} (const char $\ast$a\+\_\+name, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE a\+\_\+priority, size\+\_\+t a\+\_\+stack\+\_\+size, \mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Construct a Limit\+Switch task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_limit_switch_task_abf943a0f6ab5ab5fa9588f9cdbc6bc82}{run}} (void)
+\begin{DoxyCompactList}\small\item\em The run method of the Limit\+Switch task that is repeatedly called by the R\+T\+OS scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implements a task to determine whether or not the system is safe. 
+
+This class is an extension of {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. The purpose of the class is to stop the motor if a limit switch is triggered, meaning the system is currently in an unsafe condition. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_limit_switch_task_a77a868a88b718c91292284e569f24b59}\label{class_limit_switch_task_a77a868a88b718c91292284e569f24b59}} 
+\index{Limit\+Switch\+Task@{Limit\+Switch\+Task}!Limit\+Switch\+Task@{Limit\+Switch\+Task}}
+\index{Limit\+Switch\+Task@{Limit\+Switch\+Task}!Limit\+Switch\+Task@{Limit\+Switch\+Task}}
+\subsubsection{\texorpdfstring{Limit\+Switch\+Task()}{LimitSwitchTask()}}
+{\footnotesize\ttfamily Limit\+Switch\+Task\+::\+Limit\+Switch\+Task (\begin{DoxyParamCaption}\item[{const char $\ast$}]{a\+\_\+name,  }\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{a\+\_\+priority,  }\item[{size\+\_\+t}]{a\+\_\+stack\+\_\+size,  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})}
+
+
+
+Construct a Limit\+Switch task. 
+
+Constructor which creates and initializes a Limit\+Switch task object.
+
+This constructor sets up the task name, priority, stack size, and serial stream. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL)\\
+\hline
+\end{DoxyParams}
+This constructor creates a Free\+R\+T\+OS task with the given task run function, name, priority, and stack size. Its purpose is to alarm the system of an unsafe condition if a limit switch drives a digital pin low. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_limit_switch_task_abf943a0f6ab5ab5fa9588f9cdbc6bc82}\label{class_limit_switch_task_abf943a0f6ab5ab5fa9588f9cdbc6bc82}} 
+\index{Limit\+Switch\+Task@{Limit\+Switch\+Task}!run@{run}}
+\index{run@{run}!Limit\+Switch\+Task@{Limit\+Switch\+Task}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Limit\+Switch\+Task\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The run method of the Limit\+Switch task that is repeatedly called by the R\+T\+OS scheduler. 
+
+The {\ttfamily \mbox{\hyperlink{class_limit_switch_task_abf943a0f6ab5ab5fa9588f9cdbc6bc82}{run()}}} function for the Limit\+Switch task.
+
+This method is called by the R\+T\+OS scheduler. The function reads a G\+P\+IO pin and triggers an unsafe condition if the pin is pulled low. The condition is updated in the p\+\_\+safe shared variable. 
+
+Implements \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{Task\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{_limit_switch_task_8h}{Limit\+Switch\+Task.\+h}}\item 
+Doxygen\+Files/Limit\+Switch\+Task.\+cpp\end{DoxyCompactItemize}

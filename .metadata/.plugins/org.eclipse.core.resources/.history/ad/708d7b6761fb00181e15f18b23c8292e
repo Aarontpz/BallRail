@@ -1,0 +1,24 @@
+//TODO: #ifndef protections lol
+#include "main.h"
+#include "stm32l4xx_hal.h"
+#include "taskbase.h"                       // The base class for all tasks
+#include "taskqueue.h"                      // Queues transmit data between tasks
+#include "taskshare.h"                      // Queues that only carry text
+#include "emstream.h"
+
+
+class MotorDriveTask : public TaskBase {
+public:
+	/** @brief   Construct a shared data item.
+			 *  @details This default constructor for a shared data item doesn't do much
+			 *           besides allocate memory because there isn't any particular setup
+			 *           required. Note that the data is @b not initialized.
+			 *  @param   p_name A name to be shown in the list of task shares (default
+			 *           @c NULL)
+			 */
+	MotorDriveTask(const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev);
+	void run(void);
+};

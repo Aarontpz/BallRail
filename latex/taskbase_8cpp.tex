@@ -1,0 +1,73 @@
+\hypertarget{taskbase_8cpp}{}\section{Doxygen\+Files/taskbase.cpp File Reference}
+\label{taskbase_8cpp}\index{Doxygen\+Files/taskbase.\+cpp@{Doxygen\+Files/taskbase.\+cpp}}
+
+
+Source code for a class which implements tasks for task and state based programs.  
+
+
+{\ttfamily \#include \char`\"{}taskbase.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}{\+\_\+call\+\_\+static\+\_\+run\+\_\+method}} (\mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$p\+\_\+task)
+\begin{DoxyCompactList}\small\item\em Internal use only function which calls the {\ttfamily run()} method. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{taskbase_8cpp_ab47f1dbd41b88d3adbe329027848ab38}{get\+\_\+tick\+\_\+time\+\_\+float}} (void)
+\begin{DoxyCompactList}\small\item\em Get time from the R\+T\+OS tick count, converted to seconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$ \mbox{\hyperlink{taskbase_8cpp_a8ab019e7b0c1b3203a3f62f590b4ff90}{last\+\_\+created\+\_\+task\+\_\+pointer}} = N\+U\+LL
+\begin{DoxyCompactList}\small\item\em A pointer to the most recently created task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Source code for a class which implements tasks for task and state based programs. 
+
+This file contains a wrapper class which makes the use of Free\+R\+T\+OS threads a bit easier. It also adds a simple mechanism to support a finite state machine based construct within each task.
+
+Revised\+: \begin{DoxyItemize}
+\item 10-\/21-\/2012 J\+RR Original file \item 08-\/25-\/2012 J\+RR Modified to run with S\+T\+M32\textquotesingle{}s as well as A\+VR\textquotesingle{}s \item 08-\/26-\/2014 J\+RR Changed file names and base task class name to \mbox{\hyperlink{class_task_base}{Task\+Base}}\end{DoxyItemize}
+Credits\+: This code uses techniques learned from Amigo software, which is copyright 2012 by Digital Aggregates Corporation of Colorado, U\+SA. The license used by Digital Aggregates is a modified version of the G\+NU Public License; see \href{http://www.diag.com/navigation/downloads/Amigo.html}{\tt http\+://www.\+diag.\+com/navigation/downloads/\+Amigo.\+html}.
+
+License\+: This file is copyright 2014 by JR Ridgely and released under the Lesser G\+NU Public License, version 2. It intended for educational use only, but its use is not limited thereto. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}\label{taskbase_8cpp_abeff30a44eadf95fa24c7215cc6d7eae}} 
+\index{taskbase.\+cpp@{taskbase.\+cpp}!\+\_\+call\+\_\+static\+\_\+run\+\_\+method@{\+\_\+call\+\_\+static\+\_\+run\+\_\+method}}
+\index{\+\_\+call\+\_\+static\+\_\+run\+\_\+method@{\+\_\+call\+\_\+static\+\_\+run\+\_\+method}!taskbase.\+cpp@{taskbase.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+call\+\_\+static\+\_\+run\+\_\+method()}{\_call\_static\_run\_method()}}
+{\footnotesize\ttfamily void \+\_\+call\+\_\+static\+\_\+run\+\_\+method (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$}]{p\+\_\+task }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Internal use only function which calls the {\ttfamily run()} method. 
+
+{\bfseries This function never needs to be called by user-\/written code.} This is the task function which is called by the R\+T\+OS scheduler. It needs to call the task\textquotesingle{}s run function which is a member of the user\textquotesingle{}s task class, which is a descendent of class {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. In order to call the user\textquotesingle{}s run method, the R\+T\+OS run function must first call a static task method, {\ttfamily \+\_\+call\+\_\+users\+\_\+run\+\_\+method()}, which is also defined in class {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+task} & A pointer to the task is given as a parameter to this task function; the pointer is used to find the task\textquotesingle{}s static run method \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{taskbase_8cpp_ab47f1dbd41b88d3adbe329027848ab38}\label{taskbase_8cpp_ab47f1dbd41b88d3adbe329027848ab38}} 
+\index{taskbase.\+cpp@{taskbase.\+cpp}!get\+\_\+tick\+\_\+time\+\_\+float@{get\+\_\+tick\+\_\+time\+\_\+float}}
+\index{get\+\_\+tick\+\_\+time\+\_\+float@{get\+\_\+tick\+\_\+time\+\_\+float}!taskbase.\+cpp@{taskbase.\+cpp}}
+\subsubsection{\texorpdfstring{get\+\_\+tick\+\_\+time\+\_\+float()}{get\_tick\_time\_float()}}
+{\footnotesize\ttfamily float get\+\_\+tick\+\_\+time\+\_\+float (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get time from the R\+T\+OS tick count, converted to seconds. 
+
+This function returns the time since the R\+T\+OS was started up. The time is measured as a count of R\+T\+OS ticks since startup, divided by the rate of ticks per second, to give a floating point number holding time in seconds. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{taskbase_8cpp_a8ab019e7b0c1b3203a3f62f590b4ff90}\label{taskbase_8cpp_a8ab019e7b0c1b3203a3f62f590b4ff90}} 
+\index{taskbase.\+cpp@{taskbase.\+cpp}!last\+\_\+created\+\_\+task\+\_\+pointer@{last\+\_\+created\+\_\+task\+\_\+pointer}}
+\index{last\+\_\+created\+\_\+task\+\_\+pointer@{last\+\_\+created\+\_\+task\+\_\+pointer}!taskbase.\+cpp@{taskbase.\+cpp}}
+\subsubsection{\texorpdfstring{last\+\_\+created\+\_\+task\+\_\+pointer}{last\_created\_task\_pointer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}$\ast$ last\+\_\+created\+\_\+task\+\_\+pointer = N\+U\+LL}
+
+
+
+A pointer to the most recently created task. 
+
+This static pointer to the most recently created task is used to find the beginning of a linked list of tasks. It\textquotesingle{}s initially set to {\ttfamily N\+U\+LL}, but each time a task is created, it\textquotesingle{}s changed to point to the newly created task. 

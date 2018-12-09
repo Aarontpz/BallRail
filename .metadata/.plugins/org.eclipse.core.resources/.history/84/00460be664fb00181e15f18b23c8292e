@@ -1,0 +1,27 @@
+#include "main.h"
+#include "stm32l4xx_hal.h"
+#include "taskbase.h"                       // The base class for all tasks
+#include "taskqueue.h"                      // Queues transmit data between tasks
+#include "taskshare.h"                      // Queues that only carry text
+#include "emstream.h"
+
+/** @brief   Implements a task to control the motor.
+ *  @details This class is an extension of @c TaskBase. The purpose of the class
+ *  		 is to interface with the motor driver to control the direction
+ *  		 and operating condition of the brushed DC motor.
+ */
+class MotorDriveTask : public TaskBase {
+public:
+	/** @brief   Construct a MotorDrive task.
+			 *  @details This constructor sets up the task name, priority, stack size,
+			 *  		 and serial stream.
+			 *  @param   p_name A name to be shown in the list of task shares (default
+			 *           @c NULL)
+			 */
+	MotorDriveTask(const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev);
+
+	void run(void);
+};

@@ -1,0 +1,94 @@
+\hypertarget{emstream_8cpp}{}\section{Doxygen\+Files/emstream.cpp File Reference}
+\label{emstream_8cpp}\index{Doxygen\+Files/emstream.\+cpp@{Doxygen\+Files/emstream.\+cpp}}
+
+
+Source code for a base class that imitates C++ I/O streams on serial devices.  
+
+
+{\ttfamily \#include \char`\"{}emstream.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} \mbox{\hyperlink{emstream_8cpp_a3c2c3d8ffc38044a12bdb9773cf9b7fa}{setprecision}} (uint8\+\_\+t digits)
+\begin{DoxyCompactList}\small\item\em Set the number of digits shown after a decimal point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} \mbox{\hyperlink{emstream_8cpp_a1289b0bc61ac6556b4a891adbfa68bfe}{setbase}} (uint8\+\_\+t new\+\_\+base)
+\begin{DoxyCompactList}\small\item\em Set the base for subsequent numeric conversions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{emstream_8cpp_af2db72bc7e1c0c5ab90a66810114a029}{bts\+\_\+new\+\_\+prec}} = 3
+\begin{DoxyCompactList}\small\item\em Temporary holder for {\ttfamily \mbox{\hyperlink{emstream_8cpp_a3c2c3d8ffc38044a12bdb9773cf9b7fa}{setprecision()}}} format function. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{emstream_8cpp_aea069c7881b86d9c2639c9ff51f3f5a7}{bts\+\_\+new\+\_\+base}} = 10
+\begin{DoxyCompactList}\small\item\em Temporary holder for the {\ttfamily \mbox{\hyperlink{emstream_8cpp_a1289b0bc61ac6556b4a891adbfa68bfe}{setbase()}}} format function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Source code for a base class that imitates C++ I/O streams on serial devices. 
+
+This file contains a base class for devices which send information in text form over serial devices. Example devices are serial ports (both traditional R\+S-\/232 ports and U\+S\+B-\/serial adapters) and wireless modems.
+
+Revised\+: \begin{DoxyItemize}
+\item 04-\/03-\/2006 J\+RR For updated version of compiler \item 06-\/10-\/2006 J\+RR Ported from C++ to C for use with some C-\/only projects \item 08-\/11-\/2006 J\+RR Some bug fixes \item 03-\/02-\/2007 J\+RR Ported back to C++. I\textquotesingle{}ve had it with the limitations of C. \item 04-\/16-\/2007 JO Added write (unsigned long) \item 07-\/19-\/2007 J\+RR Changed some character return values to bool, added m324p \item 01-\/12-\/2008 J\+RR Added code for the A\+Tmega128 using U\+S\+A\+RT number 1 only \item 02-\/13-\/2008 J\+RR Split into base class and device specific classes; changed from write() to overloaded $<$$<$ operator in the \char`\"{}cout\char`\"{} style \item 05-\/12-\/2008 A\+LS Fixed bug in which signed numbers came out unsigned \item 07-\/05-\/2008 J\+RR Added configuration macro by which to change what \char`\"{}endl\char`\"{} is \item 07-\/05-\/2008 J\+RR Added \textquotesingle{}ascii\textquotesingle{} and \textquotesingle{}numeric\textquotesingle{} format codes \item 11-\/24-\/2009 J\+RR Changed operation of \textquotesingle{}clrscr\textquotesingle{} to a function to work with L\+CD \item 11-\/26-\/2009 J\+RR Integrated floating point support into this file \item 12-\/16-\/2009 J\+RR Improved support for constant strings in program memory \item 10-\/22-\/2012 J\+RR Fixed (OK, hacked around) bug which caused spurious warning for all Program Memory Strings \item 11-\/12-\/2012 J\+RR Made puts() non-\/virtual; made \mbox{\hyperlink{emstream_8h_ae9ed5f0c8d6cc2b224363baf5157750d}{E\+N\+D\+L\+\_\+\+S\+T\+Y\+L\+E()}} a function macro \item 12-\/21-\/2013 J\+RR Ported to Chibi\+OS \item 10-\/17-\/2014 J\+RR Made compatible with Free\+R\+T\+OS for Cal Poly class use\end{DoxyItemize}
+License\+: This file released under the Lesser G\+NU Public License, version 2. This program is intended for educational use only, but it is not limited thereto. This code incorporates elements from Xmelkov\textquotesingle{}s ftoa\+\_\+engine.\+h, part of the avr-\/libc source, and users must accept and comply with the license of ftoa\+\_\+engine.\+h as well. See \mbox{\hyperlink{emstream_8h}{emstream.\+h}} for a copy of the relevant license terms. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{emstream_8cpp_a1289b0bc61ac6556b4a891adbfa68bfe}\label{emstream_8cpp_a1289b0bc61ac6556b4a891adbfa68bfe}} 
+\index{emstream.\+cpp@{emstream.\+cpp}!setbase@{setbase}}
+\index{setbase@{setbase}!emstream.\+cpp@{emstream.\+cpp}}
+\subsubsection{\texorpdfstring{setbase()}{setbase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} setbase (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+base }\end{DoxyParamCaption})}
+
+
+
+Set the base for subsequent numeric conversions. 
+
+This function, not a member of class emstream, sets the global numeric base and then returns a manipulator which causes a serial object to change to that base. The new base is \char`\"{}sticky\char`\"{} in that its value persists until this function is called (or the manipulators {\ttfamily bin}, {\ttfamily oct}, {\ttfamily dec} or {\ttfamily hex} are used) to change it again. Setting the base automatically turns off raw binary printing mode. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+base} & A new value for the numeric base, as long as it\textquotesingle{}s from 2 to 16 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The serial manipulator called {\ttfamily manip\+\_\+set\+\_\+base} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{emstream_8cpp_a3c2c3d8ffc38044a12bdb9773cf9b7fa}\label{emstream_8cpp_a3c2c3d8ffc38044a12bdb9773cf9b7fa}} 
+\index{emstream.\+cpp@{emstream.\+cpp}!setprecision@{setprecision}}
+\index{setprecision@{setprecision}!emstream.\+cpp@{emstream.\+cpp}}
+\subsubsection{\texorpdfstring{setprecision()}{setprecision()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}} setprecision (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{digits }\end{DoxyParamCaption})}
+
+
+
+Set the number of digits shown after a decimal point. 
+
+This function sets the global precision value, then returns a manipulator which causes a serial object to change its floating point precision (the number of digits after the decimal point which will be printed). The new precision is \char`\"{}sticky\char`\"{} in that its value persists until this function is called again to change it again. 
+\begin{DoxyParams}{Parameters}
+{\em digits} & A new value for the number of digits after the decimal point; a maximum of 7 digits are allowed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The serial manipulator called \char`\"{}manip\+\_\+set\+\_\+precision\char`\"{} 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{emstream_8cpp_aea069c7881b86d9c2639c9ff51f3f5a7}\label{emstream_8cpp_aea069c7881b86d9c2639c9ff51f3f5a7}} 
+\index{emstream.\+cpp@{emstream.\+cpp}!bts\+\_\+new\+\_\+base@{bts\+\_\+new\+\_\+base}}
+\index{bts\+\_\+new\+\_\+base@{bts\+\_\+new\+\_\+base}!emstream.\+cpp@{emstream.\+cpp}}
+\subsubsection{\texorpdfstring{bts\+\_\+new\+\_\+base}{bts\_new\_base}}
+{\footnotesize\ttfamily uint8\+\_\+t bts\+\_\+new\+\_\+base = 10}
+
+
+
+Temporary holder for the {\ttfamily \mbox{\hyperlink{emstream_8cpp_a1289b0bc61ac6556b4a891adbfa68bfe}{setbase()}}} format function. 
+
+This variable allows the nonmember function {\ttfamily \mbox{\hyperlink{emstream_8cpp_a1289b0bc61ac6556b4a891adbfa68bfe}{setbase()}}} to communicate a new numeric base to a specific serial device object. The {\ttfamily \mbox{\hyperlink{emstream_8cpp_a1289b0bc61ac6556b4a891adbfa68bfe}{setbase()}}} method returns a manipulator that causes a specific serial object (the one in whose {\ttfamily cout} style output line it is called) to read the value of this variable. \mbox{\Hypertarget{emstream_8cpp_af2db72bc7e1c0c5ab90a66810114a029}\label{emstream_8cpp_af2db72bc7e1c0c5ab90a66810114a029}} 
+\index{emstream.\+cpp@{emstream.\+cpp}!bts\+\_\+new\+\_\+prec@{bts\+\_\+new\+\_\+prec}}
+\index{bts\+\_\+new\+\_\+prec@{bts\+\_\+new\+\_\+prec}!emstream.\+cpp@{emstream.\+cpp}}
+\subsubsection{\texorpdfstring{bts\+\_\+new\+\_\+prec}{bts\_new\_prec}}
+{\footnotesize\ttfamily uint8\+\_\+t bts\+\_\+new\+\_\+prec = 3}
+
+
+
+Temporary holder for {\ttfamily \mbox{\hyperlink{emstream_8cpp_a3c2c3d8ffc38044a12bdb9773cf9b7fa}{setprecision()}}} format function. 
+
+This variable allows the nonmember function {\ttfamily \mbox{\hyperlink{emstream_8cpp_a3c2c3d8ffc38044a12bdb9773cf9b7fa}{setprecision()}}} to communicate the number of digits after the decimal point to a specific text serial port object. The {\ttfamily \mbox{\hyperlink{emstream_8cpp_a3c2c3d8ffc38044a12bdb9773cf9b7fa}{setprecision()}}} function returns a manipulator that causes a specific serial object (the one in whose {\ttfamily cout} style output line it is called) to read the value of this variable. 

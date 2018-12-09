@@ -1,0 +1,32 @@
+/*
+ * share.h
+ *
+ *  Created on: Dec 3, 2018
+ *      Author: aaron
+ */
+
+//-------------------------------------------------------------------------------------
+/** @brief   Shared variable declarations for the RTOS system.
+ *  @details This file contains the external declarations of the shared variable pointers.
+ * 			 Shared variables are accessible to the tasks by dereferencing the pointer.
+ *  @param   p_safe The
+ *  @param   p_ball_position
+ *  @param   p_ball_velocity
+ *  @param   p_beam_angle
+ *  @param   p_beam_ang_velocity
+ *  @param   p_motor_voltage_pwm
+ *  @param   p_set_ball_position
+ *  @param   p_adc_reading
+ *  @param   p_encoder_reading
+ *  @param   p_user_adc_reading
+ */
+extern TaskShare<bool>* p_safe;
+extern TaskShare<float>* p_ball_position;
+extern TaskShare<float>* p_ball_velocity;
+extern TaskShare<float>* p_beam_angle;
+extern TaskShare<float>* p_beam_ang_velocity;
+extern TaskShare<float>* p_motor_voltage_pwm;
+extern TaskShare<float>* p_set_ball_position;
+extern TaskShare<uint16_t>* p_adc_reading;
+extern TaskShare<uint16_t>* p_encoder_reading;
+extern TaskShare<uint16_t>* p_user_adc_reading;

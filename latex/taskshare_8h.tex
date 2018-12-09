@@ -1,0 +1,25 @@
+\hypertarget{taskshare_8h}{}\section{Doxygen\+Files/taskshare.h File Reference}
+\label{taskshare_8h}\index{Doxygen\+Files/taskshare.\+h@{Doxygen\+Files/taskshare.\+h}}
+
+
+Type-\/safe data which can be shared between tasks in a thread-\/safe manner.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}baseshare.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_task_share}{Task\+Share$<$ Data\+Type $>$}}
+\begin{DoxyCompactList}\small\item\em Class for data to be shared in a thread-\/safe manner between tasks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Type-\/safe data which can be shared between tasks in a thread-\/safe manner. 
+
+This file contains a template class for data which is to be shared between classes. The data must be protected against damage due to context switches, so it is protected by a mutex or by causing transfers to take place inside critical sections which are protected from being interrupted.
+
+Revised\+: \begin{DoxyItemize}
+\item 10-\/29-\/2012 J\+RR Original file \item 08-\/26-\/2014 J\+RR Changed file names, class name to {\ttfamily \mbox{\hyperlink{class_task_share}{Task\+Share}}}, removed unused version that uses semaphores, renamed {\ttfamily put()} and {\ttfamily get()} \item 10-\/18-\/2014 J\+RR Added linked list of all shares for tracking and debugging\end{DoxyItemize}
+License\+: This file is copyright 2014 by JR Ridgely and released under the Lesser G\+NU Public License, version 2. It intended for educational use only, but its use is not limited thereto. 

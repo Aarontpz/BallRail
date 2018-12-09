@@ -1,0 +1,457 @@
+\hypertarget{group___l6206___exported___functions}{}\section{L6206 Exported Functions}
+\label{group___l6206___exported___functions}\index{L6206 Exported Functions@{L6206 Exported Functions}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga297db3a8467d60c474207228f8db4239}{L6206\+\_\+\+Attach\+Error\+Handler}} (void($\ast$callback)(uint16\+\_\+t))
+\begin{DoxyCompactList}\small\item\em Attaches a user callback to the error Handler. The call back will be then called each time the library detects an error. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga12328adaf12eddaa6c0a8b8f27960bb2}{L6206\+\_\+\+Attach\+Flag\+Interrupt}} (void($\ast$callback)(void))
+\begin{DoxyCompactList}\small\item\em Attaches a user callback to the flag Interrupt The call back will be then called each time the status flag pin will be pulled down due to the occurrence of a programmed alarms ( O\+CD, thermal alert) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gaa04c656bbd75fae03f79fadad19c1c15}{L6206\+\_\+\+Disable\+Bridge}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Disable the specified bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gab167a69ec9bbfdee8a66dab0104bde03}{L6206\+\_\+\+Enable\+Bridge}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Enable the specified bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gadc30fab492fa25e27e9d2d98ba2a63a4}{L6206\+\_\+\+Init}} (void $\ast$init)
+\begin{DoxyCompactList}\small\item\em Start the L6206 library. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_ga96e17386e67b53504b3a175c6407552a}{L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Get the P\+WM frequency of the specified bridge. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gabfaed09fe6f8d2c74c0b78d2108fb83a}{L6206\+\_\+\+Get\+Current\+Speed}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the current speed of the specified motor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___device___states_ga9ba865be7705688e94f95a410e917a07}{motor\+State\+\_\+t}} \mbox{\hyperlink{group___l6206___exported___functions_ga133a25387b4a4a63e9c7544c5f3446f2}{L6206\+\_\+\+Get\+Device\+State}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the device state. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gad12aece8f24b63edc2e1fb7dc733a5a6}{L6206\+\_\+\+Get\+Fw\+Version}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the FW version of the library. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gae656e681fb3c93267e8589d97d3cad8f}{L6206\+\_\+\+Get\+Max\+Speed}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the max speed of the specified motor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmotor_drv__t}{motor\+Drv\+\_\+t}} $\ast$ \mbox{\hyperlink{group___l6206___exported___functions_gaa149792f903cf325f24d8d4488d6c1c4}{L6206\+\_\+\+Get\+Motor\+Handle}} (void)
+\begin{DoxyCompactList}\small\item\em Return motor handle (pointer to the L6206 motor driver structure) \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_gae81e6ca6cb60e241433a05c832cea4c3}{L6206\+\_\+\+Get\+Bridge\+Status}} (uint8\+\_\+t bridge\+Id)
+\begin{DoxyCompactList}\small\item\em Get the status of the bridge enabling of the corresponding bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gaf6831d9247cb27710fd2e4b782e3e4b7}{L6206\+\_\+\+Hard\+Hiz}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Immediatly stops the motor and disable the power bridge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga89661968f456ec5778f6290c1a4681f1}{L6206\+\_\+\+Hard\+Stop}} (uint8\+\_\+t motor\+Id)
+\begin{DoxyCompactList}\small\item\em Stops the motor without disabling the bridge. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___l6206___exported___functions_ga853fd3a4a008922950a77d5988633549}{L6206\+\_\+\+Read\+Id}} (void)
+\begin{DoxyCompactList}\small\item\em Read id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gafc7601e986586d361a66bc38687fd56c}{L6206\+\_\+\+Run}} (uint8\+\_\+t motor\+Id, \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}} direction)
+\begin{DoxyCompactList}\small\item\em Runs the motor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_ga5c4892c39f6d5898198d8e3557b14247}{L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config}} (uint8\+\_\+t new\+Config)
+\begin{DoxyCompactList}\small\item\em Set dual full bridge parallelling configuration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{group___l6206___exported___functions_gada5e46e0ed715e962205f1d65aa11370}{L6206\+\_\+\+Set\+Max\+Speed}} (uint8\+\_\+t motor\+Id, uint16\+\_\+t new\+Max\+Speed)
+\begin{DoxyCompactList}\small\item\em Changes the max speed of the specified device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___l6206___exported___functions_gac4b755ed3297f186b27030c5108fc0fd}{L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq}} (uint8\+\_\+t bridge\+Id, uint32\+\_\+t new\+Freq)
+\begin{DoxyCompactList}\small\item\em Changes the P\+WM frequency of the bridge input. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___l6206___exported___functions_gaee1040a2e270f617cb5c91e936f8d6e6}\label{group___l6206___exported___functions_gaee1040a2e270f617cb5c91e936f8d6e6}} 
+void {\bfseries L6206\+\_\+\+Tick\+Handler} (uint8\+\_\+t device\+Id)
+\item 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{group___l6206___exported___functions_gaa25442be9b6a3d12b3c3b28568350528}{L6206\+\_\+\+Set\+Nb\+Devices}} (uint8\+\_\+t nb\+Devices)
+\begin{DoxyCompactList}\small\item\em Sets the number of devices to be used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___l6206___exported___functions_ga297db3a8467d60c474207228f8db4239}\label{group___l6206___exported___functions_ga297db3a8467d60c474207228f8db4239}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Attach\+Error\+Handler@{L6206\+\_\+\+Attach\+Error\+Handler}}
+\index{L6206\+\_\+\+Attach\+Error\+Handler@{L6206\+\_\+\+Attach\+Error\+Handler}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Attach\+Error\+Handler()}{L6206\_AttachErrorHandler()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Attach\+Error\+Handler (\begin{DoxyParamCaption}\item[{void($\ast$)(uint16\+\_\+t)}]{callback }\end{DoxyParamCaption})}
+
+
+
+Attaches a user callback to the error Handler. The call back will be then called each time the library detects an error. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em callback} & Name of the callback to attach to the error Hanlder \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_ga12328adaf12eddaa6c0a8b8f27960bb2}\label{group___l6206___exported___functions_ga12328adaf12eddaa6c0a8b8f27960bb2}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Attach\+Flag\+Interrupt@{L6206\+\_\+\+Attach\+Flag\+Interrupt}}
+\index{L6206\+\_\+\+Attach\+Flag\+Interrupt@{L6206\+\_\+\+Attach\+Flag\+Interrupt}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Attach\+Flag\+Interrupt()}{L6206\_AttachFlagInterrupt()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Attach\+Flag\+Interrupt (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{callback }\end{DoxyParamCaption})}
+
+
+
+Attaches a user callback to the flag Interrupt The call back will be then called each time the status flag pin will be pulled down due to the occurrence of a programmed alarms ( O\+CD, thermal alert) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em callback} & Name of the callback to attach to the Flag Interrupt \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gaa04c656bbd75fae03f79fadad19c1c15}\label{group___l6206___exported___functions_gaa04c656bbd75fae03f79fadad19c1c15}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Disable\+Bridge@{L6206\+\_\+\+Disable\+Bridge}}
+\index{L6206\+\_\+\+Disable\+Bridge@{L6206\+\_\+\+Disable\+Bridge}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Disable\+Bridge()}{L6206\_DisableBridge()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Disable\+Bridge (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bridge\+Id }\end{DoxyParamCaption})}
+
+
+
+Disable the specified bridge. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bridge\+Id} & (from 0 for bridge A to 1 for bridge B) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+When input of different brigdes are parallelized together, the disabling of one bridge leads to the disabling of the second one 
+\end{DoxyNote}
+\mbox{\Hypertarget{group___l6206___exported___functions_gab167a69ec9bbfdee8a66dab0104bde03}\label{group___l6206___exported___functions_gab167a69ec9bbfdee8a66dab0104bde03}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Enable\+Bridge@{L6206\+\_\+\+Enable\+Bridge}}
+\index{L6206\+\_\+\+Enable\+Bridge@{L6206\+\_\+\+Enable\+Bridge}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Enable\+Bridge()}{L6206\_EnableBridge()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Enable\+Bridge (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bridge\+Id }\end{DoxyParamCaption})}
+
+
+
+Enable the specified bridge. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bridge\+Id} & (from 0 for bridge A to 1 for bridge B) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+When input of different brigdes are parallelized together, the enabling of one bridge leads to the enabling of the second one 
+\end{DoxyNote}
+\mbox{\Hypertarget{group___l6206___exported___functions_ga96e17386e67b53504b3a175c6407552a}\label{group___l6206___exported___functions_ga96e17386e67b53504b3a175c6407552a}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq@{L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq}}
+\index{L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq@{L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq()}{L6206\_GetBridgeInputPwmFreq()}}
+{\footnotesize\ttfamily uint32\+\_\+t L6206\+\_\+\+Get\+Bridge\+Input\+Pwm\+Freq (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bridge\+Id }\end{DoxyParamCaption})}
+
+
+
+Get the P\+WM frequency of the specified bridge. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bridge\+Id} & 0 for bridge A, 1 for bridge B \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Freq} & in Hz \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gae81e6ca6cb60e241433a05c832cea4c3}\label{group___l6206___exported___functions_gae81e6ca6cb60e241433a05c832cea4c3}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Get\+Bridge\+Status@{L6206\+\_\+\+Get\+Bridge\+Status}}
+\index{L6206\+\_\+\+Get\+Bridge\+Status@{L6206\+\_\+\+Get\+Bridge\+Status}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Bridge\+Status()}{L6206\_GetBridgeStatus()}}
+{\footnotesize\ttfamily uint16\+\_\+t L6206\+\_\+\+Get\+Bridge\+Status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bridge\+Id }\end{DoxyParamCaption})}
+
+
+
+Get the status of the bridge enabling of the corresponding bridge. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bridge\+Id} & from 0 for bridge A to 1 for bridge B \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em State} & of the Enable\&Flag pin of the corresponding bridge (1 set, 0 for reset) \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gabfaed09fe6f8d2c74c0b78d2108fb83a}\label{group___l6206___exported___functions_gabfaed09fe6f8d2c74c0b78d2108fb83a}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Get\+Current\+Speed@{L6206\+\_\+\+Get\+Current\+Speed}}
+\index{L6206\+\_\+\+Get\+Current\+Speed@{L6206\+\_\+\+Get\+Current\+Speed}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Current\+Speed()}{L6206\_GetCurrentSpeed()}}
+{\footnotesize\ttfamily uint16\+\_\+t L6206\+\_\+\+Get\+Current\+Speed (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Returns the current speed of the specified motor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em current} & speed in \% from 0 to 100 \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_ga133a25387b4a4a63e9c7544c5f3446f2}\label{group___l6206___exported___functions_ga133a25387b4a4a63e9c7544c5f3446f2}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Get\+Device\+State@{L6206\+\_\+\+Get\+Device\+State}}
+\index{L6206\+\_\+\+Get\+Device\+State@{L6206\+\_\+\+Get\+Device\+State}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Device\+State()}{L6206\_GetDeviceState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___device___states_ga9ba865be7705688e94f95a410e917a07}{motor\+State\+\_\+t}} L6206\+\_\+\+Get\+Device\+State (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Returns the device state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em State} & (S\+T\+E\+A\+DY or I\+N\+A\+C\+T\+I\+VE) \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gad12aece8f24b63edc2e1fb7dc733a5a6}\label{group___l6206___exported___functions_gad12aece8f24b63edc2e1fb7dc733a5a6}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Get\+Fw\+Version@{L6206\+\_\+\+Get\+Fw\+Version}}
+\index{L6206\+\_\+\+Get\+Fw\+Version@{L6206\+\_\+\+Get\+Fw\+Version}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Fw\+Version()}{L6206\_GetFwVersion()}}
+{\footnotesize\ttfamily uint32\+\_\+t L6206\+\_\+\+Get\+Fw\+Version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns the FW version of the library. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em L6206\+\_\+\+F\+W\+\_\+\+V\+E\+R\+S\+I\+ON} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gae656e681fb3c93267e8589d97d3cad8f}\label{group___l6206___exported___functions_gae656e681fb3c93267e8589d97d3cad8f}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Get\+Max\+Speed@{L6206\+\_\+\+Get\+Max\+Speed}}
+\index{L6206\+\_\+\+Get\+Max\+Speed@{L6206\+\_\+\+Get\+Max\+Speed}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Max\+Speed()}{L6206\_GetMaxSpeed()}}
+{\footnotesize\ttfamily uint16\+\_\+t L6206\+\_\+\+Get\+Max\+Speed (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Returns the max speed of the specified motor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em max\+Speed} & in \% from 0 to 100 \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gaa149792f903cf325f24d8d4488d6c1c4}\label{group___l6206___exported___functions_gaa149792f903cf325f24d8d4488d6c1c4}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Get\+Motor\+Handle@{L6206\+\_\+\+Get\+Motor\+Handle}}
+\index{L6206\+\_\+\+Get\+Motor\+Handle@{L6206\+\_\+\+Get\+Motor\+Handle}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Get\+Motor\+Handle()}{L6206\_GetMotorHandle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmotor_drv__t}{motor\+Drv\+\_\+t}} $\ast$ L6206\+\_\+\+Get\+Motor\+Handle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Return motor handle (pointer to the L6206 motor driver structure) 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em Pointer} & to the \mbox{\hyperlink{structmotor_drv__t}{motor\+Drv\+\_\+t}} structure \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gaf6831d9247cb27710fd2e4b782e3e4b7}\label{group___l6206___exported___functions_gaf6831d9247cb27710fd2e4b782e3e4b7}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Hard\+Hiz@{L6206\+\_\+\+Hard\+Hiz}}
+\index{L6206\+\_\+\+Hard\+Hiz@{L6206\+\_\+\+Hard\+Hiz}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Hard\+Hiz()}{L6206\_HardHiz()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Hard\+Hiz (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Immediatly stops the motor and disable the power bridge. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+if two motors uses the same power bridge, the power bridge will be disable only if the two motors are stopped 
+\end{DoxyNote}
+\mbox{\Hypertarget{group___l6206___exported___functions_ga89661968f456ec5778f6290c1a4681f1}\label{group___l6206___exported___functions_ga89661968f456ec5778f6290c1a4681f1}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Hard\+Stop@{L6206\+\_\+\+Hard\+Stop}}
+\index{L6206\+\_\+\+Hard\+Stop@{L6206\+\_\+\+Hard\+Stop}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Hard\+Stop()}{L6206\_HardStop()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Hard\+Stop (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id }\end{DoxyParamCaption})}
+
+
+
+Stops the motor without disabling the bridge. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em none} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gadc30fab492fa25e27e9d2d98ba2a63a4}\label{group___l6206___exported___functions_gadc30fab492fa25e27e9d2d98ba2a63a4}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Init@{L6206\+\_\+\+Init}}
+\index{L6206\+\_\+\+Init@{L6206\+\_\+\+Init}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Init()}{L6206\_Init()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void $\ast$}]{init }\end{DoxyParamCaption})}
+
+
+
+Start the L6206 library. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em init} & pointer to the initialization data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_ga853fd3a4a008922950a77d5988633549}\label{group___l6206___exported___functions_ga853fd3a4a008922950a77d5988633549}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Read\+Id@{L6206\+\_\+\+Read\+Id}}
+\index{L6206\+\_\+\+Read\+Id@{L6206\+\_\+\+Read\+Id}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Read\+Id()}{L6206\_ReadId()}}
+{\footnotesize\ttfamily uint16\+\_\+t L6206\+\_\+\+Read\+Id (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read id. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em Id} & of the l6206 Driver Instance \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gafc7601e986586d361a66bc38687fd56c}\label{group___l6206___exported___functions_gafc7601e986586d361a66bc38687fd56c}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Run@{L6206\+\_\+\+Run}}
+\index{L6206\+\_\+\+Run@{L6206\+\_\+\+Run}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Run()}{L6206\_Run()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Run (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id,  }\item[{\mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}}}]{direction }\end{DoxyParamCaption})}
+
+
+
+Runs the motor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\mbox{\tt in}  & {\em direction} & F\+O\+R\+W\+A\+RD or B\+A\+C\+K\+W\+A\+RD \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+For unidirectionnal motor, direction parameter has no effect 
+\end{DoxyNote}
+\mbox{\Hypertarget{group___l6206___exported___functions_gac4b755ed3297f186b27030c5108fc0fd}\label{group___l6206___exported___functions_gac4b755ed3297f186b27030c5108fc0fd}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq@{L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq}}
+\index{L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq@{L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq()}{L6206\_SetBridgeInputPwmFreq()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Set\+Bridge\+Input\+Pwm\+Freq (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bridge\+Id,  }\item[{uint32\+\_\+t}]{new\+Freq }\end{DoxyParamCaption})}
+
+
+
+Changes the P\+WM frequency of the bridge input. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bridge\+Id} & 0 for bridge A, 1 for bridge B \\
+\hline
+\mbox{\tt in}  & {\em new\+Freq} & in Hz \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_ga5c4892c39f6d5898198d8e3557b14247}\label{group___l6206___exported___functions_ga5c4892c39f6d5898198d8e3557b14247}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config@{L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config}}
+\index{L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config@{L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config()}{L6206\_SetDualFullBridgeConfig()}}
+{\footnotesize\ttfamily void L6206\+\_\+\+Set\+Dual\+Full\+Bridge\+Config (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+Config }\end{DoxyParamCaption})}
+
+
+
+Set dual full bridge parallelling configuration. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em new\+Config} & bridge configuration to apply from dual\+Full\+Bridge\+Config\+\_\+t enum \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gada5e46e0ed715e962205f1d65aa11370}\label{group___l6206___exported___functions_gada5e46e0ed715e962205f1d65aa11370}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Set\+Max\+Speed@{L6206\+\_\+\+Set\+Max\+Speed}}
+\index{L6206\+\_\+\+Set\+Max\+Speed@{L6206\+\_\+\+Set\+Max\+Speed}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Set\+Max\+Speed()}{L6206\_SetMaxSpeed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} L6206\+\_\+\+Set\+Max\+Speed (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor\+Id,  }\item[{uint16\+\_\+t}]{new\+Max\+Speed }\end{DoxyParamCaption})}
+
+
+
+Changes the max speed of the specified device. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em motor\+Id} & from 0 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+B\+R\+U\+S\+H\+\_\+\+D\+C\+\_\+\+M\+O\+T\+O\+RS \\
+\hline
+\mbox{\tt in}  & {\em new\+Max\+Speed} & in \% from 0 to 100 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & if the command is successfully executed, else false \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___l6206___exported___functions_gaa25442be9b6a3d12b3c3b28568350528}\label{group___l6206___exported___functions_gaa25442be9b6a3d12b3c3b28568350528}} 
+\index{L6206 Exported Functions@{L6206 Exported Functions}!L6206\+\_\+\+Set\+Nb\+Devices@{L6206\+\_\+\+Set\+Nb\+Devices}}
+\index{L6206\+\_\+\+Set\+Nb\+Devices@{L6206\+\_\+\+Set\+Nb\+Devices}!L6206 Exported Functions@{L6206 Exported Functions}}
+\subsubsection{\texorpdfstring{L6206\+\_\+\+Set\+Nb\+Devices()}{L6206\_SetNbDevices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} L6206\+\_\+\+Set\+Nb\+Devices (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{nb\+Devices }\end{DoxyParamCaption})}
+
+
+
+Sets the number of devices to be used. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em nb\+Devices} & (from 1 to M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+D\+E\+V\+I\+C\+ES) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & if successfull, F\+A\+L\+SE if failure, attempt to set a number of devices greater than M\+A\+X\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+D\+E\+V\+I\+C\+ES \\
+\hline
+\end{DoxyRetVals}

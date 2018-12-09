@@ -90,7 +90,17 @@ extern "C" void __cxa_pure_virtual (void);
  *  package has to go somewhere, so it has been placed here. It is hoped that not a
  *  whole lot of work will need to be done in this remote corner of the software.
  */
-/** \mainpage
+/** \authors Jason Grillo, Aaron Parisi, Trent Peterson
+ * 	\mainpage
+ * 	  The Ball and Rail control project used the ME 405/507 library provided by John
+ * 	  R. Ridgely from the Cal Poly Mechanical Engineering department. The project
+ * 	  utilizes a Real Time Operating System (RTOS) to manage the critical timing of
+ * 	  many tasks, each designed to execute specific functions simultaneously. The tasks
+ * 	  communicate to each other with shared pointers. In short, the documentation includes
+ * 	  content from the ME 405/507 library in addition to user source code that was written
+ * 	  to implement the state space control algorithm for the Ball and Rail system.
+ *
+ * 	\section ME405/507 Library Information
  *    This documentation describes software designed for the ME405 class at Cal Poly. 
  *    This software is intended to support the learning of embedded systems programming
  *    concepts by undergraduate engineering students. Although primarily intended for 

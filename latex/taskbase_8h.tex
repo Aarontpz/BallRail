@@ -1,0 +1,129 @@
+\hypertarget{taskbase_8h}{}\section{Doxygen\+Files/taskbase.h File Reference}
+\label{taskbase_8h}\index{Doxygen\+Files/taskbase.\+h@{Doxygen\+Files/taskbase.\+h}}
+
+
+Headers for a class which implements tasks for task and state based programs.  
+
+
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hacks.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}emstream.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_task_base}{Task\+Base}}
+\begin{DoxyCompactList}\small\item\em Base class for implementations of tasks in task/state based programs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{taskbase_8h_a7e56015e8db0788ac30b611936898d93}{task\+\_\+priority}}(x)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{taskbase_8h_af5d58b59190c51229146e8d6ca0915ac}{operator$<$$<$}} (\mbox{\hyperlink{classemstream}{emstream}} \&, \mbox{\hyperlink{class_task_base}{Task\+Base}} \&)
+\item 
+void \mbox{\hyperlink{taskbase_8h_a95f0d692cdfe28ec752321a16dbe8d7f}{print\+\_\+task\+\_\+list}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$ser\+\_\+dev)
+\item 
+void \mbox{\hyperlink{taskbase_8h_aa651c517ed031b06776e0312ac4556e1}{print\+\_\+task\+\_\+stacks}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$ser\+\_\+dev)
+\item 
+float \mbox{\hyperlink{taskbase_8h_ab47f1dbd41b88d3adbe329027848ab38}{get\+\_\+tick\+\_\+time\+\_\+float}} (void)
+\begin{DoxyCompactList}\small\item\em Get time from the R\+T\+OS tick count, converted to seconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_base}{Task\+Base}} $\ast$ \mbox{\hyperlink{taskbase_8h_a8ab019e7b0c1b3203a3f62f590b4ff90}{last\+\_\+created\+\_\+task\+\_\+pointer}}
+\begin{DoxyCompactList}\small\item\em A pointer to the most recently created task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Headers for a class which implements tasks for task and state based programs. 
+
+This file contains a wrapper class which makes the use of Free\+R\+T\+OS threads a bit easier. It also adds a simple mechanism to support a finite state machine based construct within each task.
+
+Revised\+: \begin{DoxyItemize}
+\item 10-\/21-\/2012 J\+RR Original file \item 08-\/25-\/2012 J\+RR Modified to run with S\+T\+M32\textquotesingle{}s as well as A\+VR\textquotesingle{}s \item 08-\/26-\/2014 J\+RR Changed file names and base task class name to \mbox{\hyperlink{class_task_base}{Task\+Base}} \item 09-\/03-\/2014 J\+RR Minor upgrades; renamed method to {\ttfamily delay\+\_\+from\+\_\+for()} \end{DoxyItemize}
+Credits\+: Much of this code uses techniques learned from Amigo software, which is copyright 2012 by Digital Aggregates Corporation of Colorado, U\+SA. The license used by Digital Aggregates is a modified version of the G\+NU Public License. See \href{http://www.diag.com/navigation/downloads/Amigo.html}{\tt http\+://www.\+diag.\+com/navigation/downloads/\+Amigo.\+html}.
+
+License\+: This file is copyright 2014 by JR Ridgely and released under the Lesser G\+NU Public License, version 2. It intended for educational use only, but its use is not limited thereto. 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{taskbase_8h_a7e56015e8db0788ac30b611936898d93}\label{taskbase_8h_a7e56015e8db0788ac30b611936898d93}} 
+\index{taskbase.\+h@{taskbase.\+h}!task\+\_\+priority@{task\+\_\+priority}}
+\index{task\+\_\+priority@{task\+\_\+priority}!taskbase.\+h@{taskbase.\+h}}
+\subsubsection{\texorpdfstring{task\+\_\+priority}{task\_priority}}
+{\footnotesize\ttfamily \#define task\+\_\+priority(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+((x) < (configMAX\_PRIORITIES) ? \(\backslash\)
+                ((tskIDLE\_PRIORITY) + (x)) : (configMAX\_PRIORITIES))
+\end{DoxyCode}
+This macro is used to set the priority of a task. In addition to being a little more readable than the usual priority which is calculated from the idle task\textquotesingle{}s priority, this macro checks to make sure that the asked for priority doesn\textquotesingle{}t exceed the maximum priority set in {\ttfamily \mbox{\hyperlink{_free_r_t_o_s_config_8h_source}{Free\+R\+T\+O\+S\+Config.\+h}}}. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{taskbase_8h_ab47f1dbd41b88d3adbe329027848ab38}\label{taskbase_8h_ab47f1dbd41b88d3adbe329027848ab38}} 
+\index{taskbase.\+h@{taskbase.\+h}!get\+\_\+tick\+\_\+time\+\_\+float@{get\+\_\+tick\+\_\+time\+\_\+float}}
+\index{get\+\_\+tick\+\_\+time\+\_\+float@{get\+\_\+tick\+\_\+time\+\_\+float}!taskbase.\+h@{taskbase.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+tick\+\_\+time\+\_\+float()}{get\_tick\_time\_float()}}
+{\footnotesize\ttfamily float get\+\_\+tick\+\_\+time\+\_\+float (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get time from the R\+T\+OS tick count, converted to seconds. 
+
+This function returns the time since the R\+T\+OS was started up. The time is measured as a count of R\+T\+OS ticks since startup, divided by the rate of ticks per second, to give a floating point number holding time in seconds. \mbox{\Hypertarget{taskbase_8h_af5d58b59190c51229146e8d6ca0915ac}\label{taskbase_8h_af5d58b59190c51229146e8d6ca0915ac}} 
+\index{taskbase.\+h@{taskbase.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!taskbase.\+h@{taskbase.\+h}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}}\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} \&}]{ser\+\_\+dev,  }\item[{\mbox{\hyperlink{class_task_base}{Task\+Base}} \&}]{a\+\_\+task }\end{DoxyParamCaption})}
+
+This overloaded operator writes information about the task\textquotesingle{}s status to the given serial device. That information can be used for debugging or perhaps reliability testing. Information written is\+: \begin{DoxyItemize}
+\item The task\textquotesingle{}s name \item The priority \item The amount of stack used and total available 
+\begin{DoxyParams}{Parameters}
+{\em ser\+\_\+dev} & A reference to the serial device on which we\textquotesingle{}re writing information \\
+\hline
+{\em a\+\_\+task} & A reference to the task whose information is to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the same serial device on which we write information. This is used to string together things to write with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+\end{DoxyItemize}
+\mbox{\Hypertarget{taskbase_8h_a95f0d692cdfe28ec752321a16dbe8d7f}\label{taskbase_8h_a95f0d692cdfe28ec752321a16dbe8d7f}} 
+\index{taskbase.\+h@{taskbase.\+h}!print\+\_\+task\+\_\+list@{print\+\_\+task\+\_\+list}}
+\index{print\+\_\+task\+\_\+list@{print\+\_\+task\+\_\+list}!taskbase.\+h@{taskbase.\+h}}
+\subsubsection{\texorpdfstring{print\+\_\+task\+\_\+list()}{print\_task\_list()}}
+{\footnotesize\ttfamily void print\+\_\+task\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{ser\+\_\+dev }\end{DoxyParamCaption})}
+
+This function prints information about how all the tasks are doing. Beginning with the most recently created task, each task prints its status and then asks the next task in the list to do the same until the end of the list is found. W\+A\+R\+N\+I\+NG\+: The display of memory remaining in the task stacks, which is found by calls to Free\+R\+T\+OS function ux\+Task\+Get\+Stack\+High\+Water\+Mark(), seems to be suspicious. The author isn\textquotesingle{}t sure if it can always be trusted. 
+\begin{DoxyParams}{Parameters}
+{\em ser\+\_\+dev} & Pointer to a serial device on which the information will be printed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{taskbase_8h_aa651c517ed031b06776e0312ac4556e1}\label{taskbase_8h_aa651c517ed031b06776e0312ac4556e1}} 
+\index{taskbase.\+h@{taskbase.\+h}!print\+\_\+task\+\_\+stacks@{print\+\_\+task\+\_\+stacks}}
+\index{print\+\_\+task\+\_\+stacks@{print\+\_\+task\+\_\+stacks}!taskbase.\+h@{taskbase.\+h}}
+\subsubsection{\texorpdfstring{print\+\_\+task\+\_\+stacks()}{print\_task\_stacks()}}
+{\footnotesize\ttfamily void print\+\_\+task\+\_\+stacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{ser\+\_\+dev }\end{DoxyParamCaption})}
+
+This function has all the tasks in the task list do a \char`\"{}stack dump\char`\"{}, printing their stacks in hex dump format. The idle task\textquotesingle{}s stack is printed afterwards. 
+\begin{DoxyParams}{Parameters}
+{\em ser\+\_\+dev} & Pointer to a serial device on which the information will be printed \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{taskbase_8h_a8ab019e7b0c1b3203a3f62f590b4ff90}\label{taskbase_8h_a8ab019e7b0c1b3203a3f62f590b4ff90}} 
+\index{taskbase.\+h@{taskbase.\+h}!last\+\_\+created\+\_\+task\+\_\+pointer@{last\+\_\+created\+\_\+task\+\_\+pointer}}
+\index{last\+\_\+created\+\_\+task\+\_\+pointer@{last\+\_\+created\+\_\+task\+\_\+pointer}!taskbase.\+h@{taskbase.\+h}}
+\subsubsection{\texorpdfstring{last\+\_\+created\+\_\+task\+\_\+pointer}{last\_created\_task\_pointer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}$\ast$ last\+\_\+created\+\_\+task\+\_\+pointer}
+
+
+
+A pointer to the most recently created task. 
+
+This static pointer to the most recently created task is used to find the beginning of a linked list of tasks. It\textquotesingle{}s initially set to {\ttfamily N\+U\+LL}, but each time a task is created, it\textquotesingle{}s changed to point to the newly created task. 

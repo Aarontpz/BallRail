@@ -1,0 +1,746 @@
+\hypertarget{classemstream}{}\section{emstream Class Reference}
+\label{classemstream}\index{emstream@{emstream}}
+
+
+Base class for serial devices which print using a {\ttfamily $<$$<$} operator.  
+
+
+
+
+{\ttfamily \#include $<$emstream.\+h$>$}
+
+Inheritance diagram for emstream\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classemstream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classemstream_ad19a1ff84926b5fd5feac71fc2f7fb51}{emstream}} (void)
+\begin{DoxyCompactList}\small\item\em Create a base text stream object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{classemstream_a28149c19ad19d10d89ca8dd3d3803b1a}{ready\+\_\+to\+\_\+send}} (void)
+\begin{DoxyCompactList}\small\item\em Check if a serial device is ready to transmit characters. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar}} (char a\+\_\+char)=0
+\begin{DoxyCompactList}\small\item\em Base method for sending one character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts}} (const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Write a character string to a serial device. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{classemstream_a64494c4283e4750d29d93df245045d56}{check\+\_\+for\+\_\+char}} (void)
+\begin{DoxyCompactList}\small\item\em Check if a character is ready to read from a serial device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classemstream_af514146b9ca7d4091a688b413b422d50}\label{classemstream_af514146b9ca7d4091a688b413b422d50}} 
+virtual char {\bfseries peek} (void)=0
+\item 
+virtual char \mbox{\hyperlink{classemstream_a41f0814540d5baa7312310c59077a248}{getchar}} (void)
+\begin{DoxyCompactList}\small\item\em Get a character from a serial device. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classemstream_a3ef6ddf641176d416f9ae6a5c4cfc067}{transmit\+\_\+now}} (void)
+\begin{DoxyCompactList}\small\item\em Cause a transmitter to send buffered characters immediately. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classemstream_a8dcff85fe80c250b20b5da78b1799ed5}{clear\+\_\+screen}} (void)
+\begin{DoxyCompactList}\small\item\em Clear a display screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a180fa065e30c2e97e957a97b70eb8eb4}{operator$<$$<$}} (\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}})
+\begin{DoxyCompactList}\small\item\em Write unsigned an 8-\/bit unsigned number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_ac570021b41b465fd0f98257a17316e7b}{operator$<$$<$}} (const char $\ast$p\+\_\+string)
+\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a2125b913b6a300c4ac176af247ff5a53}{operator$<$$<$}} (char ch)
+\item 
+\mbox{\Hypertarget{classemstream_a28fcc39c98ff38302cba6b3eb98b66f0}\label{classemstream_a28fcc39c98ff38302cba6b3eb98b66f0}} 
+\mbox{\hyperlink{classemstream}{emstream}} \& {\bfseries operator$<$$<$} (uint8\+\_\+t)
+\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a8666557b0248286fd70a69d6e0106f4f}{operator$<$$<$}} (int8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write a signed 8-\/bit number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_aed40605be053b7cbae14201162028781}{operator$<$$<$}} (uint16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write unsigned 16-\/bit numbers to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a40243877b820b91c9798e99fd565f85f}{operator$<$$<$}} (int16\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write a signed 16-\/bit number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_aa3915880211b615d4f889036683c53c3}{operator$<$$<$}} (uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write an unsigned 32-\/bit number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_abf54c92665eaecae12af886b4275ded3}{operator$<$$<$}} (int32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write a signed 32-\/bit number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_aad47341203535f0c3b8d34f63fa0723f}{operator$<$$<$}} (uint64\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write an unsigned 64-\/bit number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_ad0b6eeba3130fb192413f43cfb1670fe}{operator$<$$<$}} (int64\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write a signed 64-\/bit number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a87d81e918bc1baa294ee9c9c3d056ea7}{operator$<$$<$}} (void $\ast$)
+\begin{DoxyCompactList}\small\item\em Write a pointer to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_ab0ea0ed8ea67a4182d526bdae23d4594}{operator$<$$<$}} (float)
+\begin{DoxyCompactList}\small\item\em Write a single precision floating point number to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a14caec5bbf12dd25ae39c72a95bebf0b}{operator$<$$<$}} (double)
+\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a10a043d75a8d229974282c0bac207dab}{operator$<$$<$}} (\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}})
+\begin{DoxyCompactList}\small\item\em Overloaded operator used to print things to a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a67dc7f8341184dffa95daf0104406e17}{operator$>$$>$}} (char \&ch)
+\begin{DoxyCompactList}\small\item\em Stream input operator which reads a single character. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_ab27cadcdfb7256a05c2474c954fd02b8}{operator$>$$>$}} (uint8\+\_\+t \&number)
+\begin{DoxyCompactList}\small\item\em Read an 8-\/bit unsigned decimal integer from a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a8dfe916d7db9331beaf5dc98b6c5b9ea}{operator$>$$>$}} (int8\+\_\+t \&number)
+\begin{DoxyCompactList}\small\item\em Read an 8-\/bit signed decimal integer from a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a5735ebb0098bafd1e653e1ca2b4885b1}{operator$>$$>$}} (uint16\+\_\+t \&number)
+\begin{DoxyCompactList}\small\item\em Read a 16-\/bit unsigned decimal integer from a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a3e646639a87845b68c8f12b1e763a2a2}{operator$>$$>$}} (int16\+\_\+t \&number)
+\begin{DoxyCompactList}\small\item\em Read a 16-\/bit signed decimal integer from a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a52f02a96f606f479538518944a6666e4}{operator$>$$>$}} (uint32\+\_\+t \&number)
+\begin{DoxyCompactList}\small\item\em Read a 32-\/bit unsigned decimal integer from a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_ab4e4c0eda7e6f1aabd6f12de6f66f9af}{operator$>$$>$}} (int32\+\_\+t \&number)
+\begin{DoxyCompactList}\small\item\em Read a 32-\/bit signed decimal integer from a serial device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classemstream}{emstream}} \& \mbox{\hyperlink{classemstream_a9f4e98aa62243663dbbc4d1097e17d54}{operator$>$$>$}} (float \&number)
+\begin{DoxyCompactList}\small\item\em Read a floating point number from a serial device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classemstream_a54b87cf8b620a80e7f4f69445973158a}{print\+\_\+roman}} (uint16\+\_\+t num)
+\begin{DoxyCompactList}\small\item\em Write an unsigned integer to a serial device in Roman numerals. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classemstream_a439bc9e2b9fa3e9785e844c07cc288c7}\label{classemstream_a439bc9e2b9fa3e9785e844c07cc288c7}} 
+void \mbox{\hyperlink{classemstream_a439bc9e2b9fa3e9785e844c07cc288c7}{print\+\_\+roman\+\_\+digits}} (uint8\+\_\+t digitus, uint8\+\_\+t order)
+\begin{DoxyCompactList}\small\item\em Print the digit(s) associated with one power of ten in a Roman numeral. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classemstream_a38b9f36ce6ccd5acf98acb8523568d46}{cin\+\_\+uint\+\_\+convert}} (void)
+\begin{DoxyCompactList}\small\item\em Method to convert an unsigned integer from text to a numeric value. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classemstream_ab2c0624ac11a6da71db92d94b6da32aa}{cin\+\_\+int\+\_\+convert}} (void)
+\begin{DoxyCompactList}\small\item\em Method to convert a signed integer from text to a numeric value. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classemstream_a38238da76568289a5f510c2fcbea4121}{cin\+\_\+finish\+\_\+conversion}} (char in\+\_\+ch)
+\begin{DoxyCompactList}\small\item\em Method to finish converting integers from text to a numeric value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classemstream_abbf460d8c60420b025b7316f6979ad04}{base}}
+\begin{DoxyCompactList}\small\item\em The base for displaying numbers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} \mbox{\hyperlink{classemstream_aaad81a99476a18142e9cc285a00de06f}{roman\+\_\+numerals}}
+\begin{DoxyCompactList}\small\item\em Causes integers to be displayed as Roman rather than Arabic. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classemstream_af9c514aedfafcc2567d613396bc0cf7b}{precision}}
+\begin{DoxyCompactList}\small\item\em The number of digits after a decimal point to print. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for serial devices which print using a {\ttfamily $<$$<$} operator. 
+
+This is a base class for serial devices which use an overloaded left shift operator {\ttfamily $<$$<$} to convert data into a character stream and send the characters to some communication or data storage channel. Descendents of this class are able to send text over serial lines, radio modems or modules, and whatever other communication devices might be appropriate. There is also a descendent which saves data to an SD card file as a stream of characters.
+
+The most important methods of this class are the overloaded {\ttfamily $<$$<$} operators which convert different types of numbers into printable strings and then print them using methods which are overloaded by descendent classes. Methods are provided which convert most types of integers and floating point numbers into streams of bytes; floating point numbers are only handled if {\ttfamily $<$math.\+h$>$} is included before or near the beginning of {\ttfamily \mbox{\hyperlink{emstream_8h}{emstream.\+h}}} because one often wants to turn off floating point support in order to save memory. Other classes may overload the {\ttfamily $<$$<$} operator to print {\itshape themselves} to any descendent of this class; see, for example, {\ttfamily adc\+\_\+driver.\+h/cpp} for examples in which drivers \char`\"{}print themselves\char`\"{} conveniently to any serial device.
+
+The ability to transmit characters through some physical device is provided by descendent classes. Methods which should be overridden by descendents include the following\+: \begin{DoxyItemize}
+\item {\ttfamily \mbox{\hyperlink{classemstream_a28149c19ad19d10d89ca8dd3d3803b1a}{ready\+\_\+to\+\_\+send()}}} -\/ Checks if the port is ready to transmit a character \item {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} -\/ Sends a single character over the communications line \item {\ttfamily \mbox{\hyperlink{classemstream_a64494c4283e4750d29d93df245045d56}{check\+\_\+for\+\_\+char()}}} -\/ Checks if a character is ready to be read \item {\ttfamily \mbox{\hyperlink{classemstream_a41f0814540d5baa7312310c59077a248}{getchar()}}} -\/ Reads a character from the device when one becomes available \begin{DoxyVerb} Other methods may optionally be overridden; for example @c clear_screen()
+ needs only be overridden by devices which have a screen physical screen
+ that requires a set of actions to be cleared, rather than just sending an
+ ASCII standard clear-screen character. \end{DoxyVerb}
+ \end{DoxyItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classemstream_ad19a1ff84926b5fd5feac71fc2f7fb51}\label{classemstream_ad19a1ff84926b5fd5feac71fc2f7fb51}} 
+\index{emstream@{emstream}!emstream@{emstream}}
+\index{emstream@{emstream}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{emstream()}{emstream()}}
+{\footnotesize\ttfamily emstream\+::emstream (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create a base text stream object. 
+
+This constructor sets up the base serial port object. It sets the default base for the conversion of numbers to text and the default format for converting chars. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classemstream_a64494c4283e4750d29d93df245045d56}\label{classemstream_a64494c4283e4750d29d93df245045d56}} 
+\index{emstream@{emstream}!check\+\_\+for\+\_\+char@{check\+\_\+for\+\_\+char}}
+\index{check\+\_\+for\+\_\+char@{check\+\_\+for\+\_\+char}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{check\+\_\+for\+\_\+char()}{check\_for\_char()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} emstream\+::check\+\_\+for\+\_\+char (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check if a character is ready to read from a serial device. 
+
+This method checks if there is a character in the serial port\textquotesingle{}s receiver buffer. There isn\textquotesingle{}t, as this base class isn\textquotesingle{}t connected to a buffer; descendent classes will override this method and check a real buffer for real characters. \begin{DoxyReturn}{Returns}
+{\ttfamily false}, because no character will ever be available 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_text_queue_a4b520515f1110e8d592a3b5a5abc615b}{Text\+Queue}}.
+
+\mbox{\Hypertarget{classemstream_a38238da76568289a5f510c2fcbea4121}\label{classemstream_a38238da76568289a5f510c2fcbea4121}} 
+\index{emstream@{emstream}!cin\+\_\+finish\+\_\+conversion@{cin\+\_\+finish\+\_\+conversion}}
+\index{cin\+\_\+finish\+\_\+conversion@{cin\+\_\+finish\+\_\+conversion}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{cin\+\_\+finish\+\_\+conversion()}{cin\_finish\_conversion()}}
+{\footnotesize\ttfamily uint32\+\_\+t emstream\+::cin\+\_\+finish\+\_\+conversion (\begin{DoxyParamCaption}\item[{char}]{in\+\_\+ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Method to finish converting integers from text to a numeric value. 
+
+This method finishes the conversion of integers from a bunch of characters to a numeric value. The conversion will have been begun by one of the {\ttfamily emstream} methods {\ttfamily \mbox{\hyperlink{classemstream_a38b9f36ce6ccd5acf98acb8523568d46}{cin\+\_\+uint\+\_\+convert()}}} or {\ttfamily \mbox{\hyperlink{classemstream_ab2c0624ac11a6da71db92d94b6da32aa}{cin\+\_\+int\+\_\+convert()}}}. \begin{DoxyReturn}{Returns}
+An unsigned integer value found in the characters which were read 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classemstream_ab2c0624ac11a6da71db92d94b6da32aa}\label{classemstream_ab2c0624ac11a6da71db92d94b6da32aa}} 
+\index{emstream@{emstream}!cin\+\_\+int\+\_\+convert@{cin\+\_\+int\+\_\+convert}}
+\index{cin\+\_\+int\+\_\+convert@{cin\+\_\+int\+\_\+convert}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{cin\+\_\+int\+\_\+convert()}{cin\_int\_convert()}}
+{\footnotesize\ttfamily int32\+\_\+t emstream\+::cin\+\_\+int\+\_\+convert (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Method to convert a signed integer from text to a numeric value. 
+
+This method converts a sequence of numeric digits from the serial device into a signed numeric value. Although this method works with 32-\/bit numbers, it is used to convert 8-\/bit and 16-\/bit numbers as well, with those numbers being typecast into their desired size after conversion. {\bfseries F\+E\+A\+T\+U\+RE\+:} If a negative sign is found {\itshape anywhere} before the beginning of the number (not just immediately to the left of the first numeric digit), the number is considered negative. \begin{DoxyReturn}{Returns}
+The value which has been found in the string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classemstream_a38b9f36ce6ccd5acf98acb8523568d46}\label{classemstream_a38b9f36ce6ccd5acf98acb8523568d46}} 
+\index{emstream@{emstream}!cin\+\_\+uint\+\_\+convert@{cin\+\_\+uint\+\_\+convert}}
+\index{cin\+\_\+uint\+\_\+convert@{cin\+\_\+uint\+\_\+convert}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{cin\+\_\+uint\+\_\+convert()}{cin\_uint\_convert()}}
+{\footnotesize\ttfamily uint32\+\_\+t emstream\+::cin\+\_\+uint\+\_\+convert (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Method to convert an unsigned integer from text to a numeric value. 
+
+This method converts a sequence of numeric digits from the serial device into an unsigned numeric value. Although this method works with 32-\/bit numbers, it is used to convert 8-\/bit and 16-\/bit numbers as well, with those numbers being typecast into their desired size after conversion. \begin{DoxyReturn}{Returns}
+The value which has been found in the string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classemstream_a8dcff85fe80c250b20b5da78b1799ed5}\label{classemstream_a8dcff85fe80c250b20b5da78b1799ed5}} 
+\index{emstream@{emstream}!clear\+\_\+screen@{clear\+\_\+screen}}
+\index{clear\+\_\+screen@{clear\+\_\+screen}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{clear\+\_\+screen()}{clear\_screen()}}
+{\footnotesize\ttfamily void emstream\+::clear\+\_\+screen (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear a display screen. 
+
+This is a base method to clear a display screen, if there is one. It is called when the format modifier {\ttfamily clrscr} is inserted in an output line. Descendant classes which do something other than writing a clear-\/screen character to the device should override this method. For example, L\+CD screens should operate the device\textquotesingle{}s screen clearing sequence, while data storage devices should do nothing in response to the {\ttfamily clrscr} modifier because there\textquotesingle{}s no screen to clear. \mbox{\Hypertarget{classemstream_a41f0814540d5baa7312310c59077a248}\label{classemstream_a41f0814540d5baa7312310c59077a248}} 
+\index{emstream@{emstream}!getchar@{getchar}}
+\index{getchar@{getchar}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{getchar()}{getchar()}}
+{\footnotesize\ttfamily char emstream\+::getchar (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a character from a serial device. 
+
+This base method just returns zero, because it shouldn\textquotesingle{}t be called. There might be classes which only send characters and don\textquotesingle{}t ever receive them, and this method could be left as a placeholder for those classes. \begin{DoxyReturn}{Returns}
+A zero (null character) which means nothing 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_text_queue_ab682ee4d2cbad87e9496ca424fa03b0a}{Text\+Queue}}.
+
+\mbox{\Hypertarget{classemstream_a180fa065e30c2e97e957a97b70eb8eb4}\label{classemstream_a180fa065e30c2e97e957a97b70eb8eb4}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}}]{value }\end{DoxyParamCaption})}
+
+
+
+Write unsigned an 8-\/bit unsigned number to a serial device. 
+
+This operator writes a boolean value to the serial port as a character, either \char`\"{}\+T\char`\"{} or \char`\"{}\+F\char`\"{} depending on the value. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The boolean value to be written\\
+\hline
+\end{DoxyParams}
+This operator writes unsigned 8-\/bit integers to a serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 8-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_ac570021b41b465fd0f98257a17316e7b}\label{classemstream_ac570021b41b465fd0f98257a17316e7b}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}}\& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const char $\ast$}]{p\+\_\+string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This operator writes the string whose first character is pointed to by the given character pointer to the serial device. It acts in about the same way as {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}}; in fact, all it really does it call {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}}, but this operator is more convenient to use because it allows a bunch of stuff to be printed in one line with {\ttfamily $<$$<$} operators between the items. As with {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}}, the string to be printed must have a null character (A\+S\+C\+II zero) at the end, per the standard C/\+C++ method for using strings. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+string} & Pointer to the string to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string (bad pun) printable items together with many \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classemstream_a2125b913b6a300c4ac176af247ff5a53}\label{classemstream_a2125b913b6a300c4ac176af247ff5a53}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}}\& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This operator writes a {\ttfamily char} variable to a serial device. It\textquotesingle{}s distinct from the operators that write {\ttfamily int8\+\_\+t} and {\ttfamily uint8\+\_\+t}. Because the {\ttfamily char} data type is supposed to be used for printable characters, this method calls {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} to print the character out, regardless of the value of the {\ttfamily print\+\_\+ascii} variable. 
+\begin{DoxyParams}{Parameters}
+{\em ch} & The character to be printed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the serial device on which the printing is done 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classemstream_a8666557b0248286fd70a69d6e0106f4f}\label{classemstream_a8666557b0248286fd70a69d6e0106f4f}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [4/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Write a signed 8-\/bit number to a serial device. 
+
+This operator writes a signed 8-\/bit integer to a serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 8-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_aed40605be053b7cbae14201162028781}\label{classemstream_aed40605be053b7cbae14201162028781}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [5/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Write unsigned 16-\/bit numbers to a serial device. 
+
+This operator writes an unsigned 16-\/bit integer to a serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 16-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_a40243877b820b91c9798e99fd565f85f}\label{classemstream_a40243877b820b91c9798e99fd565f85f}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [6/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Write a signed 16-\/bit number to a serial device. 
+
+This operator writes a signed short integer ({\ttfamily int16\+\_\+t}) to the serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 16-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_aa3915880211b615d4f889036683c53c3}\label{classemstream_aa3915880211b615d4f889036683c53c3}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [7/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Write an unsigned 32-\/bit number to a serial device. 
+
+This operator writes unsigned 32-\/bit integers to a serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 32-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_abf54c92665eaecae12af886b4275ded3}\label{classemstream_abf54c92665eaecae12af886b4275ded3}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [8/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Write a signed 32-\/bit number to a serial device. 
+
+This operator writes a signed long integer ({\ttfamily int32\+\_\+t}) to the serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 32-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_aad47341203535f0c3b8d34f63fa0723f}\label{classemstream_aad47341203535f0c3b8d34f63fa0723f}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [9/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Write an unsigned 64-\/bit number to a serial device. 
+
+This operator writes unsigned 64-\/bit integers to a serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 64-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_ad0b6eeba3130fb192413f43cfb1670fe}\label{classemstream_ad0b6eeba3130fb192413f43cfb1670fe}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [10/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Write a signed 64-\/bit number to a serial device. 
+
+This operator writes a signed long integer ({\ttfamily int64\+\_\+t}) to the serial device as a stream of characters. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. The code for this function was written by Lukás Chmela and Released under G\+P\+Lv3; it was found at \href{http://www.jb.man.ac.uk/~slowe/cpp/itoa.html}{\tt http\+://www.\+jb.\+man.\+ac.\+uk/$\sim$slowe/cpp/itoa.\+html} and modified for use with class {\ttfamily emstream}. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 64-\/bit number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_a87d81e918bc1baa294ee9c9c3d056ea7}\label{classemstream_a87d81e918bc1baa294ee9c9c3d056ea7}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [11/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{void $\ast$}]{a\+\_\+pointer }\end{DoxyParamCaption})}
+
+
+
+Write a pointer to a serial device. 
+
+This operator writes a pointer to the serial device. The pointer is shown between square brackets to indicate that it is a pointer. Pointers are always printed in hexadecmial, regardless of the value in the numeric base variable {\ttfamily base}. Pointers are also shown as a full set of digits for the size of pointers on a given computer; leading zeros are printed if a pointer contains a number which wouldn\textquotesingle{}t fill up all the digits. If one needs to print a pointer using a different format, the pointer can be typecast to an appropriate integer type and printed as such. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+pointer} & The pointer to be sent to the serial device \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_ab0ea0ed8ea67a4182d526bdae23d4594}\label{classemstream_ab0ea0ed8ea67a4182d526bdae23d4594}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [12/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{float}]{num }\end{DoxyParamCaption})}
+
+
+
+Write a single precision floating point number to a serial device. 
+
+This operator writes a single precision floating point number to a serial device as a stream of characters. Descendent classes of {\ttfamily emstream} provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The floating point number to be sent to the serial device \\
+\hline
+\end{DoxyParams}
+This code posted to {\ttfamily \href{http://www.edaboard.com/thread5585.html}{\tt http\+://www.\+edaboard.\+com/thread5585.\+html}} by {\ttfamily cb30} and subsequently modified a bunch by JR \mbox{\Hypertarget{classemstream_a14caec5bbf12dd25ae39c72a95bebf0b}\label{classemstream_a14caec5bbf12dd25ae39c72a95bebf0b}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [13/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{double}]{num }\end{DoxyParamCaption})}
+
+This operator writes a double-\/precision floating point number to the serial port in exponential format (always with the \textquotesingle{}e\textquotesingle{} notation). It calls the utility function \+\_\+\+\_\+ftoa\+\_\+engine, which is hiding in the A\+VR libraries, used by the Xprintf() functions when they need to convert a double into text. \begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The double-\/precision floating point number to be sent out \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_a10a043d75a8d229974282c0bac207dab}\label{classemstream_a10a043d75a8d229974282c0bac207dab}} 
+\index{emstream@{emstream}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [14/14]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{emstream_8h_a5582483c459c0f48e51d96478d5b3407}{ser\+\_\+manipulator}}}]{new\+\_\+manip }\end{DoxyParamCaption})}
+
+
+
+Overloaded operator used to print things to a serial device. 
+
+This overload allows manipulators to be used to change the base of displayed numbers to binary, octal, decimal, or hexadecimal, to print special codes such as end-\/of-\/line, and to cause immediate transmission by devices which save stuff to be transmitted in buffers. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+manip} & The serial manipulator which was given \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the serial device to which the data was printed. This reference is used to string printable items together with {\ttfamily $<$$<$} operators 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classemstream_a67dc7f8341184dffa95daf0104406e17}\label{classemstream_a67dc7f8341184dffa95daf0104406e17}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}}\& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{char \&}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stream input operator which reads a single character. 
+
+This operator reads one character from a serial device. It calls {\ttfamily \mbox{\hyperlink{classemstream_a41f0814540d5baa7312310c59077a248}{getchar()}}}, so it\textquotesingle{}s just syntactic sugar that makes it easy to insert a single character read into a line of reads strung together with {\ttfamily $>$$>$} operators. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em ch} & The character to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_ab27cadcdfb7256a05c2474c954fd02b8}\label{classemstream_ab27cadcdfb7256a05c2474c954fd02b8}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \&}]{number }\end{DoxyParamCaption})}
+
+
+
+Read an 8-\/bit unsigned decimal integer from a serial device. 
+
+This low-\/budget imitation of an {\ttfamily istream} reads an unsigned integer. The integer must be in decimal form. If the integer is too large to fit in an 8-\/bit number, there will be silent overflow and problems, as this operator is designed to work in a small microcontroller which doesn\textquotesingle{}t have room for fancy stuff such as exception handling. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The 8-\/bit number to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_a8dfe916d7db9331beaf5dc98b6c5b9ea}\label{classemstream_a8dfe916d7db9331beaf5dc98b6c5b9ea}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{int8\+\_\+t \&}]{number }\end{DoxyParamCaption})}
+
+
+
+Read an 8-\/bit signed decimal integer from a serial device. 
+
+This low-\/budget imitation of {\ttfamily istream} reads a signed integer. The integer must be in decimal form. If the integer is too large to fit in an 8-\/bit number, there will be silent overflow and problems, as this operator is designed to work in a small microcontroller which doesn\textquotesingle{}t have room for fancy stuff such as exception handling. \begin{DoxyItemize}
+\item {\bfseries F\+E\+A\+T\+U\+RE\+:} If a negative sign is found {\itshape anywhere} before the beginning of the number (not just immediately to the left of the first numeric digit), the number is considered negative. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The 8-\/bit number to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\end{DoxyItemize}
+\mbox{\Hypertarget{classemstream_a5735ebb0098bafd1e653e1ca2b4885b1}\label{classemstream_a5735ebb0098bafd1e653e1ca2b4885b1}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{uint16\+\_\+t \&}]{number }\end{DoxyParamCaption})}
+
+
+
+Read a 16-\/bit unsigned decimal integer from a serial device. 
+
+This low-\/budget imitation of an {\ttfamily istream} reads an unsigned integer. The integer must be in decimal form. If the integer is too large to fit in a 16-\/bit number, there will be silent overflow and problems; this operator is designed to work in a small microcontroller which doesn\textquotesingle{}t have room for fancy stuff such as exception handling. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The 16-\/bit number to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_a3e646639a87845b68c8f12b1e763a2a2}\label{classemstream_a3e646639a87845b68c8f12b1e763a2a2}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{int16\+\_\+t \&}]{number }\end{DoxyParamCaption})}
+
+
+
+Read a 16-\/bit signed decimal integer from a serial device. 
+
+This low-\/budget imitation of {\ttfamily istream} reads a signed integer. The integer must be in decimal form. If the integer is too large to fit in an 16-\/bit number, there will be silent overflow and problems; this operator is designed to work in a small microcontroller which doesn\textquotesingle{}t have room for fancy stuff such as exception handling. \begin{DoxyItemize}
+\item {\bfseries F\+E\+A\+T\+U\+RE\+:} If a negative sign is found {\itshape anywhere} before the beginning of the number (not just immediately to the left of the first numeric digit), the number is considered negative. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The 16-\/bit number to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\end{DoxyItemize}
+\mbox{\Hypertarget{classemstream_a52f02a96f606f479538518944a6666e4}\label{classemstream_a52f02a96f606f479538518944a6666e4}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \&}]{number }\end{DoxyParamCaption})}
+
+
+
+Read a 32-\/bit unsigned decimal integer from a serial device. 
+
+This low-\/budget imitation of an {\ttfamily istream} reads an unsigned integer. The integer must be in decimal form. If the integer is too large to fit in a 32-\/bit number, there will be silent overflow and problems; this operator is designed to work in a small microcontroller which doesn\textquotesingle{}t have room for fancy stuff such as exception handling. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The 32-\/bit number to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_ab4e4c0eda7e6f1aabd6f12de6f66f9af}\label{classemstream_ab4e4c0eda7e6f1aabd6f12de6f66f9af}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{int32\+\_\+t \&}]{number }\end{DoxyParamCaption})}
+
+
+
+Read a 32-\/bit signed decimal integer from a serial device. 
+
+This low-\/budget imitation of {\ttfamily istream} reads a signed integer. The integer must be in decimal form. If the integer is too large to fit in an 32-\/bit number, there will be silent overflow and problems; this operator is designed to work in a small microcontroller which doesn\textquotesingle{}t have room for fancy stuff such as exception handling. \begin{DoxyItemize}
+\item {\bfseries F\+E\+A\+T\+U\+RE\+:} If a negative sign is found {\itshape anywhere} before the beginning of the number (not just immediately to the left of the first numeric digit), the number is considered negative. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The 32-\/bit number to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\end{DoxyItemize}
+\mbox{\Hypertarget{classemstream_a9f4e98aa62243663dbbc4d1097e17d54}\label{classemstream_a9f4e98aa62243663dbbc4d1097e17d54}} 
+\index{emstream@{emstream}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}} \& emstream\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{float \&}]{number }\end{DoxyParamCaption})}
+
+
+
+Read a floating point number from a serial device. 
+
+This low-\/budget imitation of {\ttfamily istream} reads a floating point number. Digits before and after the decimal point are read and converted until a non-\/numeric, non-\/decimal-\/point character is found, at which (not)point the conversion is finished. \begin{DoxyItemize}
+\item {\bfseries F\+E\+A\+T\+U\+RE\+:} If a negative sign is found {\itshape anywhere} before the beginning of the number (not just immediately to the left of the first numeric digit), the number is considered negative. \item {\bfseries F\+E\+A\+T\+U\+RE\+:} The number must begin with a numeric digit, so numbers smaller than 1.\+0 must begin with a 0, not a decimal point. The string \char`\"{}0.\+1\char`\"{} is allowed, but \char`\"{}.\+1\char`\"{} is {\bfseries not} {\bfseries allowed}. \begin{DoxyReturn}{Returns}
+A reference to the serial device from which the data was read. This reference is used to string many read commands together if needed 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & The number to be filled with the data that has been read \\
+\hline
+\end{DoxyParams}
+\end{DoxyItemize}
+\mbox{\Hypertarget{classemstream_a54b87cf8b620a80e7f4f69445973158a}\label{classemstream_a54b87cf8b620a80e7f4f69445973158a}} 
+\index{emstream@{emstream}!print\+\_\+roman@{print\+\_\+roman}}
+\index{print\+\_\+roman@{print\+\_\+roman}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{print\+\_\+roman()}{print\_roman()}}
+{\footnotesize\ttfamily void emstream\+::print\+\_\+roman (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Write an unsigned integer to a serial device in Roman numerals. 
+
+This operator writes an unsigned 8-\/bit or 16-\/bit integer to a serial device as a stream of Roman numeral characters. Fortran programmers should find this capability important for (way) backwards compatibility. Descendent classes of {\ttfamily emstream} will provide methods {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} and {\ttfamily \mbox{\hyperlink{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}{puts()}}} to allow the characters to be physically printed or sent. 
+\begin{DoxyParams}{Parameters}
+{\em num} & The number to be sent to the serial device \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}\label{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}} 
+\index{emstream@{emstream}!putchar@{putchar}}
+\index{putchar@{putchar}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{putchar()}{putchar()}}
+{\footnotesize\ttfamily virtual void emstream\+::putchar (\begin{DoxyParamCaption}\item[{char}]{a\+\_\+char }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Base method for sending one character. 
+
+This is a pure virtual base method for the {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} method which must be overridden in every descendent of this class. Since {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} has no implementation here, any attempt to instantiate an object of type {\ttfamily emstream} will create a compiler error. This is appropriate because an object of this class wouldn\textquotesingle{}t be able to do anything; it would be as useless as a prom dress for a pelican. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+char} & A character to be sent to the serial device \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_text_queue_a917e1c134d4ef6591f832e2706a67cac}{Text\+Queue}}.
+
+\mbox{\Hypertarget{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}\label{classemstream_a1ad530cbebe6c54640c1db8c1b9afda2}} 
+\index{emstream@{emstream}!puts@{puts}}
+\index{puts@{puts}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{puts()}{puts()}}
+{\footnotesize\ttfamily void emstream\+::puts (\begin{DoxyParamCaption}\item[{const char $\ast$}]{p\+\_\+string }\end{DoxyParamCaption})}
+
+
+
+Write a character string to a serial device. 
+
+This method writes a string to the serial device. It goes through the character buffer to which its parameter points, calling {\ttfamily \mbox{\hyperlink{classemstream_aa4dffc9aa58f601cc4153b4cbe65d757}{putchar()}}} to print each character until and end of string character (the null character, {\ttfamily \textquotesingle{}\textbackslash{}0\textquotesingle{}}) is reached. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+string} & A pointer to the string which is to be printed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classemstream_a28149c19ad19d10d89ca8dd3d3803b1a}\label{classemstream_a28149c19ad19d10d89ca8dd3d3803b1a}} 
+\index{emstream@{emstream}!ready\+\_\+to\+\_\+send@{ready\+\_\+to\+\_\+send}}
+\index{ready\+\_\+to\+\_\+send@{ready\+\_\+to\+\_\+send}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{ready\+\_\+to\+\_\+send()}{ready\_to\_send()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} emstream\+::ready\+\_\+to\+\_\+send (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check if a serial device is ready to transmit characters. 
+
+This function checks if the serial port transmitter is ready to send data. It\textquotesingle{}s an empty base method, overridden by most serial devices. Some serial devices might always be ready to send data; those need not bother to override this method. \begin{DoxyReturn}{Returns}
+True if the serial port is ready to send, and false if not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classemstream_a3ef6ddf641176d416f9ae6a5c4cfc067}\label{classemstream_a3ef6ddf641176d416f9ae6a5c4cfc067}} 
+\index{emstream@{emstream}!transmit\+\_\+now@{transmit\+\_\+now}}
+\index{transmit\+\_\+now@{transmit\+\_\+now}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{transmit\+\_\+now()}{transmit\_now()}}
+{\footnotesize\ttfamily void emstream\+::transmit\+\_\+now (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Cause a transmitter to send buffered characters immediately. 
+
+This is a base method for causing immediate transmission of a buffer holding some data. The base method doesn\textquotesingle{}t do anything, because it can be used without overriding in descendent classes which have no buffers, send everything immediately by default, and don\textquotesingle{}t need to respond to calls for immediate transmission. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classemstream_abbf460d8c60420b025b7316f6979ad04}\label{classemstream_abbf460d8c60420b025b7316f6979ad04}} 
+\index{emstream@{emstream}!base@{base}}
+\index{base@{base}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily uint8\+\_\+t emstream\+::base\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The base for displaying numbers. 
+
+This is the currently used base for converting numbers to text. It must be between 2 (binary) and 16 (hexadecimal) inclusive. \mbox{\Hypertarget{classemstream_af9c514aedfafcc2567d613396bc0cf7b}\label{classemstream_af9c514aedfafcc2567d613396bc0cf7b}} 
+\index{emstream@{emstream}!precision@{precision}}
+\index{precision@{precision}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{precision}{precision}}
+{\footnotesize\ttfamily uint8\+\_\+t emstream\+::precision\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The number of digits after a decimal point to print. 
+
+This is the number of digits after a decimal point to be printed when a floating point number is being converted to text. \mbox{\Hypertarget{classemstream_aaad81a99476a18142e9cc285a00de06f}\label{classemstream_aaad81a99476a18142e9cc285a00de06f}} 
+\index{emstream@{emstream}!roman\+\_\+numerals@{roman\+\_\+numerals}}
+\index{roman\+\_\+numerals@{roman\+\_\+numerals}!emstream@{emstream}}
+\subsubsection{\texorpdfstring{roman\+\_\+numerals}{roman\_numerals}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} emstream\+::roman\+\_\+numerals\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Causes integers to be displayed as Roman rather than Arabic. 
+
+If this variable is true, the serial device will display 8 or 16 bit integers as Roman numerals, {\itshape e.\+g}. M\+C\+M\+L\+X\+X\+X\+IV. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream_8h}{emstream.\+h}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream_8cpp}{emstream.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__bool_8cpp}{emstream\+\_\+bool.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__float_8cpp}{emstream\+\_\+float.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__int16__t_8cpp}{emstream\+\_\+int16\+\_\+t.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__int32__t_8cpp}{emstream\+\_\+int32\+\_\+t.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__int64__t_8cpp}{emstream\+\_\+int64\+\_\+t.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__int8__t_8cpp}{emstream\+\_\+int8\+\_\+t.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__pointer_8cpp}{emstream\+\_\+pointer.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__roman_8cpp}{emstream\+\_\+roman.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__uint16__t_8cpp}{emstream\+\_\+uint16\+\_\+t.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__uint32__t_8cpp}{emstream\+\_\+uint32\+\_\+t.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__uint64__t_8cpp}{emstream\+\_\+uint64\+\_\+t.\+cpp}}\item 
+Doxygen\+Files/\mbox{\hyperlink{emstream__uint8__t_8cpp}{emstream\+\_\+uint8\+\_\+t.\+cpp}}\end{DoxyCompactItemize}

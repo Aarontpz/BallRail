@@ -109,3 +109,37 @@ Caused by: java.io.IOException: error=2, No such file or directory
 
 !ENTRY fr.ac6.mcu.ide 1 1 2018-12-04 10:21:02.736
 !MESSAGE Started RMI Server, listening on port 21112
+!SESSION 2018-12-08 13:44:46.899 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -pluginCustomization ../Eclipse/configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product -keyring /Users/JasonGrillo/.eclipse_keyring
+
+!ENTRY fr.ac6.mcu.externaltools 4 0 2018-12-08 13:45:01.637
+!MESSAGE Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+!STACK 0
+java.io.IOException: Cannot run program "/usr/local/bin/stlink-server": error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:450)
+	at java.lang.Runtime.exec(Runtime.java:347)
+	at fr.ac6.mcu.externaltools.stlinkserver.macos64.MCUMacOSExternalEnvResolver.getPath(MCUMacOSExternalEnvResolver.java:34)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsTool.resolvePath(MCUExternalToolsTool.java:124)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:110)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getToolPath(MCUExternalToolsRegistry.java:105)
+	at fr.ac6.mcu.externaltools.internal.registry.MCUExternalToolsRegistry.getSTLinkServerLocation(MCUExternalToolsRegistry.java:114)
+	at fr.ac6.mcu.externaltools.MCUExternalToolsPlugin.getSTLinkServerLocation(MCUExternalToolsPlugin.java:168)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup.doPrint(MCUExternalToolsStartup.java:93)
+	at fr.ac6.mcu.externaltools.internal.startup.MCUExternalToolsStartup$1.run(MCUExternalToolsStartup.java:146)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:247)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:134)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 12 more
+
+!ENTRY fr.ac6.mcu.ide 1 1 2018-12-08 13:45:21.252
+!MESSAGE Started RMI Server, listening on port 21112

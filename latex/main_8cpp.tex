@@ -1,0 +1,225 @@
+\hypertarget{main_8cpp}{}\section{Doxygen\+Files/main.cpp File Reference}
+\label{main_8cpp}\index{Doxygen\+Files/main.\+cpp@{Doxygen\+Files/main.\+cpp}}
+
+
+\+: Main program body  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32l4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cmsis\+\_\+os.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}taskbase.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}taskqueue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}textqueue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}taskshare.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}emstream.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Motor\+Drive\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Limit\+Switch\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Ball\+Position\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Controller\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Encoder\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}User\+Input\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}share.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_communication_task}{Communication\+Task}}
+\begin{DoxyCompactList}\small\item\em Implements a task to communicate with serial devices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8cpp_a3f247480cebc96c1c9bb836356568f32}\label{main_8cpp_a3f247480cebc96c1c9bb836356568f32}} 
+\#define {\bfseries S\+E\+T\+P\+O\+I\+NT}~0.\+2
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the C\+PU, A\+HB and A\+PB busses clocks. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_ae70bce6c39d0b570a7523b86738cec4b}\label{main_8cpp_ae70bce6c39d0b570a7523b86738cec4b}} 
+void {\bfseries H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Msp\+Post\+Init} (T\+I\+M\+\_\+\+Handle\+Type\+Def $\ast$htim)
+\item 
+int \mbox{\hyperlink{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a829116a51f1db1a72ebd1120f60719d5}{\+\_\+\+Error\+\_\+\+Handler}} (char $\ast$file, int line)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8cpp_a25fc663547539bc49fecc0011bd76ab5}\label{main_8cpp_a25fc663547539bc49fecc0011bd76ab5}} 
+T\+I\+M\+\_\+\+Handle\+Type\+Def {\bfseries htim1}
+\item 
+\mbox{\Hypertarget{main_8cpp_a984624bcf28d1b2fb7e4e18349f65d5c}\label{main_8cpp_a984624bcf28d1b2fb7e4e18349f65d5c}} 
+A\+D\+C\+\_\+\+Handle\+Type\+Def {\bfseries hadc3}
+\item 
+\mbox{\Hypertarget{main_8cpp_af7b2c26e44dadaaa798a5c3d82914ba7}\label{main_8cpp_af7b2c26e44dadaaa798a5c3d82914ba7}} 
+I2\+C\+\_\+\+Handle\+Type\+Def {\bfseries hi2c1}
+\item 
+\mbox{\Hypertarget{main_8cpp_ab9da65f935e805137e2eb4e18c5ab224}\label{main_8cpp_ab9da65f935e805137e2eb4e18c5ab224}} 
+S\+P\+I\+\_\+\+Handle\+Type\+Def {\bfseries hspi2}
+\item 
+\mbox{\Hypertarget{main_8cpp_aa9479c261d65eecedd3d9582f7f0f89c}\label{main_8cpp_aa9479c261d65eecedd3d9582f7f0f89c}} 
+U\+A\+R\+T\+\_\+\+Handle\+Type\+Def {\bfseries huart2}
+\item 
+\mbox{\Hypertarget{main_8cpp_a0e48568a220eebe2293755ebac9e04e7}\label{main_8cpp_a0e48568a220eebe2293755ebac9e04e7}} 
+const float {\bfseries VS} = 24.\+0
+\item 
+\mbox{\Hypertarget{main_8cpp_adf0f19d2a1047eae93e6772a483fb669}\label{main_8cpp_adf0f19d2a1047eae93e6772a483fb669}} 
+const float {\bfseries V\+M\+IN} = 10.\+0
+\item 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}} $>$ $\ast$ \mbox{\hyperlink{main_8cpp_ad43a1a75e0f2e4712aabeea5bc1318e3}{p\+\_\+safe}}
+\begin{DoxyCompactList}\small\item\em Shared variable declarations for the R\+T\+OS system. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_a0f27c05cda624962c2312578cab2a667}\label{main_8cpp_a0f27c05cda624962c2312578cab2a667}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ float $>$ $\ast$ {\bfseries p\+\_\+ball\+\_\+position}
+\item 
+\mbox{\Hypertarget{main_8cpp_aad302a2d7a495b98d92db217c41b8b6c}\label{main_8cpp_aad302a2d7a495b98d92db217c41b8b6c}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ float $>$ $\ast$ {\bfseries p\+\_\+ball\+\_\+velocity}
+\item 
+\mbox{\Hypertarget{main_8cpp_a7c38917d623b3fdef746c00c50b39688}\label{main_8cpp_a7c38917d623b3fdef746c00c50b39688}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ float $>$ $\ast$ {\bfseries p\+\_\+beam\+\_\+angle}
+\item 
+\mbox{\Hypertarget{main_8cpp_a110e0f9ff6809d4b2a5b4b415ede01b9}\label{main_8cpp_a110e0f9ff6809d4b2a5b4b415ede01b9}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ float $>$ $\ast$ {\bfseries p\+\_\+beam\+\_\+ang\+\_\+velocity}
+\item 
+\mbox{\Hypertarget{main_8cpp_a3834482fe3f97ee27f166acf337b4fea}\label{main_8cpp_a3834482fe3f97ee27f166acf337b4fea}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ float $>$ $\ast$ {\bfseries p\+\_\+motor\+\_\+voltage\+\_\+pwm}
+\item 
+\mbox{\Hypertarget{main_8cpp_a4e15112fb9b107d297832356147cec25}\label{main_8cpp_a4e15112fb9b107d297832356147cec25}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ float $>$ $\ast$ {\bfseries p\+\_\+set\+\_\+ball\+\_\+position}
+\item 
+\mbox{\Hypertarget{main_8cpp_a9cef670d7c6c93a74b30547b805cf0bf}\label{main_8cpp_a9cef670d7c6c93a74b30547b805cf0bf}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ uint16\+\_\+t $>$ $\ast$ {\bfseries p\+\_\+adc\+\_\+reading}
+\item 
+\mbox{\Hypertarget{main_8cpp_a79341609a9580cef00ac9f8f8fd1c351}\label{main_8cpp_a79341609a9580cef00ac9f8f8fd1c351}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ uint16\+\_\+t $>$ $\ast$ {\bfseries p\+\_\+encoder\+\_\+reading}
+\item 
+\mbox{\Hypertarget{main_8cpp_a1917fc7a087e40ace9d5846b45e98c1f}\label{main_8cpp_a1917fc7a087e40ace9d5846b45e98c1f}} 
+\mbox{\hyperlink{class_task_share}{Task\+Share}}$<$ uint16\+\_\+t $>$ $\ast$ {\bfseries p\+\_\+user\+\_\+adc\+\_\+reading}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\+: Main program body 
+
+This notice applies to any and all portions of this file that are not between comment pairs U\+S\+ER C\+O\+DE B\+E\+G\+IN and U\+S\+ER C\+O\+DE E\+ND. Other portions of this file, whether inserted by the user or by software development tools are owned by their respective copyright owners.
+
+Copyright (c) 2018 S\+T\+Microelectronics International N.\+V. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted, provided that the following conditions are met\+:
+
+
+\begin{DoxyEnumerate}
+\item Redistribution of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item Neither the name of S\+T\+Microelectronics nor the names of other contributors to this software may be used to endorse or promote products derived from this software without specific written permission.
+\item This software, including modifications and/or derivative works of this software, must execute solely and exclusively on microcontroller or microprocessor devices manufactured by or for S\+T\+Microelectronics.
+\item Redistribution and use of this software other than as permitted under this license is void and will automatically terminate your rights under this license.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY S\+T\+M\+I\+C\+R\+O\+E\+L\+E\+C\+T\+R\+O\+N\+I\+CS A\+ND C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS \char`\"{}\+A\+S I\+S\char`\"{} A\+ND A\+NY E\+X\+P\+R\+E\+SS, I\+M\+P\+L\+I\+ED OR S\+T\+A\+T\+U\+T\+O\+RY W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY, F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+ND N\+O\+N-\/\+I\+N\+F\+R\+I\+N\+G\+E\+M\+E\+NT OF T\+H\+I\+RD P\+A\+R\+TY I\+N\+T\+E\+L\+L\+E\+C\+T\+U\+AL P\+R\+O\+P\+E\+R\+TY R\+I\+G\+H\+TS A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED TO T\+HE F\+U\+L\+L\+E\+ST E\+X\+T\+E\+NT P\+E\+R\+M\+I\+T\+T\+ED BY L\+AW. IN NO E\+V\+E\+NT S\+H\+A\+LL S\+T\+M\+I\+C\+R\+O\+E\+L\+E\+C\+T\+R\+O\+N\+I\+CS OR C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a829116a51f1db1a72ebd1120f60719d5}\label{main_8cpp_a829116a51f1db1a72ebd1120f60719d5}} 
+\index{main.\+cpp@{main.\+cpp}!\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}}
+\index{\+\_\+\+Error\+\_\+\+Handler@{\+\_\+\+Error\+\_\+\+Handler}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{\+\_\+\+Error\+\_\+\+Handler()}{\_Error\_Handler()}}
+{\footnotesize\ttfamily void \+\_\+\+Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{file,  }\item[{int}]{line }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+Uncomment the line below to expanse the \char`\"{}assert\+\_\+param\char`\"{} macro in the H\+AL drivers code.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The file name as string. \\
+\hline
+{\em line} & The line in file as a number. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8cpp_a70af21c671abfcc773614a9a4f63d920}\label{main_8cpp_a70af21c671abfcc773614a9a4f63d920}} 
+\index{main.\+cpp@{main.\+cpp}!System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}}
+\index{System\+Clock\+\_\+\+Config@{System\+Clock\+\_\+\+Config}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{System\+Clock\+\_\+\+Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks. 
+
+This function was auto-\/generated by the S\+T\+M32 C\+U\+B\+E\+MX program. The S\+T\+M32 H\+AL is used to limit complexity.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Initializes the C\+PU, A\+HB and A\+PB busses clocks
+
+Configure the main internal regulator output voltage
+
+Configure the Systick interrupt time
+
+Configure the Systick
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_ad43a1a75e0f2e4712aabeea5bc1318e3}\label{main_8cpp_ad43a1a75e0f2e4712aabeea5bc1318e3}} 
+\index{main.\+cpp@{main.\+cpp}!p\+\_\+safe@{p\+\_\+safe}}
+\index{p\+\_\+safe@{p\+\_\+safe}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{p\+\_\+safe}{p\_safe}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_share}{Task\+Share}}$<$\mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}$>$$\ast$ p\+\_\+safe}
+
+
+
+Shared variable declarations for the R\+T\+OS system. 
+
+This file contains the external declarations of the shared variable pointers. Shared variables are accessible to the tasks by dereferencing the pointer. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+safe} & Indicates if the beam or ball is within safe operating range. \\
+\hline
+{\em p\+\_\+ball\+\_\+position} & Ball position measurement. \\
+\hline
+{\em p\+\_\+ball\+\_\+velocity} & Ball velocity measurement. \\
+\hline
+{\em p\+\_\+beam\+\_\+angle} & Beam angle measurement. \\
+\hline
+{\em p\+\_\+beam\+\_\+ang\+\_\+velocity} & Beam angular velocity measurement. \\
+\hline
+{\em p\+\_\+motor\+\_\+voltage\+\_\+pwm} & Motor voltage command duty cycle (signed for directionality). \\
+\hline
+{\em p\+\_\+set\+\_\+ball\+\_\+position} & Desired ball position set point to the controller. \\
+\hline
+{\em p\+\_\+adc\+\_\+reading} & Raw ball position sensor output (linear potentiometer). \\
+\hline
+{\em p\+\_\+encoder\+\_\+reading} & Raw beam angle sensor output (encoder). \\
+\hline
+{\em p\+\_\+user\+\_\+adc\+\_\+reading} & Raw user-\/desired ball position sensor output (linear potentiometer). \\
+\hline
+\end{DoxyParams}

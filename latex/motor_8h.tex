@@ -1,0 +1,145 @@
+\hypertarget{motor_8h}{}\section{Doxygen\+Files/motor.h File Reference}
+\label{motor_8h}\index{Doxygen\+Files/motor.\+h@{Doxygen\+Files/motor.\+h}}
+
+
+This file contains all the functions prototypes for motor drivers.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmotor_drv__t}{motor\+Drv\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Motor driver structure definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___motor___exported___constants_gaa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}~(0)
+\begin{DoxyCompactList}\small\item\em boolean for false condition \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___motor___exported___constants_gaa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}}~(1)
+\begin{DoxyCompactList}\small\item\em boolean for true condition \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{group___motor___boolean___type_ga0ecf26b576b9a54eca656b9be7ba6a06}{bool}}
+\begin{DoxyCompactList}\small\item\em bool Type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}\label{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}} 
+enum \mbox{\hyperlink{group___device___direction___options_ga4eaf4196e4d11d552f58f3fab218a8c7}{motor\+Dir\+\_\+t}} \{ {\bfseries B\+A\+C\+K\+W\+A\+RD} = 0, 
+{\bfseries F\+O\+R\+W\+A\+RD} = 1, 
+{\bfseries U\+N\+K\+N\+O\+W\+\_\+\+D\+IR} = ((uint8\+\_\+t)0x\+FF)
+ \}
+\begin{DoxyCompactList}\small\item\em Direction options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___device___action___options_ga5b2358a9ba8742cb555ddc5b37508500}\label{group___device___action___options_ga5b2358a9ba8742cb555ddc5b37508500}} 
+enum \mbox{\hyperlink{group___device___action___options_ga5b2358a9ba8742cb555ddc5b37508500}{motor\+Action\+\_\+t}} \{ {\bfseries A\+C\+T\+I\+O\+N\+\_\+\+R\+E\+S\+ET} = ((uint8\+\_\+t)0x00), 
+{\bfseries A\+C\+T\+I\+O\+N\+\_\+\+C\+O\+PY} = ((uint8\+\_\+t)0x08)
+ \}
+\begin{DoxyCompactList}\small\item\em Action options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___device___states_ga9ba865be7705688e94f95a410e917a07}\label{group___device___states_ga9ba865be7705688e94f95a410e917a07}} 
+enum \mbox{\hyperlink{group___device___states_ga9ba865be7705688e94f95a410e917a07}{motor\+State\+\_\+t}} \{ \newline
+{\bfseries A\+C\+C\+E\+L\+E\+R\+A\+T\+I\+NG} = 0, 
+{\bfseries D\+E\+C\+E\+L\+E\+R\+A\+T\+I\+N\+G\+T\+O\+S\+T\+OP} = 1, 
+{\bfseries D\+E\+C\+E\+L\+E\+R\+A\+T\+I\+NG} = 2, 
+{\bfseries S\+T\+E\+A\+DY} = 3, 
+\newline
+{\bfseries I\+N\+D\+E\+X\+\_\+\+A\+C\+C\+EL} = 4, 
+{\bfseries I\+N\+D\+E\+X\+\_\+\+R\+UN} = 5, 
+{\bfseries I\+N\+D\+E\+X\+\_\+\+D\+E\+C\+EL} = 6, 
+{\bfseries I\+N\+D\+E\+X\+\_\+\+D\+W\+E\+LL} = 7, 
+\newline
+{\bfseries I\+N\+A\+C\+T\+I\+VE} = 8, 
+{\bfseries S\+T\+A\+N\+D\+BY} = 9, 
+{\bfseries S\+T\+A\+N\+D\+B\+Y\+T\+O\+I\+N\+A\+C\+T\+I\+VE} = 10
+ \}
+\begin{DoxyCompactList}\small\item\em Device states. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___device___step__mode_gaa8024e6a2453b22a104bd0a8a364dd80}\label{group___device___step__mode_gaa8024e6a2453b22a104bd0a8a364dd80}} 
+enum \mbox{\hyperlink{group___device___step__mode_gaa8024e6a2453b22a104bd0a8a364dd80}{motor\+Step\+Mode\+\_\+t}} \{ \newline
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+\+F\+U\+LL} = ((uint8\+\_\+t)0x00), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+\+H\+A\+LF} = ((uint8\+\_\+t)0x01), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+1\+\_\+4} = ((uint8\+\_\+t)0x02), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+1\+\_\+8} = ((uint8\+\_\+t)0x03), 
+\newline
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+1\+\_\+16} = ((uint8\+\_\+t)0x04), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+1\+\_\+32} = ((uint8\+\_\+t)0x05), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+1\+\_\+64} = ((uint8\+\_\+t)0x06), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+1\+\_\+128} = ((uint8\+\_\+t)0x07), 
+\newline
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+1\+\_\+256} = ((uint8\+\_\+t)0x08), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+\+U\+N\+K\+N\+OW} = ((uint8\+\_\+t)0x\+FE), 
+{\bfseries S\+T\+E\+P\+\_\+\+M\+O\+D\+E\+\_\+\+W\+A\+VE} = ((uint8\+\_\+t)0x\+FF)
+ \}
+\begin{DoxyCompactList}\small\item\em Stepping options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___decay__mode_ga43befb62c97ff88c1405f468c49f8334}\label{group___decay__mode_ga43befb62c97ff88c1405f468c49f8334}} 
+enum \mbox{\hyperlink{group___decay__mode_ga43befb62c97ff88c1405f468c49f8334}{motor\+Decay\+Mode\+\_\+t}} \{ {\bfseries S\+L\+O\+W\+\_\+\+D\+E\+C\+AY} = 0, 
+{\bfseries F\+A\+S\+T\+\_\+\+D\+E\+C\+AY} = 1, 
+{\bfseries U\+N\+K\+N\+O\+W\+\_\+\+D\+E\+C\+AY} = ((uint8\+\_\+t)0x\+FF)
+ \}
+\begin{DoxyCompactList}\small\item\em Decay Mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___stop__mode_ga48c6e38e969d0dbffe3d66b58df2c7d8}\label{group___stop__mode_ga48c6e38e969d0dbffe3d66b58df2c7d8}} 
+enum \mbox{\hyperlink{group___stop__mode_ga48c6e38e969d0dbffe3d66b58df2c7d8}{motor\+Stop\+Mode\+\_\+t}} \{ {\bfseries H\+O\+L\+D\+\_\+\+M\+O\+DE} = 0, 
+{\bfseries H\+I\+Z\+\_\+\+M\+O\+DE} = 1, 
+{\bfseries S\+T\+A\+N\+D\+B\+Y\+\_\+\+M\+O\+DE} = 2, 
+{\bfseries U\+N\+K\+N\+O\+W\+\_\+\+S\+T\+O\+P\+\_\+\+M\+O\+DE} = ((uint8\+\_\+t)0x\+FF)
+ \}
+\begin{DoxyCompactList}\small\item\em Stop mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___torque__mode_ga41f68f90d74c690988fdd6d949c7a75d}\label{group___torque__mode_ga41f68f90d74c690988fdd6d949c7a75d}} 
+enum \mbox{\hyperlink{group___torque__mode_ga41f68f90d74c690988fdd6d949c7a75d}{motor\+Torque\+Mode\+\_\+t}} \{ \newline
+{\bfseries A\+C\+C\+\_\+\+T\+O\+R\+Q\+UE} = 0, 
+{\bfseries D\+E\+C\+\_\+\+T\+O\+R\+Q\+UE} = 1, 
+{\bfseries R\+U\+N\+\_\+\+T\+O\+R\+Q\+UE} = 2, 
+{\bfseries H\+O\+L\+D\+\_\+\+T\+O\+R\+Q\+UE} = 3, 
+\newline
+{\bfseries C\+U\+R\+R\+E\+N\+T\+\_\+\+T\+O\+R\+Q\+UE} = 4, 
+{\bfseries U\+N\+K\+N\+O\+W\+\_\+\+T\+O\+R\+Q\+UE} = ((uint8\+\_\+t)0x\+FF)
+ \}
+\begin{DoxyCompactList}\small\item\em Torque mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___dual___full___bridge___configuration_gab5810188b32c0f4c04abcbf058f09722}\label{group___dual___full___bridge___configuration_gab5810188b32c0f4c04abcbf058f09722}} 
+enum \mbox{\hyperlink{group___dual___full___bridge___configuration_gab5810188b32c0f4c04abcbf058f09722}{dual\+Full\+Bridge\+Config\+\_\+t}} \{ \newline
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+N\+O\+N\+E\+\_\+\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 0, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+N\+O\+N\+E\+\_\+\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+2\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 1, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+N\+O\+N\+E\+\_\+\+\_\+\+\_\+2\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 2, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+N\+O\+N\+E\+\_\+\+\_\+\+\_\+2\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+2\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 3, 
+\newline
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+A\+\_\+\+I\+N2\+A\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 4, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+A\+\_\+\+I\+N2\+A\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+2\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 5, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+B\+\_\+\+I\+N2\+B\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 6, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+B\+\_\+\+I\+N2\+B\+\_\+\+\_\+2\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 7, 
+\newline
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+A\+\_\+\+I\+N2\+A\+\_\+\+\_\+\+I\+N1\+B\+\_\+\+I\+N2\+B\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+\+A\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+B} = 8, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+A\+\_\+\+I\+N2\+A\+\_\+\+\_\+\+I\+N1\+B\+\_\+\+I\+N2\+B\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+OR} = 9, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+A\+\_\+\+I\+N1\+B\+\_\+\+\_\+\+I\+N2\+A\+\_\+\+I\+N2\+B\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+1\+A\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+I\+D\+G\+E\+\_\+2A} = 10, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+I\+N1\+A\+\_\+\+I\+N1\+B\+\_\+\+\_\+\+I\+N2\+A\+\_\+\+I\+N2\+B\+\_\+\+\_\+1\+\_\+\+B\+I\+D\+I\+R\+\_\+\+M\+O\+T\+OR} = 11, 
+\newline
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+A\+L\+L\+\_\+\+W\+I\+T\+H\+\_\+\+I\+N1\+A\+\_\+\+\_\+\+\_\+1\+\_\+\+U\+N\+D\+I\+R\+\_\+\+M\+O\+T\+OR} = 12, 
+{\bfseries P\+A\+R\+A\+L\+L\+E\+L\+I\+N\+G\+\_\+\+E\+N\+D\+\_\+\+E\+N\+UM} = 13
+ \}
+\begin{DoxyCompactList}\small\item\em Dual full bridge configurations for brush DC motors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains all the functions prototypes for motor drivers. 
+
+\begin{DoxyAuthor}{Author}
+I\+PC Rennes 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+V1.\+7.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+March 16th, 2018 
+\end{DoxyDate}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\subsubsection*{\begin{center}\copyright{} C\+O\+P\+Y\+R\+I\+G\+H\+T(c) 2016 S\+T\+Microelectronics\end{center} }
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item Neither the name of S\+T\+Microelectronics nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY T\+HE C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+E\+RS A\+ND C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS \char`\"{}\+A\+S I\+S\char`\"{} A\+ND A\+NY E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY A\+ND F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+RE D\+I\+S\+C\+L\+A\+I\+M\+ED. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+ER OR C\+O\+N\+T\+R\+I\+B\+U\+T\+O\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE. 

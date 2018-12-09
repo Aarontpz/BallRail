@@ -1,0 +1,144 @@
+\hypertarget{class_base_share}{}\section{Base\+Share Class Reference}
+\label{class_base_share}\index{Base\+Share@{Base\+Share}}
+
+
+Base class for classes that share data in a thread-\/safe manner between tasks.  
+
+
+
+
+{\ttfamily \#include $<$baseshare.\+h$>$}
+
+Inheritance diagram for Base\+Share\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_base_share}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_share_a9b0cfde3e2ee1869a507e7b8552ccf37}{Base\+Share}} (const char $\ast$p\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Construct a base shared data item. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_base_share_a81ef685c8c1897ee316e853103e9941a}{print\+\_\+in\+\_\+list}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)=0
+\begin{DoxyCompactList}\small\item\em Construct a base shared data item. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_share_a0112f588e48414498d6d2f12db7b347f}{print\+\_\+all\+\_\+shares}} (\mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Start the printout showing the status of all shared data items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classemstream}{emstream}} $\ast$ \mbox{\hyperlink{class_base_share_af9176a9e2d467ccc1fd05f84bce4f74a}{p\+\_\+serial}}
+\begin{DoxyCompactList}\small\item\em Pointer to a serial output device used for debugging. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{class_base_share_a3da759fb6f803ddb8e3883435d91d29a}{name}}
+\begin{DoxyCompactList}\small\item\em The name of the shared item. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_base_share}{Base\+Share}} $\ast$ \mbox{\hyperlink{class_base_share_a8077022ea40c4ba44a6ff07ab24cac83}{p\+\_\+next}}
+\begin{DoxyCompactList}\small\item\em Pointer to the next item in the linked list of shares. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_base_share}{Base\+Share}} $\ast$ \mbox{\hyperlink{class_base_share_a0657d8a02509e79c3bb418aaa9cce33c}{p\+\_\+newest}} = N\+U\+LL
+\begin{DoxyCompactList}\small\item\em Pointer to the most recently created shared data item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for classes that share data in a thread-\/safe manner between tasks. 
+
+This is a base class for classes which share data between tasks without the risk of data corruption associated with global variables. Queues and task shares are two examples of such shared data classes. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_base_share_a9b0cfde3e2ee1869a507e7b8552ccf37}\label{class_base_share_a9b0cfde3e2ee1869a507e7b8552ccf37}} 
+\index{Base\+Share@{Base\+Share}!Base\+Share@{Base\+Share}}
+\index{Base\+Share@{Base\+Share}!Base\+Share@{Base\+Share}}
+\subsubsection{\texorpdfstring{Base\+Share()}{BaseShare()}}
+{\footnotesize\ttfamily Base\+Share\+::\+Base\+Share (\begin{DoxyParamCaption}\item[{const char $\ast$}]{p\+\_\+name = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+Construct a base shared data item. 
+
+This default constructor saves the name of the shared data item. It is not to be called by application code (nobody has any reason to create a base class object which can\textquotesingle{}t do anything!) but instead by the constructors of descendent classes. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+name} & The name for the shared data item, in a character string \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_base_share_a0112f588e48414498d6d2f12db7b347f}\label{class_base_share_a0112f588e48414498d6d2f12db7b347f}} 
+\index{Base\+Share@{Base\+Share}!print\+\_\+all\+\_\+shares@{print\+\_\+all\+\_\+shares}}
+\index{print\+\_\+all\+\_\+shares@{print\+\_\+all\+\_\+shares}!Base\+Share@{Base\+Share}}
+\subsubsection{\texorpdfstring{print\+\_\+all\+\_\+shares()}{print\_all\_shares()}}
+{\footnotesize\ttfamily void Base\+Share\+::print\+\_\+all\+\_\+shares (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start the printout showing the status of all shared data items. 
+
+This method begins printing out the status of all items in the system\textquotesingle{}s linked list of shared data items (queues, task shares, and so on). The most recently created share\textquotesingle{}s status is printed first, followed by the status of other shares in reverse order of creation. \mbox{\Hypertarget{class_base_share_a81ef685c8c1897ee316e853103e9941a}\label{class_base_share_a81ef685c8c1897ee316e853103e9941a}} 
+\index{Base\+Share@{Base\+Share}!print\+\_\+in\+\_\+list@{print\+\_\+in\+\_\+list}}
+\index{print\+\_\+in\+\_\+list@{print\+\_\+in\+\_\+list}!Base\+Share@{Base\+Share}}
+\subsubsection{\texorpdfstring{print\+\_\+in\+\_\+list()}{print\_in\_list()}}
+{\footnotesize\ttfamily virtual void Base\+Share\+::print\+\_\+in\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Construct a base shared data item. 
+
+Make a printout showing the condition of this shared data item, such as the value of a shared variable or how full a queue\textquotesingle{}s buffer is. This method must be overridden in each descendent class with a method that actually {\itshape does} something. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device on which to print things \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_task_queue_ad5ccb9c99ca4f43304d408d915314d71}{Task\+Queue$<$ data\+Type $>$}}, \mbox{\hyperlink{class_text_queue_aeef41a1bc3486d98fb31cba9ce539d0d}{Text\+Queue}}, and \mbox{\hyperlink{class_task_share_a08835a91ed7ccd847cefe6ff72fe22e6}{Task\+Share$<$ Data\+Type $>$}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_base_share_a3da759fb6f803ddb8e3883435d91d29a}\label{class_base_share_a3da759fb6f803ddb8e3883435d91d29a}} 
+\index{Base\+Share@{Base\+Share}!name@{name}}
+\index{name@{name}!Base\+Share@{Base\+Share}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily char$\ast$ Base\+Share\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The name of the shared item. 
+
+This string holds the shared item\textquotesingle{}s name. The name is only used for identification on debugging printouts or logs. \mbox{\Hypertarget{class_base_share_a0657d8a02509e79c3bb418aaa9cce33c}\label{class_base_share_a0657d8a02509e79c3bb418aaa9cce33c}} 
+\index{Base\+Share@{Base\+Share}!p\+\_\+newest@{p\+\_\+newest}}
+\index{p\+\_\+newest@{p\+\_\+newest}!Base\+Share@{Base\+Share}}
+\subsubsection{\texorpdfstring{p\+\_\+newest}{p\_newest}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_base_share}{Base\+Share}} $\ast$ Base\+Share\+::p\+\_\+newest = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Pointer to the most recently created shared data item. 
+
+This {\ttfamily static} variable, one copy of which is shared by all shared data items, is a pointer to the most recently created one. It is used as the beginning of a linked list of all shared data items in the system. \mbox{\Hypertarget{class_base_share_a8077022ea40c4ba44a6ff07ab24cac83}\label{class_base_share_a8077022ea40c4ba44a6ff07ab24cac83}} 
+\index{Base\+Share@{Base\+Share}!p\+\_\+next@{p\+\_\+next}}
+\index{p\+\_\+next@{p\+\_\+next}!Base\+Share@{Base\+Share}}
+\subsubsection{\texorpdfstring{p\+\_\+next}{p\_next}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_base_share}{Base\+Share}}$\ast$ Base\+Share\+::p\+\_\+next\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the next item in the linked list of shares. 
+
+This pointer points to the next item in the system\textquotesingle{}s list of shared data items (shares, queues, {\itshape etc}.) If this share is the most recently created one, the pointer will be {\ttfamily N\+U\+LL}. The list goes backwards; the next item is the previously created one. \mbox{\Hypertarget{class_base_share_af9176a9e2d467ccc1fd05f84bce4f74a}\label{class_base_share_af9176a9e2d467ccc1fd05f84bce4f74a}} 
+\index{Base\+Share@{Base\+Share}!p\+\_\+serial@{p\+\_\+serial}}
+\index{p\+\_\+serial@{p\+\_\+serial}!Base\+Share@{Base\+Share}}
+\subsubsection{\texorpdfstring{p\+\_\+serial}{p\_serial}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classemstream}{emstream}}$\ast$ Base\+Share\+::p\+\_\+serial\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to a serial output device used for debugging. 
+
+This pointer can point to a serial output device or port which will be used for various diagnostic printouts or logging. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{baseshare_8h}{baseshare.\+h}}\item 
+Doxygen\+Files/baseshare.\+cpp\end{DoxyCompactItemize}

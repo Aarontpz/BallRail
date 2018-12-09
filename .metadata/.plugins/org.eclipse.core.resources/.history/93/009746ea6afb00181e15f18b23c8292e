@@ -1,0 +1,22 @@
+
+#include "main.h"
+#include "stm32l4xx_hal.h"
+#include "taskbase.h"                       // The base class for all tasks
+#include "taskqueue.h"                      // Queues transmit data between tasks
+#include "taskshare.h"                      // Queues that only carry text
+#include "emstream.h"
+
+/** @brief   Implements a task to determine whether or not the system is safe.
+ *  @details This class is an extension of @c TaskBase. The purpose of the class
+ *  		 is to stop the motor if a limit switch is triggered, meaning the
+ *  		 system is currently in an unsafe condition.
+ */
+class UserInputTask : public TaskBase {
+public:
+	UserInputTask(const char* a_name,
+			unsigned portBASE_TYPE a_priority,
+			size_t a_stack_size,
+			emstream* p_ser_dev);
+	void run(void);
+
+};

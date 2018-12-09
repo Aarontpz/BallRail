@@ -1,0 +1,92 @@
+\hypertarget{class_motor_drive_task}{}\section{Motor\+Drive\+Task Class Reference}
+\label{class_motor_drive_task}\index{Motor\+Drive\+Task@{Motor\+Drive\+Task}}
+
+
+Implements a task to control the motor.  
+
+
+
+
+{\ttfamily \#include $<$Motor\+Drive\+Task.\+h$>$}
+
+Inheritance diagram for Motor\+Drive\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_motor_drive_task}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_motor_drive_task_ae97b28489a97e5f365a5d27156153f0e}{Motor\+Drive\+Task}} (const char $\ast$a\+\_\+name, unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE a\+\_\+priority, size\+\_\+t a\+\_\+stack\+\_\+size, \mbox{\hyperlink{classemstream}{emstream}} $\ast$p\+\_\+ser\+\_\+dev)
+\begin{DoxyCompactList}\small\item\em Construct a Motor\+Drive task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_motor_drive_task_abc617fef420f9dc8cdd6144d8d7adea8}{run}} (void)
+\begin{DoxyCompactList}\small\item\em The run method of the Motor\+Drive task that is repeatedly called by the R\+T\+OS scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Implements a task to control the motor. 
+
+This class is an extension of {\ttfamily \mbox{\hyperlink{class_task_base}{Task\+Base}}}. The purpose of the class is to interface with the motor driver to control the direction and operating condition of the brushed DC motor. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_motor_drive_task_ae97b28489a97e5f365a5d27156153f0e}\label{class_motor_drive_task_ae97b28489a97e5f365a5d27156153f0e}} 
+\index{Motor\+Drive\+Task@{Motor\+Drive\+Task}!Motor\+Drive\+Task@{Motor\+Drive\+Task}}
+\index{Motor\+Drive\+Task@{Motor\+Drive\+Task}!Motor\+Drive\+Task@{Motor\+Drive\+Task}}
+\subsubsection{\texorpdfstring{Motor\+Drive\+Task()}{MotorDriveTask()}}
+{\footnotesize\ttfamily Motor\+Drive\+Task\+::\+Motor\+Drive\+Task (\begin{DoxyParamCaption}\item[{const char $\ast$}]{a\+\_\+name,  }\item[{unsigned port\+B\+A\+S\+E\+\_\+\+T\+Y\+PE}]{a\+\_\+priority,  }\item[{size\+\_\+t}]{a\+\_\+stack\+\_\+size,  }\item[{\mbox{\hyperlink{classemstream}{emstream}} $\ast$}]{p\+\_\+ser\+\_\+dev }\end{DoxyParamCaption})}
+
+
+
+Construct a Motor\+Drive task. 
+
+Constructor which creates and initializes a Motor\+Drive task object.
+
+This constructor sets up the task name, priority, stack size, and serial stream. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL)\\
+\hline
+\end{DoxyParams}
+This constructor creates a Free\+R\+T\+OS task with the given task run function, name, priority, and stack size. Its purpose is to set the appropriate motor driver pins depending on the P\+WM command, and shut down the motor if an unsafe condition was detected. 
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+name} & A character string which will be the name of this task \\
+\hline
+{\em a\+\_\+priority} & The priority at which this task will initially run (default\+: 0) \\
+\hline
+{\em a\+\_\+stack\+\_\+size} & The size of this task\textquotesingle{}s stack in bytes (default\+: {\ttfamily config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}) \\
+\hline
+{\em p\+\_\+ser\+\_\+dev} & Pointer to a serial device (port, radio, SD card, etc.) which can be used by this task to communicate (default\+: N\+U\+LL) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_motor_drive_task_abc617fef420f9dc8cdd6144d8d7adea8}\label{class_motor_drive_task_abc617fef420f9dc8cdd6144d8d7adea8}} 
+\index{Motor\+Drive\+Task@{Motor\+Drive\+Task}!run@{run}}
+\index{run@{run}!Motor\+Drive\+Task@{Motor\+Drive\+Task}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Motor\+Drive\+Task\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The run method of the Motor\+Drive task that is repeatedly called by the R\+T\+OS scheduler. 
+
+The {\ttfamily \mbox{\hyperlink{class_motor_drive_task_abc617fef420f9dc8cdd6144d8d7adea8}{run()}}} function for the Motor\+Drive task.
+
+This method is called by the R\+T\+OS scheduler. The function sets the IN pins on the motor driver to define the direction of the motor, depending on the sign of the P\+WM signal. If there\textquotesingle{}s an unsafe condition, the motor driver will be set to B\+R\+A\+KE mode by pulling the IN pins low. 
+
+Implements \mbox{\hyperlink{class_task_base_adcf6036ad9c860051ccf392ba5e7dbbc}{Task\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Doxygen\+Files/\mbox{\hyperlink{_motor_drive_task_8h}{Motor\+Drive\+Task.\+h}}\item 
+Doxygen\+Files/Motor\+Drive\+Task.\+cpp\end{DoxyCompactItemize}
